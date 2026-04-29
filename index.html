@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kompas.com Menu Mobile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Menu Kompas.com">
+      <section class="phone-screen">
+        <div class="status-bar" aria-hidden="true">
+          <span>5:13 PM</span>
+          <div class="status-icons">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <header class="topbar">
+          <a class="brand" href="#" aria-label="Kompas.com">
+            <span class="brand-main">KOMPAS<span>.com</span></span>
+            <span class="brand-tagline">Jernih Melihat Dunia</span>
+          </a>
+          <nav class="topbar-actions" aria-label="Aksi cepat">
+            <button class="icon-button" type="button" aria-label="Notifikasi" data-page="notifikasi">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+                <path d="M13.7 21a2 2 0 0 1-3.4 0" />
+              </svg>
+            </button>
+            <button class="close-button" type="button" aria-label="Tutup menu" data-page="beranda">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </nav>
+        </header>
+
+        <div class="content" id="app-content">
+          <a class="login-card" href="#login" data-page="login">
+            <span class="avatar">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 21a8 8 0 0 0-16 0" />
+                <circle cx="12" cy="8" r="4" />
+              </svg>
+            </span>
+            <span>Login</span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+
+          <a class="membership-banner" href="#membership" data-page="membership">
+            <span>
+              <strong>Gabung Membership KOMPAS.com Plus</strong>
+              <small>Nikmati artikel eksklusif, analisis mendalam, dan pengalaman bebas iklan.</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+
+          <div class="reward-grid" aria-label="Benefit membership">
+            <a class="reward-card" href="#reward" data-page="reward">
+              <span>Paratroopers Reward</span>
+              <strong>Lihat reward</strong>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            <a class="reward-card" href="#voucher" data-page="voucher">
+              <span>Voucher Buat kamu</span>
+              <strong>Lihat voucher</strong>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="menu-section">
+            <h2>Aktivitas</h2>
+            <ul class="menu-list">
+              <li>
+                <a href="#riwayat" data-page="riwayat">
+                  <span class="item-icon history"></span>
+                  <span>Riwayat</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#konten-disimpan" data-page="konten-disimpan">
+                  <span class="item-icon bookmark"></span>
+                  <span>Konten disimpan</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#konten-disukai" data-page="konten-disukai">
+                  <span class="item-icon like"></span>
+                  <span>Konten disukai</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#konten-dikomentari" data-page="konten-dikomentari">
+                  <span class="item-icon comment"></span>
+                  <span>Konten dikomentari</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu-section">
+            <h2>Transaksi</h2>
+            <ul class="menu-list">
+              <li>
+                <a href="#riwayat-transaksi" data-page="riwayat-transaksi">
+                  <span class="item-icon card"></span>
+                  <span>Riwayat transaksi</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#tiketmu" data-page="tiketmu">
+                  <span class="item-icon ticket"></span>
+                  <span>Tiketmu</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu-section">
+            <h2>Pengaturan</h2>
+            <ul class="menu-list">
+              <li>
+                <a href="#mode-tampilan" data-page="mode-tampilan">
+                  <span class="item-icon sun"></span>
+                  <span>Mode tampilan</span>
+                  <strong class="mode-value">Terang</strong>
+                </a>
+              </li>
+              <li>
+                <a href="#minat" data-page="minat">
+                  <span class="item-icon sparkle"></span>
+                  <span>Minat</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#notifikasi" data-page="notifikasi">
+                  <span class="item-icon bell"></span>
+                  <span>Notifikasi</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#newsletter" data-page="newsletter">
+                  <span class="item-icon mail"></span>
+                  <span>Newsletter</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu-section">
+            <h2>Lainnya</h2>
+            <ul class="menu-list">
+              <li>
+                <a href="#masukan" data-page="masukan">
+                  <span class="item-icon edit"></span>
+                  <span>Berikan masukanmu</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#bantuan" data-page="bantuan">
+                  <span class="item-icon info"></span>
+                  <span>Bantuan</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#kebijakan-privasi" data-page="kebijakan-privasi">
+                  <span class="item-icon shield"></span>
+                  <span>Kebijakan privasi</span>
+                  <span class="item-arrow"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
