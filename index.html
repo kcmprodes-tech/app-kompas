@@ -15,17 +15,6 @@
     <main class="app-shell" aria-label="Beranda KOMPAS.com">
       <section class="phone-app">
         <header class="app-header">
-          <div class="status-bar" aria-label="Status perangkat">
-            <span>5:13 PM</span>
-            <div class="status-icons" aria-hidden="true">
-              <span class="icon-clock"></span>
-              <span class="icon-bluetooth"></span>
-              <span class="icon-wifi"></span>
-              <span class="icon-signal"></span>
-              <span class="icon-battery"></span>
-            </div>
-          </div>
-
           <div class="brand-row">
             <a class="logo" href="#" aria-label="KOMPAS.com">
               <img src="assets/kompas-logo.png" alt="KOMPAS.com" />
@@ -42,15 +31,15 @@
               </button>
             </nav>
           </div>
-
-          <div class="topic-strip" aria-label="Kanal pilihan">
-            <a class="topic-chip" href="#"><span class="chip-podcast"></span>Podcast</a>
-            <a class="topic-chip" href="#"><span class="chip-business">K</span>Business Insight</a>
-            <a class="topic-chip" href="#"><span class="chip-harian">K</span>Harian Kompas</a>
-          </div>
         </header>
 
         <div class="feed-scroll">
+          <nav class="dynamic-menu" aria-label="Dynamic menu">
+            <a class="topic-chip" href="#"><i class="ph ph-microphone" aria-hidden="true"></i>Podcast</a>
+            <a class="topic-chip" href="#"><span class="chip-business">K</span>Business Insight</a>
+            <a class="topic-chip" href="#"><span class="chip-harian">K</span>Harian Kompas</a>
+          </nav>
+
           <section class="breaking-card" aria-labelledby="breaking-label">
             <span id="breaking-label" class="breaking-label">Breaking News</span>
             <a href="#">
@@ -66,7 +55,7 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
               </a>
             </div>
-            <div class="assist-strip">
+            <div class="living-assistance-menu">
               <article class="assist-card">
                 <div>
                   <span>Harga Beli Emas</span>
@@ -161,9 +150,9 @@
             <i class="ph ph-house" aria-hidden="true"></i>
             <span>Hari ini</span>
           </a>
-          <a href="#" aria-label="Hub">
-            <i class="ph ph-circles-four" aria-hidden="true"></i>
-            <span>Hub</span>
+          <a href="#" aria-label="Video">
+            <i class="ph ph-play-circle" aria-hidden="true"></i>
+            <span>Video</span>
           </a>
           <a class="brand-tab" href="#" aria-label="Kompas Plus"><span>K</span></a>
           <a href="#" aria-label="Fest">

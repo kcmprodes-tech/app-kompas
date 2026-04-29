@@ -111,136 +111,8 @@ svg {
 .app-header {
   position: relative;
   z-index: 3;
-  padding: var(--space-8) var(--space-20) var(--space-0);
+  padding: var(--space-0) var(--space-20);
   background: var(--color-screen-top);
-}
-
-.status-bar {
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #20252b;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-}
-
-.status-icons span {
-  display: inline-block;
-  position: relative;
-  color: #1d2228;
-}
-
-.icon-clock {
-  width: 14px;
-  height: 14px;
-  border: 1.8px solid currentColor;
-  border-radius: 50%;
-}
-
-.icon-clock::before,
-.icon-clock::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 3px;
-  width: 1.4px;
-  height: 4px;
-  border-radius: var(--radius-pill);
-  background: currentColor;
-  transform-origin: bottom;
-}
-
-.icon-clock::after {
-  top: 6px;
-  width: 4px;
-  height: 1.4px;
-}
-
-.icon-bluetooth {
-  width: 10px;
-  height: 15px;
-}
-
-.icon-bluetooth::before {
-  content: "ᛒ";
-  position: absolute;
-  inset: -4px 0 0;
-  font-size: 18px;
-  line-height: 1;
-}
-
-.icon-wifi {
-  width: 16px;
-  height: 12px;
-  border-top: 2px solid currentColor;
-  border-radius: 50% 50% 0 0;
-}
-
-.icon-wifi::before,
-.icon-wifi::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 3px;
-  width: 10px;
-  height: 7px;
-  border-top: 2px solid currentColor;
-  border-radius: 50% 50% 0 0;
-}
-
-.icon-wifi::after {
-  left: 7px;
-  top: 8px;
-  width: 3px;
-  height: 3px;
-  border: 0;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.icon-signal {
-  width: 17px;
-  height: 13px;
-  background: linear-gradient(to top, currentColor 0 4px, transparent 4px) 0 100% / 3px 4px no-repeat,
-    linear-gradient(to top, currentColor 0 7px, transparent 7px) 5px 100% / 3px 7px no-repeat,
-    linear-gradient(to top, currentColor 0 10px, transparent 10px) 10px 100% / 3px 10px no-repeat,
-    linear-gradient(to top, currentColor 0 13px, transparent 13px) 15px 100% / 3px 13px no-repeat;
-}
-
-.icon-battery {
-  width: 18px;
-  height: 10px;
-  border: 1.5px solid currentColor;
-  border-radius: 3px;
-}
-
-.icon-battery::before {
-  content: "";
-  position: absolute;
-  right: -3px;
-  top: 3px;
-  width: 2px;
-  height: 4px;
-  border-radius: 0 2px 2px 0;
-  background: currentColor;
-}
-
-.icon-battery::after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  width: 10px;
-  height: 4px;
-  border-radius: 1px;
-  background: currentColor;
 }
 
 .brand-row {
@@ -265,7 +137,7 @@ svg {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-16);
+  gap: var(--space-8);
 }
 
 .icon-button {
@@ -295,17 +167,17 @@ svg {
   background: #e32127;
 }
 
-.topic-strip {
+.dynamic-menu {
   display: flex;
-  gap: var(--space-12);
-  margin: var(--space-0) calc(var(--space-20) * -1);
-  padding: var(--space-4) var(--space-20) var(--space-12);
+  gap: var(--space-8);
+  margin: var(--space-0) calc(var(--space-20) * -1) var(--space-12);
+  padding: var(--space-4) var(--space-20);
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.topic-strip::-webkit-scrollbar,
-.assist-strip::-webkit-scrollbar,
+.dynamic-menu::-webkit-scrollbar,
+.living-assistance-menu::-webkit-scrollbar,
 .feed-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -324,34 +196,10 @@ svg {
   font-weight: 700;
 }
 
-.chip-podcast {
-  width: 14px;
-  height: 14px;
-  position: relative;
-  border: 1.6px solid #ef9c00;
-  border-radius: 8px 8px 6px 6px;
-}
-
-.chip-podcast::before,
-.chip-podcast::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  background: #ef9c00;
-  transform: translateX(-50%);
-}
-
-.chip-podcast::before {
-  bottom: -4px;
-  width: 1.6px;
-  height: 4px;
-}
-
-.chip-podcast::after {
-  bottom: -5px;
-  width: 7px;
-  height: 1.6px;
-  border-radius: var(--radius-pill);
+.topic-chip i {
+  color: #ef9c00;
+  font-size: 17px;
+  line-height: 1;
 }
 
 .chip-business,
@@ -378,16 +226,16 @@ svg {
 }
 
 .feed-scroll {
-  height: calc(100vh - 132px);
+  height: calc(100vh - 64px);
   overflow-y: auto;
-  padding: var(--space-24) var(--space-20) 104px;
+  padding: var(--space-4) var(--space-20) 104px;
   scrollbar-width: none;
 }
 
 .breaking-card {
   position: relative;
   padding: var(--space-28) var(--space-16) var(--space-16);
-  border: 1px solid var(--color-line-warm);
+  border: 0.5px solid rgba(215, 38, 48, 0.42);
   border-radius: var(--radius-12);
   background: rgba(255, 255, 255, 0.66);
 }
@@ -400,7 +248,7 @@ svg {
   display: inline-flex;
   align-items: center;
   padding: var(--space-0) var(--space-12);
-  border-radius: var(--radius-8) var(--radius-8) var(--radius-8) 0;
+  border-radius: var(--radius-8) 0 var(--radius-8) 0;
   background: var(--color-kompas-red);
   color: var(--color-surface);
   font-size: 13px;
@@ -408,8 +256,24 @@ svg {
 }
 
 .breaking-label::before {
-  content: "•";
+  content: "";
+  width: 5px;
+  height: 5px;
   margin-right: var(--space-4);
+  border-radius: 50%;
+  background: currentColor;
+  animation: breaking-dot-blink 1s ease-in-out infinite;
+}
+
+@keyframes breaking-dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.18;
+  }
 }
 
 .breaking-card a {
@@ -452,7 +316,7 @@ svg {
   line-height: 1.2;
 }
 
-.assist-strip {
+.living-assistance-menu {
   display: flex;
   gap: var(--space-8);
   margin-right: calc(var(--space-20) * -1);
@@ -755,12 +619,7 @@ svg {
 }
 
 .brand-tab::before {
-  content: "";
-  position: absolute;
-  inset: -10px -7px auto;
-  height: 44px;
-  border-radius: 0 0 24px 24px;
-  background: var(--color-surface);
+  content: none;
 }
 
 .brand-tab span {
@@ -806,12 +665,12 @@ a:focus-visible {
     padding-right: var(--space-16);
   }
 
-  .topic-strip,
-  .assist-strip {
+  .dynamic-menu,
+  .living-assistance-menu {
     margin-right: calc(var(--space-16) * -1);
   }
 
-  .topic-strip {
+  .dynamic-menu {
     margin-left: calc(var(--space-16) * -1);
     padding-left: var(--space-16);
     padding-right: var(--space-16);
