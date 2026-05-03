@@ -106,6 +106,11 @@ svg {
   overflow: hidden;
   background: linear-gradient(180deg, var(--color-screen-top) 0 120px, var(--color-screen-bottom) 320px);
   box-shadow: 0 24px 64px rgba(16, 26, 42, 0.14);
+  transition: background 180ms ease;
+}
+
+.phone-app.is-scrolled {
+  background: var(--color-screen-bottom);
 }
 
 .app-header {
@@ -113,6 +118,16 @@ svg {
   z-index: 3;
   padding: var(--space-0) var(--space-20);
   background: var(--color-screen-top);
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.phone-app.is-scrolled .app-header {
+  background: var(--color-surface);
+  box-shadow: 0 1px 0 rgba(228, 231, 236, 0.78);
+}
+
+.phone-app.is-scrolled .has-alert::after {
+  border-color: var(--color-surface);
 }
 
 .brand-row {
@@ -178,6 +193,7 @@ svg {
 
 .dynamic-menu::-webkit-scrollbar,
 .living-assistance-menu::-webkit-scrollbar,
+.trending-menu::-webkit-scrollbar,
 .feed-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -228,7 +244,7 @@ svg {
 .feed-scroll {
   height: calc(100vh - 64px);
   overflow-y: auto;
-  padding: var(--space-24) var(--space-20) 88px;
+  padding: var(--space-0) var(--space-20) 88px;
   scrollbar-width: none;
 }
 
@@ -434,8 +450,9 @@ svg {
 
 .top-stories h1 {
   margin-bottom: var(--space-16);
+  font-family: var(--font-ui);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.2px;
 }
 
@@ -484,6 +501,7 @@ svg {
 }
 
 .hero-copy h2 {
+  letter-spacing: -0.2px;
   font-size: 19px;
   line-height: 1.24;
 }
@@ -526,6 +544,155 @@ svg {
   line-height: 1.18;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.trending-section {
+  margin: var(--space-24) calc(var(--space-20) * -1) var(--space-24);
+  padding: var(--space-24) var(--space-20) var(--space-28);
+  background: linear-gradient(100deg, #eef3ff 0%, #fbf7ff 62%, #ffffff 100%);
+}
+
+.trending-section h2 {
+  margin: 0 0 var(--space-16);
+  color: var(--color-ink-strong);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.2px;
+}
+
+.trending-menu {
+  display: flex;
+  gap: var(--space-12);
+  margin-right: calc(var(--space-20) * -1);
+  overflow-x: auto;
+  padding-right: var(--space-20);
+  scrollbar-width: none;
+}
+
+.trending-menu a {
+  min-height: 40px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: var(--space-0) var(--space-20);
+  border: 1px solid #e2e2e4;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.82);
+  color: #53575f;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.54);
+  white-space: nowrap;
+}
+
+.ad-section {
+  margin: var(--space-24) calc(var(--space-20) * -1) var(--space-24);
+  padding: var(--space-20) var(--space-20) var(--space-18, 18px);
+  background: #f1f1f2;
+  text-align: center;
+}
+
+.ad-section p {
+  margin: 0 0 var(--space-12);
+  color: #262a30;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.ad-banner {
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 7px;
+  border: 4px solid #8db8ed;
+  background: #c7dcf7;
+  text-align: left;
+}
+
+.ad-art {
+  min-height: 64px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-4);
+  background:
+    radial-gradient(circle at 62% 72%, #e9fff4 0 14px, transparent 15px),
+    linear-gradient(180deg, #12a6f4 0 62%, #e9f8ff 63% 78%, #66b64a 79%);
+  color: var(--color-surface);
+}
+
+.ad-art span {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-6);
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.ad-art strong {
+  max-width: 92%;
+  font-size: 8px;
+  line-height: 1.08;
+  text-align: center;
+}
+
+.ad-art b {
+  color: var(--color-surface);
+  font-size: 28px;
+  line-height: 0.86;
+}
+
+.ad-copy {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+  color: #1e232a;
+}
+
+.ad-copy strong {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.ad-copy span {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.14;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.ad-download {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f61468;
+  color: var(--color-surface);
+}
+
+.ad-download i {
+  font-size: 24px;
+}
+
+.ad-section .ad-cta {
+  margin: var(--space-12) 0 0;
+  font-size: 14px;
+}
+
+.ad-cta a {
+  color: #1976d2;
 }
 
 .bottom-nav {

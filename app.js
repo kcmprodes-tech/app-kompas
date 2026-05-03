@@ -1,6 +1,8 @@
 const navItems = document.querySelectorAll(".bottom-nav a");
 const optionButtons = document.querySelectorAll(".story-meta button");
 const placeholderLinks = document.querySelectorAll('a[href="#"]');
+const phoneApp = document.querySelector(".phone-app");
+const feedScroll = document.querySelector(".feed-scroll");
 
 function setActiveNav(event) {
   event.preventDefault();
@@ -25,8 +27,16 @@ function pulseOption(event) {
   );
 }
 
+function syncHeaderState() {
+  if (!phoneApp || !feedScroll) return;
+
+  phoneApp.classList.toggle("is-scrolled", feedScroll.scrollTop > 2);
+}
+
 placeholderLinks.forEach((link) => {
   link.addEventListener("click", (event) => event.preventDefault());
 });
 navItems.forEach((item) => item.addEventListener("click", setActiveNav));
 optionButtons.forEach((button) => button.addEventListener("click", pulseOption));
+feedScroll?.addEventListener("scroll", syncHeaderState, { passive: true });
+syncHeaderState();
