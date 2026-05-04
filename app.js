@@ -41,14 +41,11 @@ function syncHeaderState() {
   phoneApp.classList.toggle("is-scrolled", feedScroll.scrollTop > 2);
 }
 
-function playShimmer() {
-  if (!phoneApp) return;
+function playSkeleton(target = phoneApp) {
+  if (!target) return;
 
-  phoneApp.classList.remove("is-loading");
-  window.requestAnimationFrame(() => {
-    phoneApp.classList.add("is-loading");
-    window.setTimeout(() => phoneApp.classList.remove("is-loading"), 680);
-  });
+  target.classList.add("is-skeleton");
+  window.setTimeout(() => target.classList.remove("is-skeleton"), 760);
 }
 
 function openBusinessView(event) {
@@ -59,14 +56,13 @@ function openBusinessView(event) {
   businessView.classList.remove("is-leaving");
   phoneApp.classList.add("business-active", "is-scrolled");
   businessScroll?.scrollTo({ top: 0 });
-  playShimmer();
+  playSkeleton(businessView);
   window.requestAnimationFrame(() => businessView.classList.add("is-open"));
 }
 
 function closeBusinessView() {
   if (!phoneApp || !businessView) return;
 
-  playShimmer();
   businessView.classList.add("is-leaving");
   businessView.classList.remove("is-open");
   window.setTimeout(() => {
@@ -74,6 +70,7 @@ function closeBusinessView() {
     businessView.hidden = true;
     businessView.classList.remove("is-leaving");
     syncHeaderState();
+    playSkeleton(phoneApp);
   }, 260);
 }
 
@@ -121,4 +118,4 @@ businessBack?.addEventListener("click", closeBusinessView);
 feedScroll?.addEventListener("scroll", syncHeaderState, { passive: true });
 businessScroll?.addEventListener("scroll", handleBusinessScroll, { passive: true });
 syncHeaderState();
-playShimmer();
+playSkeleton(phoneApp);

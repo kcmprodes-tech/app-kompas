@@ -109,37 +109,6 @@ svg {
   transition: background 180ms ease;
 }
 
-.phone-app::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  pointer-events: none;
-  opacity: 0;
-  background:
-    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.74) 48%, transparent 100%),
-    rgba(248, 250, 253, 0.56);
-  background-size: 220% 100%, 100% 100%;
-  transform: translateX(-100%);
-}
-
-.phone-app.is-loading::after {
-  opacity: 1;
-  animation: page-shimmer 620ms ease-out forwards;
-}
-
-@keyframes page-shimmer {
-  0% {
-    transform: translateX(-100%);
-    background-position: 220% 0, 0 0;
-  }
-
-  100% {
-    transform: translateX(100%);
-    background-position: -80% 0, 0 0;
-  }
-}
-
 .phone-app.is-scrolled {
   background: var(--color-screen-bottom);
 }
@@ -735,6 +704,121 @@ svg {
   transform: translateX(100%);
 }
 
+.phone-app.is-skeleton .logo,
+.phone-app.is-skeleton .icon-button,
+.phone-app.is-skeleton .topic-chip,
+.phone-app.is-skeleton .breaking-card,
+.phone-app.is-skeleton .section-heading h2,
+.phone-app.is-skeleton .assist-card,
+.phone-app.is-skeleton .top-stories h1,
+.phone-app.is-skeleton .headline,
+.phone-app.is-skeleton .story-card,
+.phone-app.is-skeleton .trending-section h2,
+.phone-app.is-skeleton .trending-menu a,
+.phone-app.is-skeleton .ad-section p,
+.phone-app.is-skeleton .ad-banner,
+.phone-app.is-skeleton .popular-heading h2,
+.phone-app.is-skeleton .popular-item,
+.phone-app.is-skeleton .bottom-nav a:not(.brand-tab),
+.phone-app.is-skeleton .brand-tab span,
+.business-view.is-skeleton .business-back,
+.business-view.is-skeleton .business-header img,
+.business-view.is-skeleton .business-card,
+.business-view.is-skeleton .business-ad,
+.business-view.is-skeleton .business-ad-cta {
+  position: relative;
+  overflow: hidden;
+  border-color: transparent;
+  color: transparent;
+  background: #edf0f4;
+  box-shadow: none;
+}
+
+.phone-app.is-skeleton .logo *,
+.phone-app.is-skeleton .icon-button *,
+.phone-app.is-skeleton .topic-chip *,
+.phone-app.is-skeleton .breaking-card *,
+.phone-app.is-skeleton .section-heading h2 *,
+.phone-app.is-skeleton .assist-card *,
+.phone-app.is-skeleton .top-stories h1 *,
+.phone-app.is-skeleton .headline *,
+.phone-app.is-skeleton .story-card *,
+.phone-app.is-skeleton .trending-section h2 *,
+.phone-app.is-skeleton .trending-menu a *,
+.phone-app.is-skeleton .ad-section p *,
+.phone-app.is-skeleton .ad-banner *,
+.phone-app.is-skeleton .popular-heading h2 *,
+.phone-app.is-skeleton .popular-item *,
+.phone-app.is-skeleton .bottom-nav a:not(.brand-tab) *,
+.phone-app.is-skeleton .brand-tab span *,
+.business-view.is-skeleton .business-back *,
+.business-view.is-skeleton .business-header img,
+.business-view.is-skeleton .business-card *,
+.business-view.is-skeleton .business-ad *,
+.business-view.is-skeleton .business-ad-cta * {
+  opacity: 0;
+}
+
+.phone-app.is-skeleton .logo::after,
+.phone-app.is-skeleton .icon-button::after,
+.phone-app.is-skeleton .topic-chip::after,
+.phone-app.is-skeleton .breaking-card::after,
+.phone-app.is-skeleton .section-heading h2::after,
+.phone-app.is-skeleton .assist-card::after,
+.phone-app.is-skeleton .top-stories h1::after,
+.phone-app.is-skeleton .headline::after,
+.phone-app.is-skeleton .story-card::after,
+.phone-app.is-skeleton .trending-section h2::after,
+.phone-app.is-skeleton .trending-menu a::after,
+.phone-app.is-skeleton .ad-section p::after,
+.phone-app.is-skeleton .ad-banner::after,
+.phone-app.is-skeleton .popular-heading h2::after,
+.phone-app.is-skeleton .popular-item::after,
+.phone-app.is-skeleton .bottom-nav a:not(.brand-tab)::after,
+.phone-app.is-skeleton .brand-tab span::after,
+.business-view.is-skeleton .business-back::after,
+.business-view.is-skeleton .business-card::after,
+.business-view.is-skeleton .business-ad::after,
+.business-view.is-skeleton .business-ad-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.76) 48%, transparent 100%);
+  animation: skeleton-shimmer 1.05s ease-in-out infinite;
+  transform: translateX(-100%);
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.business-view.is-skeleton .business-header::after {
+  content: "";
+  width: 162px;
+  height: 15px;
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 1;
+  border-radius: var(--radius-4);
+  background:
+    linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.76) 48%, transparent 100%),
+    #edf0f4;
+  background-size: 180% 100%, 100% 100%;
+  animation: skeleton-bg-shimmer 1.05s ease-in-out infinite;
+}
+
+@keyframes skeleton-bg-shimmer {
+  0% {
+    background-position: 180% 0, 0 0;
+  }
+
+  100% {
+    background-position: -80% 0, 0 0;
+  }
+}
+
 .business-header {
   display: grid;
   grid-template-columns: 40px 1fr 40px;
@@ -765,7 +849,7 @@ svg {
 
 .business-scroll {
   overflow-y: auto;
-  padding: var(--space-12) var(--space-16) var(--space-32);
+  padding: var(--space-32) var(--space-20) var(--space-32);
   scrollbar-width: none;
 }
 
@@ -805,12 +889,12 @@ svg {
   top: var(--space-8);
   right: var(--space-8);
   border-radius: 50%;
-  background: #0c4b6d;
-  color: var(--color-surface);
-  font-family: var(--font-logo);
-  font-size: 15px;
-  font-style: italic;
-  font-weight: 700;
+}
+
+.business-media span img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .business-card h2 {
@@ -819,7 +903,7 @@ svg {
   overflow: hidden;
   color: var(--color-ink-strong);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.24;
   letter-spacing: -0.2px;
   -webkit-box-orient: vertical;
@@ -830,7 +914,7 @@ svg {
 .business-ad-cta {
   margin: 0;
   color: var(--color-ink-muted);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.2px;
 }
