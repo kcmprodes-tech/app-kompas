@@ -8,6 +8,14 @@ const businessView = document.querySelector(".business-view");
 const businessBack = document.querySelector(".business-back");
 const businessScroll = document.querySelector(".business-scroll");
 const businessLoader = document.querySelector(".business-loader");
+const aiLink = document.querySelector("[data-open-ai]");
+const aiView = document.querySelector(".ai-chat-view");
+const aiBack = document.querySelector(".ai-back");
+const aiChatScroll = document.querySelector(".ai-chat-scroll");
+const aiMessages = document.querySelector(".ai-messages");
+const aiComposer = document.querySelector(".ai-composer");
+const aiInput = document.querySelector('.ai-composer input[name="message"]');
+const aiSuggestions = document.querySelectorAll(".ai-suggestions button");
 const businessArticleSeed = Array.from(document.querySelectorAll(".business-card")).slice(0, 5);
 let businessIsAppending = false;
 let businessBatch = 0;
@@ -84,11 +92,50 @@ function closeBusinessView(options = {}) {
   }, 260);
 }
 
+function openAiView(event, options = {}) {
+  event?.preventDefault();
+  if (!phoneApp || !aiView) return;
+
+  const { updateHash = true } = options;
+
+  aiView.hidden = false;
+  aiView.classList.remove("is-leaving");
+  phoneApp.classList.add("is-scrolled");
+  if (updateHash && window.location.hash !== "#ai-chat") {
+    window.history.pushState(null, "", "#ai-chat");
+  }
+  playSkeleton(aiView);
+  window.requestAnimationFrame(() => aiView.classList.add("is-open"));
+  window.setTimeout(() => aiInput?.focus(), 280);
+}
+
+function closeAiView(options = {}) {
+  if (!aiView) return;
+
+  const { updateHash = true } = options;
+
+  aiView.classList.add("is-leaving");
+  aiView.classList.remove("is-open");
+  window.setTimeout(() => {
+    aiView.hidden = true;
+    aiView.classList.remove("is-leaving");
+    if (updateHash && window.location.hash === "#ai-chat") {
+      window.history.pushState(null, "", window.location.pathname);
+    }
+    syncHeaderState();
+    playSkeleton(phoneApp);
+  }, 260);
+}
+
 function syncRoute() {
   if (window.location.hash === "#business-insight") {
     openBusinessView(null, { updateHash: false });
+  } else if (window.location.hash === "#ai-chat") {
+    openAiView(null, { updateHash: false });
   } else if (businessView && !businessView.hidden) {
     closeBusinessView({ updateHash: false });
+  } else if (aiView && !aiView.hidden) {
+    closeAiView({ updateHash: false });
   }
 }
 
@@ -126,6 +173,69 @@ function handleBusinessScroll() {
   if (distanceToBottom < 240) appendBusinessArticles();
 }
 
+function addAiMessage(role, text) {
+  if (!aiMessages) return null;
+
+  const article = document.createElement("article");
+  article.className = `ai-message ${role}`;
+
+  if (role === "assistant") {
+    const avatar = document.createElement("div");
+    avatar.className = "ai-avatar";
+    avatar.textContent = "K";
+    article.appendChild(avatar);
+  }
+
+  const bubble = document.createElement("p");
+  bubble.textContent = text;
+  article.appendChild(bubble);
+  aiMessages.appendChild(article);
+  aiChatScroll?.scrollTo({ top: aiChatScroll.scrollHeight, behavior: "smooth" });
+  return article;
+}
+
+function addTypingMessage() {
+  if (!aiMessages) return null;
+
+  const article = document.createElement("article");
+  article.className = "ai-message assistant";
+  article.innerHTML = '<div class="ai-avatar">K</div><p class="ai-typing"><span></span><span></span><span></span></p>';
+  aiMessages.appendChild(article);
+  aiChatScroll?.scrollTo({ top: aiChatScroll.scrollHeight, behavior: "smooth" });
+  return article;
+}
+
+function buildAiReply(message) {
+  const normalized = message.toLowerCase();
+
+  if (normalized.includes("ringkas") || normalized.includes("berita")) {
+    return "Ringkasan cepat: isu utama hari ini bergerak di ekonomi, pendidikan, dan layanan publik. Saya bisa lanjutkan dengan poin penting, dampak, atau daftar bacaan terkait.";
+  }
+
+  if (normalized.includes("ekonomi") || normalized.includes("rupiah") || normalized.includes("saham")) {
+    return "Untuk ekonomi, fokus pembaca biasanya ada pada nilai tukar, suku bunga, daya beli, dan sentimen pasar. Saya bisa bantu bedah dampaknya ke rumah tangga, bisnis, atau investasi.";
+  }
+
+  return "Saya tangkap pertanyaannya. Untuk jawaban yang lebih tajam, saya bisa bantu susun dalam tiga bagian: konteks, poin penting, dan apa yang perlu dipantau berikutnya.";
+}
+
+function submitAiMessage(event) {
+  event.preventDefault();
+  if (!aiInput) return;
+
+  const message = aiInput.value.trim();
+  if (!message) return;
+
+  addAiMessage("user", message);
+  aiInput.value = "";
+
+  const typing = addTypingMessage();
+  window.setTimeout(() => {
+    typing?.remove();
+    addAiMessage("assistant", buildAiReply(message));
+  }, 720);
+}
+
 placeholderLinks.forEach((link) => {
   link.addEventListener("click", (event) => event.preventDefault());
 });
@@ -133,6 +243,16 @@ navItems.forEach((item) => item.addEventListener("click", setActiveNav));
 optionButtons.forEach((button) => button.addEventListener("click", pulseOption));
 businessLink?.addEventListener("click", openBusinessView);
 businessBack?.addEventListener("click", closeBusinessView);
+aiLink?.addEventListener("click", openAiView);
+aiBack?.addEventListener("click", closeAiView);
+aiComposer?.addEventListener("submit", submitAiMessage);
+aiSuggestions.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!aiInput) return;
+    aiInput.value = button.textContent.trim();
+    aiInput.focus();
+  });
+});
 feedScroll?.addEventListener("scroll", syncHeaderState, { passive: true });
 businessScroll?.addEventListener("scroll", handleBusinessScroll, { passive: true });
 window.addEventListener("hashchange", syncRoute);

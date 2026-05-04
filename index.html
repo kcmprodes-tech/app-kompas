@@ -359,6 +359,53 @@
           </div>
         </section>
 
+        <section class="ai-chat-view" aria-label="Kompas AI" hidden>
+          <header class="ai-chat-header">
+            <button class="ai-back" type="button" aria-label="Kembali ke beranda">
+              <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            </button>
+            <div>
+              <strong>Kompas AI</strong>
+              <span>Asisten berita dan insight</span>
+            </div>
+            <button class="ai-header-action" type="button" aria-label="Percakapan baru">
+              <i class="ph ph-note-pencil" aria-hidden="true"></i>
+            </button>
+          </header>
+
+          <div class="ai-chat-scroll" aria-live="polite">
+            <section class="ai-welcome">
+              <div class="ai-orb">K</div>
+              <h1>Apa yang ingin kamu pahami hari ini?</h1>
+              <p>Tanya ringkasan berita, konteks isu, atau minta rekomendasi bacaan dari Kompas.</p>
+            </section>
+
+            <div class="ai-suggestions" aria-label="Saran pertanyaan">
+              <button type="button">Ringkas berita utama hari ini</button>
+              <button type="button">Apa dampak rupiah melemah?</button>
+              <button type="button">Rekomendasikan bacaan ekonomi</button>
+              <button type="button">Jelaskan isu pendidikan terbaru</button>
+            </div>
+
+            <div class="ai-messages">
+              <article class="ai-message assistant">
+                <div class="ai-avatar">K</div>
+                <p>Halo, saya Kompas AI. Saya bisa bantu merangkum berita, menjelaskan konteks, atau menyusun daftar bacaan singkat.</p>
+              </article>
+            </div>
+          </div>
+
+          <form class="ai-composer" aria-label="Kirim pesan ke Kompas AI">
+            <button type="button" aria-label="Tambah lampiran">
+              <i class="ph ph-plus" aria-hidden="true"></i>
+            </button>
+            <input type="text" name="message" placeholder="Tulis pertanyaan..." autocomplete="off" />
+            <button class="ai-send" type="submit" aria-label="Kirim">
+              <i class="ph ph-arrow-up" aria-hidden="true"></i>
+            </button>
+          </form>
+        </section>
+
         <nav class="bottom-nav" aria-label="Navigasi utama">
           <a class="active" href="#" aria-label="Hari ini">
             <i class="ph ph-house" aria-hidden="true"></i>
@@ -368,7 +415,7 @@
             <i class="ph ph-play-circle" aria-hidden="true"></i>
             <span>Video</span>
           </a>
-          <a class="brand-tab" href="#" aria-label="Kompas Plus"><span>K</span></a>
+          <a class="brand-tab" href="#" aria-label="Kompas AI" data-open-ai><span>K</span></a>
           <a href="#" aria-label="Fest">
             <i class="ph ph-confetti" aria-hidden="true"></i>
             <span>Fest</span>
