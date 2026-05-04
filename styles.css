@@ -109,6 +109,37 @@ svg {
   transition: background 180ms ease;
 }
 
+.phone-app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.74) 48%, transparent 100%),
+    rgba(248, 250, 253, 0.56);
+  background-size: 220% 100%, 100% 100%;
+  transform: translateX(-100%);
+}
+
+.phone-app.is-loading::after {
+  opacity: 1;
+  animation: page-shimmer 620ms ease-out forwards;
+}
+
+@keyframes page-shimmer {
+  0% {
+    transform: translateX(-100%);
+    background-position: 220% 0, 0 0;
+  }
+
+  100% {
+    transform: translateX(100%);
+    background-position: -80% 0, 0 0;
+  }
+}
+
 .phone-app.is-scrolled {
   background: var(--color-screen-bottom);
 }
@@ -218,27 +249,11 @@ svg {
   line-height: 1;
 }
 
-.chip-business,
-.chip-harian {
+.topic-chip img {
   width: 18px;
   height: 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: var(--color-surface);
-  font-family: var(--font-logo);
-  font-size: 12px;
-  font-style: italic;
-  font-weight: 700;
-}
-
-.chip-business {
-  background: #0c4b6d;
-}
-
-.chip-harian {
-  background: #f2c200;
-  color: var(--color-kompas-blue);
+  display: block;
+  flex: 0 0 auto;
 }
 
 .feed-scroll {
@@ -695,8 +710,218 @@ svg {
   color: #1976d2;
 }
 
+.business-view[hidden] {
+  display: none;
+}
+
+.business-view {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  background: var(--color-surface);
+  box-shadow: -16px 0 32px rgba(31, 38, 48, 0.12);
+  transform: translateX(100%);
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.business-view.is-open {
+  transform: translateX(0);
+}
+
+.business-view.is-leaving {
+  transform: translateX(100%);
+}
+
+.business-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  padding: 0 var(--space-12);
+  border-bottom: 1px solid rgba(228, 231, 236, 0.72);
+  background: var(--color-surface);
+}
+
+.business-back {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: #3c424a;
+  cursor: pointer;
+}
+
+.business-back i {
+  font-size: 21px;
+}
+
+.business-header img {
+  height: 15px;
+  justify-self: center;
+  width: auto;
+}
+
+.business-scroll {
+  overflow-y: auto;
+  padding: var(--space-12) var(--space-16) var(--space-32);
+  scrollbar-width: none;
+}
+
+.business-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.business-card {
+  margin-bottom: var(--space-24);
+}
+
+.business-card a {
+  display: block;
+}
+
+.business-media {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-8);
+  background: #d7dee8;
+}
+
+.business-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.business-media span {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: var(--space-8);
+  right: var(--space-8);
+  border-radius: 50%;
+  background: #0c4b6d;
+  color: var(--color-surface);
+  font-family: var(--font-logo);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.business-card h2 {
+  display: -webkit-box;
+  margin: var(--space-8) 0 var(--space-4);
+  overflow: hidden;
+  color: var(--color-ink-strong);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.2px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.business-card p,
+.business-ad-cta {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.business-card p span {
+  margin: 0 var(--space-4);
+}
+
+.business-ad {
+  min-height: 420px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-8);
+  margin: var(--space-12) 0 var(--space-12);
+  padding: var(--space-24);
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-4);
+  background:
+    linear-gradient(180deg, transparent 0 68%, #d8c0a1 69% 100%),
+    radial-gradient(circle at 15% 88%, #8e4ab0 0 14px, transparent 15px),
+    radial-gradient(circle at 80% 85%, #6aa662 0 18px, transparent 19px),
+    linear-gradient(160deg, #007c79 0%, #05908d 54%, #006e6b 100%);
+  color: var(--color-surface);
+  text-align: center;
+}
+
+.business-ad strong {
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.business-ad span {
+  margin-top: var(--space-32);
+  color: #ffd872;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.business-ad b {
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+
+.business-ad small {
+  margin-top: var(--space-8);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.business-ad-cta {
+  margin-bottom: var(--space-24);
+  padding: var(--space-8);
+  background: #f6f7f9;
+  color: #343941;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.business-ad-cta a {
+  color: #1976d2;
+}
+
+.business-loader {
+  min-height: 64px;
+  display: grid;
+  place-items: center;
+}
+
+.business-loader span {
+  width: 28px;
+  height: 28px;
+  display: block;
+  border: 4px solid #d9eff9;
+  border-top-color: #1593d1;
+  border-radius: 50%;
+  animation: loader-spin 820ms linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .popular-section {
   margin-top: var(--space-32);
+  padding-top: var(--space-24);
   padding-bottom: var(--space-24);
 }
 
@@ -704,7 +929,7 @@ svg {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-16);
 }
 
 .popular-heading h2 {
@@ -734,12 +959,12 @@ svg {
   display: grid;
   grid-template-columns: 112px minmax(0, 1fr);
   gap: var(--space-16);
-  padding-bottom: var(--space-24);
+  padding-bottom: var(--space-16);
   border-bottom: 1px solid var(--color-line-soft);
 }
 
 .popular-item + .popular-item {
-  padding-top: var(--space-24);
+  padding-top: var(--space-16);
 }
 
 .popular-thumb {
@@ -769,7 +994,7 @@ svg {
   border-radius: 0 var(--radius-8) 0 0;
   background: #303439;
   color: var(--color-surface);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
 }
 
