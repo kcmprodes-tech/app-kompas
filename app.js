@@ -48,20 +48,27 @@ function playSkeleton(target = phoneApp) {
   window.setTimeout(() => target.classList.remove("is-skeleton"), 760);
 }
 
-function openBusinessView(event) {
-  event.preventDefault();
+function openBusinessView(event, options = {}) {
+  event?.preventDefault();
   if (!phoneApp || !businessView) return;
+
+  const { updateHash = true } = options;
 
   businessView.hidden = false;
   businessView.classList.remove("is-leaving");
   phoneApp.classList.add("business-active", "is-scrolled");
   businessScroll?.scrollTo({ top: 0 });
+  if (updateHash && window.location.hash !== "#business-insight") {
+    window.history.pushState(null, "", "#business-insight");
+  }
   playSkeleton(businessView);
   window.requestAnimationFrame(() => businessView.classList.add("is-open"));
 }
 
-function closeBusinessView() {
+function closeBusinessView(options = {}) {
   if (!phoneApp || !businessView) return;
+
+  const { updateHash = true } = options;
 
   businessView.classList.add("is-leaving");
   businessView.classList.remove("is-open");
@@ -69,9 +76,20 @@ function closeBusinessView() {
     phoneApp.classList.remove("business-active");
     businessView.hidden = true;
     businessView.classList.remove("is-leaving");
+    if (updateHash && window.location.hash === "#business-insight") {
+      window.history.pushState(null, "", window.location.pathname);
+    }
     syncHeaderState();
     playSkeleton(phoneApp);
   }, 260);
+}
+
+function syncRoute() {
+  if (window.location.hash === "#business-insight") {
+    openBusinessView(null, { updateHash: false });
+  } else if (businessView && !businessView.hidden) {
+    closeBusinessView({ updateHash: false });
+  }
 }
 
 function appendBusinessArticles() {
@@ -117,5 +135,7 @@ businessLink?.addEventListener("click", openBusinessView);
 businessBack?.addEventListener("click", closeBusinessView);
 feedScroll?.addEventListener("scroll", syncHeaderState, { passive: true });
 businessScroll?.addEventListener("scroll", handleBusinessScroll, { passive: true });
+window.addEventListener("hashchange", syncRoute);
 syncHeaderState();
 playSkeleton(phoneApp);
+syncRoute();

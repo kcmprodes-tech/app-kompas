@@ -899,7 +899,7 @@ svg {
 
 .business-card h2 {
   display: -webkit-box;
-  margin: 8px 0 var(--space-8);
+  margin: 12px 0 var(--space-8);
   overflow: hidden;
   color: var(--color-ink-strong);
   font-size: 18px;
