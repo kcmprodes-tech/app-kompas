@@ -235,7 +235,6 @@ svg {
 .breaking-card {
   position: relative;
   padding: var(--space-28) var(--space-16) var(--space-16);
-  border: 0.5px solid rgba(215, 38, 48, 0.42);
   border-radius: var(--radius-12);
   background: rgba(255, 255, 255, 0.66);
 }
@@ -525,7 +524,7 @@ svg {
   display: -webkit-box;
   overflow: hidden;
   font-size: 16px;
-  line-height: 1.18;
+  line-height: 21px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
 }
@@ -1825,9 +1824,7 @@ svg {
 .article-floating-pill {
   width: 320px;
   height: 52px;
-  display: grid;
-  grid-template-columns: 68px 1px repeat(3, 54px) 1px 68px;
-  align-items: center;
+  position: relative;
   border-radius: 26px;
   background: var(--color-surface);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -1835,12 +1832,34 @@ svg {
 }
 
 .article-floating-pill button {
-  width: 100%;
-  height: 52px;
+  position: absolute;
+  top: 8px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
   color: #343330;
   cursor: pointer;
+}
+
+.floating-home {
+  left: 22px;
+}
+
+.floating-like {
+  left: 90px;
+}
+
+.floating-bookmark {
+  left: 142px;
+}
+
+.floating-reward {
+  left: 194px;
+}
+
+.floating-comment {
+  left: 262px;
 }
 
 .article-floating-pill i {
@@ -1849,9 +1868,37 @@ svg {
 }
 
 .floating-divider {
+  position: absolute;
+  top: 14px;
   width: 1px;
   height: 24px;
   background: #e7e8e9;
+}
+
+.floating-divider:first-of-type {
+  left: 73px;
+}
+
+.floating-divider:last-of-type {
+  left: 245px;
+}
+
+.floating-badge {
+  position: absolute;
+  top: 2px;
+  left: 16px;
+  min-width: 24px;
+  height: 14px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #f13538;
+  color: var(--color-surface);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0;
 }
 
 .business-loader {
@@ -1968,7 +2015,7 @@ svg {
   color: var(--color-ink-strong);
   font-size: 16px;
   font-weight: 600;
-  line-height: 1.24;
+  line-height: 21px;
   letter-spacing: -0.2px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;

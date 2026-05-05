@@ -14,6 +14,7 @@ const podcastBack = document.querySelector(".podcast-back");
 const podcastScroll = document.querySelector(".podcast-scroll");
 const articleView = document.querySelector(".article-view");
 const articleBack = document.querySelector(".article-back");
+const articleHome = document.querySelector("[data-article-home]");
 const articleLinks = document.querySelectorAll(".headline a, .story-card > a, .popular-item > a, .popular-copy > a, .business-card a");
 const aiLink = document.querySelector("[data-open-ai]");
 const aiView = document.querySelector(".ai-chat-view");
@@ -166,6 +167,14 @@ function closeArticleView(options = {}) {
     syncHeaderState();
     playSkeleton(phoneApp);
   }, 260);
+}
+
+function returnHomeFromArticle(event) {
+  event?.preventDefault();
+  closeArticleView();
+  if (businessView && !businessView.hidden) closeBusinessView({ updateHash: false });
+  if (podcastView && !podcastView.hidden) closePodcastView({ updateHash: false });
+  if (aiView && !aiView.hidden) closeAiView({ updateHash: false });
 }
 
 function openAiView(event, options = {}) {
@@ -330,6 +339,7 @@ businessBack?.addEventListener("click", closeBusinessView);
 podcastLink?.addEventListener("click", openPodcastView);
 podcastBack?.addEventListener("click", closePodcastView);
 articleBack?.addEventListener("click", closeArticleView);
+articleHome?.addEventListener("click", returnHomeFromArticle);
 articleLinks.forEach((link) => link.addEventListener("click", openArticleView));
 aiLink?.addEventListener("click", openAiView);
 aiBack?.addEventListener("click", closeAiView);
