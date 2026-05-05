@@ -35,7 +35,7 @@
 
         <div class="feed-scroll">
           <nav class="dynamic-menu" aria-label="Dynamic menu">
-            <a class="topic-chip" href="#"><i class="ph ph-microphone" aria-hidden="true"></i>Podcast</a>
+            <a class="topic-chip" href="#" data-open-podcast><i class="ph ph-microphone" aria-hidden="true"></i>Podcast</a>
             <a class="topic-chip" href="#" data-open-business><img src="assets/businessinsight.png" alt="" aria-hidden="true" />Business Insight</a>
             <a class="topic-chip" href="#"><img src="assets/hariankompas.png" alt="" aria-hidden="true" />Harian Kompas</a>
             <a class="topic-chip" href="#"><img src="assets/sajiansedap.png" alt="" aria-hidden="true" />Sajian Sedap</a>
@@ -406,6 +406,177 @@
           </form>
         </section>
 
+        <section class="podcast-view" aria-label="Podcast" hidden>
+          <header class="podcast-header">
+            <button class="podcast-back" type="button" aria-label="Kembali ke beranda">
+              <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            </button>
+            <strong>Podcast</strong>
+            <span></span>
+          </header>
+
+          <div class="podcast-scroll">
+            <section class="podcast-hero" aria-label="Morning Brief">
+              <div class="podcast-hero-copy">
+                <span>Morning</span>
+                <strong>Brief</strong>
+                <p>Kumpulan berita terupdate pilihan untuk menemani aktivitas pagimu.</p>
+                <button type="button">Dengarkan episode terbaru</button>
+              </div>
+              <div class="podcast-dots" aria-hidden="true"><span></span><span></span></div>
+            </section>
+
+            <section class="podcast-programs" aria-labelledby="program-title">
+              <h2 id="program-title">Program pilihan</h2>
+              <div class="program-strip">
+                <article><span class="program-opini">opini</span></article>
+                <article><span class="program-morning">Morning<br />Brief</span></article>
+                <article><span class="program-headline">Headline<br />Talks</span></article>
+              </div>
+            </section>
+
+            <div class="episode-list">
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover alt"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover warm"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover dark"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover soft"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+
+              <aside class="podcast-ad" aria-label="Iklan">
+                <strong>ASTHARA</strong>
+                <span>Penjualan Perdana</span>
+                <b>ALLURE</b>
+                <small>5 +62 811 8000 888</small>
+              </aside>
+              <p class="podcast-ad-cta">Baca berita tanpa iklan. <a href="#">Gabung Kompas.com+</a></p>
+
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover alt"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover warm"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover dark"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+              <article class="episode-card">
+                <a href="#"><div class="episode-cover soft"><span>01:56</span></div></a>
+                <div>
+                  <a href="#"><h2>Morning Brief Newsletter KOMPAS.com Episode 23</h2></a>
+                  <p>Podcast</p>
+                  <small>5 jam lalu</small>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <article class="article-view" aria-label="Detail artikel" hidden>
+          <header class="article-header">
+            <button class="article-back" type="button" aria-label="Kembali">
+              <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            </button>
+            <img src="assets/kompas-logo.png" alt="KOMPAS.com" />
+            <div class="article-actions">
+              <button type="button" aria-label="Pengaturan teks">Aa</button>
+              <button type="button" aria-label="Bagikan">
+                <i class="ph ph-share-fat" aria-hidden="true"></i>
+              </button>
+            </div>
+          </header>
+
+          <div class="article-scroll">
+            <section class="article-lead">
+              <h1>Menkeu Purbaya: Pegawai Pajak Tagih Rp 300 Ribu Jam 5 Pagi, Enggak Masuk Akal</h1>
+              <div class="article-meta-row">
+                <div>
+                  <strong>Kompas.com</strong>
+                  <p>Senin 29 Juni 2023, 15.22 WIB</p>
+                </div>
+                <button class="listen-pill" type="button" aria-label="Dengarkan artikel">
+                  <i class="ph-fill ph-play" aria-hidden="true"></i>
+                  <span>2 menit 47 detik</span>
+                </button>
+              </div>
+
+              <div class="author-row">
+                <div class="author-stack" aria-hidden="true"><span>AM</span><span>M</span></div>
+                <div>
+                  <strong>Tim Hello Sehat, Adhenda Madarina</strong>
+                  <p>Tim Redaksi</p>
+                </div>
+              </div>
+            </section>
+
+            <figure class="article-main-image">
+              <img src="https://asset.kompas.com/crops/byT0bYqYgs1YdGVKWoYdWfmx_DY=/0x0:4989x3326/390x195/data/photo/2026/01/21/696ffc7baf0c6.jpg" alt="Pejabat memberikan keterangan kepada media" />
+            </figure>
+
+            <section class="article-body">
+              <p><strong>JAKARTA, KOMPAS.com</strong> - Politikus PDI-P Deddy Sitorus mengatakan, pihaknya masih menunggu Partai Demokrat mengumumkan secara resmi dukungan kepada Ketua Umum Gerindra Prabowo Subianto sebagai bakal calon presiden pada Pemilu 2024.</p>
+              <p>Menurut dia, komunikasi politik masih terus berjalan. Publik diminta menunggu keputusan resmi dari masing-masing partai sebelum menarik kesimpulan.</p>
+            </section>
+          </div>
+        </article>
+
         <nav class="bottom-nav" aria-label="Navigasi utama">
           <a class="active" href="#" aria-label="Hari ini">
             <i class="ph ph-house" aria-hidden="true"></i>
@@ -415,7 +586,7 @@
             <i class="ph ph-play-circle" aria-hidden="true"></i>
             <span>Video</span>
           </a>
-          <a class="brand-tab" href="#" aria-label="Kompas AI" data-open-ai><span>K</span></a>
+          <a class="brand-tab" href="#" aria-label="Kompas AI" data-open-ai><span><img src="assets/icon-chat.png" alt="" aria-hidden="true" /></span></a>
           <a href="#" aria-label="Fest">
             <i class="ph ph-confetti" aria-hidden="true"></i>
             <span>Fest</span>

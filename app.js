@@ -8,6 +8,13 @@ const businessView = document.querySelector(".business-view");
 const businessBack = document.querySelector(".business-back");
 const businessScroll = document.querySelector(".business-scroll");
 const businessLoader = document.querySelector(".business-loader");
+const podcastLink = document.querySelector("[data-open-podcast]");
+const podcastView = document.querySelector(".podcast-view");
+const podcastBack = document.querySelector(".podcast-back");
+const podcastScroll = document.querySelector(".podcast-scroll");
+const articleView = document.querySelector(".article-view");
+const articleBack = document.querySelector(".article-back");
+const articleLinks = document.querySelectorAll(".headline a, .story-card > a, .popular-item > a, .popular-copy > a, .business-card a");
 const aiLink = document.querySelector("[data-open-ai]");
 const aiView = document.querySelector(".ai-chat-view");
 const aiBack = document.querySelector(".ai-back");
@@ -92,6 +99,75 @@ function closeBusinessView(options = {}) {
   }, 260);
 }
 
+function openPodcastView(event, options = {}) {
+  event?.preventDefault();
+  if (!phoneApp || !podcastView) return;
+
+  const { updateHash = true } = options;
+
+  podcastView.hidden = false;
+  podcastView.classList.remove("is-leaving");
+  phoneApp.classList.add("is-scrolled");
+  podcastScroll?.scrollTo({ top: 0 });
+  if (updateHash && window.location.hash !== "#podcast") {
+    window.history.pushState(null, "", "#podcast");
+  }
+  playSkeleton(podcastView);
+  window.requestAnimationFrame(() => podcastView.classList.add("is-open"));
+}
+
+function closePodcastView(options = {}) {
+  if (!podcastView) return;
+
+  const { updateHash = true } = options;
+
+  podcastView.classList.add("is-leaving");
+  podcastView.classList.remove("is-open");
+  window.setTimeout(() => {
+    podcastView.hidden = true;
+    podcastView.classList.remove("is-leaving");
+    if (updateHash && window.location.hash === "#podcast") {
+      window.history.pushState(null, "", window.location.pathname);
+    }
+    syncHeaderState();
+    playSkeleton(phoneApp);
+  }, 260);
+}
+
+function openArticleView(event, options = {}) {
+  event?.preventDefault();
+  if (!phoneApp || !articleView) return;
+
+  const { updateHash = true } = options;
+
+  articleView.hidden = false;
+  articleView.classList.remove("is-leaving");
+  phoneApp.classList.add("is-scrolled");
+  if (updateHash && window.location.hash !== "#article") {
+    window.history.pushState(null, "", "#article");
+  }
+  playSkeleton(articleView);
+  window.requestAnimationFrame(() => articleView.classList.add("is-open"));
+}
+
+function closeArticleView(options = {}) {
+  if (!articleView) return;
+
+  const { updateHash = true } = options;
+
+  articleView.classList.add("is-leaving");
+  articleView.classList.remove("is-open");
+  window.setTimeout(() => {
+    articleView.hidden = true;
+    articleView.classList.remove("is-leaving");
+    if (updateHash && window.location.hash === "#article") {
+      window.history.pushState(null, "", window.location.pathname);
+    }
+    syncHeaderState();
+    playSkeleton(phoneApp);
+  }, 260);
+}
+
 function openAiView(event, options = {}) {
   event?.preventDefault();
   if (!phoneApp || !aiView) return;
@@ -130,10 +206,18 @@ function closeAiView(options = {}) {
 function syncRoute() {
   if (window.location.hash === "#business-insight") {
     openBusinessView(null, { updateHash: false });
+  } else if (window.location.hash === "#podcast") {
+    openPodcastView(null, { updateHash: false });
+  } else if (window.location.hash === "#article") {
+    openArticleView(null, { updateHash: false });
   } else if (window.location.hash === "#ai-chat") {
     openAiView(null, { updateHash: false });
   } else if (businessView && !businessView.hidden) {
     closeBusinessView({ updateHash: false });
+  } else if (podcastView && !podcastView.hidden) {
+    closePodcastView({ updateHash: false });
+  } else if (articleView && !articleView.hidden) {
+    closeArticleView({ updateHash: false });
   } else if (aiView && !aiView.hidden) {
     closeAiView({ updateHash: false });
   }
@@ -243,6 +327,10 @@ navItems.forEach((item) => item.addEventListener("click", setActiveNav));
 optionButtons.forEach((button) => button.addEventListener("click", pulseOption));
 businessLink?.addEventListener("click", openBusinessView);
 businessBack?.addEventListener("click", closeBusinessView);
+podcastLink?.addEventListener("click", openPodcastView);
+podcastBack?.addEventListener("click", closePodcastView);
+articleBack?.addEventListener("click", closeArticleView);
+articleLinks.forEach((link) => link.addEventListener("click", openArticleView));
 aiLink?.addEventListener("click", openAiView);
 aiBack?.addEventListener("click", closeAiView);
 aiComposer?.addEventListener("submit", submitAiMessage);
