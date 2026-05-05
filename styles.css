@@ -1608,6 +1608,7 @@ svg {
 .article-view {
   grid-template-rows: 64px 1fr;
   background: var(--color-surface);
+  overflow: hidden;
 }
 
 .article-header {
@@ -1632,11 +1633,17 @@ svg {
 
 .article-back i,
 .article-actions i {
-  font-size: 28px;
+  font-size: 24px;
+}
+
+.article-share-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .article-header > img {
-  height: 31px;
+  height: 15px;
   justify-self: center;
   width: auto;
 }
@@ -1648,7 +1655,7 @@ svg {
 }
 
 .article-actions button:first-child {
-  font-size: 27px;
+  font-size: 24px;
   font-weight: 500;
   letter-spacing: -0.2px;
 }
@@ -1663,15 +1670,15 @@ svg {
 }
 
 .article-lead {
-  padding: var(--space-40) var(--space-20) var(--space-32);
+  padding: var(--space-32) var(--space-20) var(--space-24);
 }
 
 .article-lead h1 {
-  margin: 0 0 var(--space-32);
+  margin: 0 0 var(--space-16);
   color: #24272c;
-  font-size: 33px;
-  font-weight: 700;
-  line-height: 1.24;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 29px;
   letter-spacing: -0.2px;
 }
 
@@ -1680,52 +1687,53 @@ svg {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: var(--space-16);
-  margin-bottom: var(--space-32);
+  margin-bottom: var(--space-24);
 }
 
 .article-meta-row strong {
   color: #33373d;
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .article-meta-row p,
 .author-row p {
   margin: var(--space-4) 0 0;
   color: #5d636b;
-  font-size: 17px;
+  font-size: 12px;
   line-height: 1.28;
 }
 
 .listen-pill {
-  min-height: 52px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-12);
-  padding: var(--space-6) var(--space-16) var(--space-6) var(--space-8);
+  gap: var(--space-8);
+  padding: var(--space-4) var(--space-12) var(--space-4) var(--space-4);
   border-radius: var(--radius-pill);
   background: #eeeeef;
   color: #2f3338;
-  font-size: 16px;
+  font-size: 10px;
   white-space: nowrap;
 }
 
 .listen-pill i {
-  width: 38px;
-  height: 38px;
+  margin-left: var(--space-8);
+  width: 22px;
+  height: 22px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: #2c3035;
   color: var(--color-surface);
-  font-size: 18px;
+  font-size: 8px;
 }
 
 .author-row {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--space-16);
+  gap: var(--space-8);
 }
 
 .author-stack {
@@ -1754,9 +1762,13 @@ svg {
 
 .author-row strong {
   color: #34383e;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.22;
+}
+
+.author-row p {
+  font-size: 10px;
 }
 
 .article-main-image {
@@ -1766,24 +1778,80 @@ svg {
 .article-main-image img {
   width: 100%;
   display: block;
-  aspect-ratio: 1.25 / 1;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
 .article-body {
-  padding: var(--space-32) var(--space-20) var(--space-48);
+  padding: var(--space-32) var(--space-20) 144px;
 }
 
 .article-body p {
   margin: 0 0 var(--space-24);
   color: #050607;
-  font-size: 26px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 25px;
   letter-spacing: -0.2px;
 }
 
 .article-body strong {
   font-weight: 800;
+}
+
+.article-body .read-also strong {
+  font-weight: 800;
+}
+
+.article-body .read-also a {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-floating-actions {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  z-index: 6;
+  width: 360px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.article-floating-pill {
+  width: 320px;
+  height: 52px;
+  display: grid;
+  grid-template-columns: 68px 1px repeat(3, 54px) 1px 68px;
+  align-items: center;
+  border-radius: 26px;
+  background: var(--color-surface);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+}
+
+.article-floating-pill button {
+  width: 100%;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  color: #343330;
+  cursor: pointer;
+}
+
+.article-floating-pill i {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.floating-divider {
+  width: 1px;
+  height: 24px;
+  background: #e7e8e9;
 }
 
 .business-loader {
