@@ -733,6 +733,18 @@ svg {
   transform: translateX(100%);
 }
 
+.podcast-player-view.is-from-pip {
+  transform: translateY(100%);
+}
+
+.podcast-player-view.is-from-pip.is-open {
+  transform: translateY(0);
+}
+
+.podcast-player-view.is-minimizing {
+  transform: translateY(100%);
+}
+
 .phone-app.is-skeleton .logo,
 .phone-app.is-skeleton .icon-button,
 .phone-app.is-skeleton .topic-chip,
@@ -1895,22 +1907,31 @@ svg {
   border-radius: var(--radius-pill);
 }
 
-.player-progress span {
+.player-track,
+.player-fill {
   position: absolute;
   left: 0;
-  right: 0;
   top: 8px;
-  width: auto;
   height: 2px;
   display: block;
   border-radius: inherit;
+}
+
+.player-track {
+  right: 0;
   background: rgba(255, 255, 255, 0.58);
 }
 
-.player-progress b {
+.player-fill {
+  width: 0%;
+  background: var(--color-surface);
+}
+
+.player-thumb {
   position: absolute;
-  left: 28%;
+  left: 0%;
   top: 2px;
+  transform: translateX(-50%);
   width: 14px;
   height: 14px;
   display: block;
@@ -1976,6 +1997,75 @@ svg {
 .player-buttons .player-play i {
   font-size: 32px;
   transform: none;
+}
+
+.podcast-pip {
+  position: absolute;
+  right: 20px;
+  bottom: 120px;
+  z-index: 12;
+  width: 207px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 0 var(--space-10, 10px) 0 var(--space-6);
+  border-radius: 25px;
+  background: #7b5d72;
+  box-shadow: 0 10px 30px rgba(24, 18, 25, 0.22);
+  color: var(--color-surface);
+}
+
+.podcast-pip[hidden] {
+  display: none;
+}
+
+.podcast-pip-play {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  color: var(--color-surface);
+  cursor: pointer;
+}
+
+.podcast-pip-play i {
+  font-size: 18px;
+}
+
+.podcast-pip-open {
+  min-width: 0;
+  color: var(--color-surface);
+  cursor: pointer;
+  text-align: left;
+}
+
+.podcast-pip-open span {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.2px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.podcast-pip-close {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+}
+
+.podcast-pip-close i {
+  font-size: 22px;
 }
 
 .podcast-related {

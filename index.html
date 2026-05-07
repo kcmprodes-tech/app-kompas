@@ -623,26 +623,28 @@
 
               <div class="podcast-player-controls" aria-label="Pemutar podcast">
                 <div class="player-progress">
-                  <span></span>
-                  <b aria-hidden="true"></b>
+                  <span class="player-track"></span>
+                  <span class="player-fill"></span>
+                  <b class="player-thumb" aria-hidden="true"></b>
                 </div>
                 <div class="player-time">
-                  <span>02:32</span>
-                  <span>-04:42</span>
+                  <span class="player-current">00:00</span>
+                  <span class="player-remaining">-00:00</span>
                 </div>
                 <div class="player-buttons">
-                  <button type="button" aria-label="Mundur 15 detik">
+                  <button class="player-rewind" type="button" aria-label="Mundur 15 detik">
                     <i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>
                     <span>15</span>
                   </button>
                   <button class="player-play" type="button" aria-label="Jeda">
-                    <i class="ph-fill ph-pause" aria-hidden="true"></i>
+                    <i class="ph-fill ph-play" aria-hidden="true"></i>
                   </button>
-                  <button type="button" aria-label="Maju 15 detik">
+                  <button class="player-forward" type="button" aria-label="Maju 15 detik">
                     <i class="ph ph-arrow-clockwise" aria-hidden="true"></i>
                     <span>15</span>
                   </button>
                 </div>
+                <audio data-podcast-audio src="assets/podcast-sample.mp3" preload="metadata"></audio>
               </div>
             </section>
 
@@ -733,6 +735,18 @@
             </section>
           </div>
         </section>
+
+        <div class="podcast-pip" hidden>
+          <button class="podcast-pip-play" type="button" aria-label="Putar podcast">
+            <i class="ph-fill ph-play" aria-hidden="true"></i>
+          </button>
+          <button class="podcast-pip-open" type="button" aria-label="Buka podcast player">
+            <span>Menkeu Purbaya:<br />Pegawai Pajak...</span>
+          </button>
+          <button class="podcast-pip-close" type="button" aria-label="Tutup mini player">
+            <i class="ph ph-x" aria-hidden="true"></i>
+          </button>
+        </div>
 
         <article class="article-view" aria-label="Detail artikel" hidden>
           <header class="article-header">
