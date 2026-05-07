@@ -12,6 +12,9 @@ const podcastLink = document.querySelector("[data-open-podcast]");
 const podcastView = document.querySelector(".podcast-view");
 const podcastBack = document.querySelector(".podcast-back");
 const podcastScroll = document.querySelector(".podcast-scroll");
+const podcastPlayerView = document.querySelector(".podcast-player-view");
+const podcastPlayerClose = document.querySelector(".podcast-player-close");
+const episodeLinks = document.querySelectorAll(".episode-card a");
 const articleView = document.querySelector(".article-view");
 const articleBack = document.querySelector(".article-back");
 const articleHome = document.querySelector("[data-article-home]");
@@ -135,6 +138,39 @@ function closePodcastView(options = {}) {
   }, 260);
 }
 
+function openPodcastPlayerView(event, options = {}) {
+  event?.preventDefault();
+  if (!phoneApp || !podcastPlayerView) return;
+
+  const { updateHash = true } = options;
+
+  podcastPlayerView.hidden = false;
+  podcastPlayerView.classList.remove("is-leaving");
+  phoneApp.classList.add("is-scrolled");
+  if (updateHash && window.location.hash !== "#podcast-player") {
+    window.history.pushState(null, "", "#podcast-player");
+  }
+  playSkeleton(podcastPlayerView);
+  window.requestAnimationFrame(() => podcastPlayerView.classList.add("is-open"));
+}
+
+function closePodcastPlayerView(options = {}) {
+  if (!podcastPlayerView) return;
+
+  const { updateHash = true } = options;
+
+  podcastPlayerView.classList.add("is-leaving");
+  podcastPlayerView.classList.remove("is-open");
+  window.setTimeout(() => {
+    podcastPlayerView.hidden = true;
+    podcastPlayerView.classList.remove("is-leaving");
+    if (updateHash && window.location.hash === "#podcast-player") {
+      window.history.pushState(null, "", "#podcast");
+    }
+    playSkeleton(podcastView);
+  }, 260);
+}
+
 function openArticleView(event, options = {}) {
   event?.preventDefault();
   if (!phoneApp || !articleView) return;
@@ -174,6 +210,7 @@ function returnHomeFromArticle(event) {
   closeArticleView();
   if (businessView && !businessView.hidden) closeBusinessView({ updateHash: false });
   if (podcastView && !podcastView.hidden) closePodcastView({ updateHash: false });
+  if (podcastPlayerView && !podcastPlayerView.hidden) closePodcastPlayerView({ updateHash: false });
   if (aiView && !aiView.hidden) closeAiView({ updateHash: false });
 }
 
@@ -217,12 +254,18 @@ function syncRoute() {
     openBusinessView(null, { updateHash: false });
   } else if (window.location.hash === "#podcast") {
     openPodcastView(null, { updateHash: false });
+    if (podcastPlayerView && !podcastPlayerView.hidden) closePodcastPlayerView({ updateHash: false });
+  } else if (window.location.hash === "#podcast-player") {
+    openPodcastView(null, { updateHash: false });
+    openPodcastPlayerView(null, { updateHash: false });
   } else if (window.location.hash === "#article") {
     openArticleView(null, { updateHash: false });
   } else if (window.location.hash === "#ai-chat") {
     openAiView(null, { updateHash: false });
   } else if (businessView && !businessView.hidden) {
     closeBusinessView({ updateHash: false });
+  } else if (podcastPlayerView && !podcastPlayerView.hidden) {
+    closePodcastPlayerView({ updateHash: false });
   } else if (podcastView && !podcastView.hidden) {
     closePodcastView({ updateHash: false });
   } else if (articleView && !articleView.hidden) {
@@ -338,6 +381,8 @@ businessLink?.addEventListener("click", openBusinessView);
 businessBack?.addEventListener("click", closeBusinessView);
 podcastLink?.addEventListener("click", openPodcastView);
 podcastBack?.addEventListener("click", closePodcastView);
+podcastPlayerClose?.addEventListener("click", closePodcastPlayerView);
+episodeLinks.forEach((link) => link.addEventListener("click", openPodcastPlayerView));
 articleBack?.addEventListener("click", closeArticleView);
 articleHome?.addEventListener("click", returnHomeFromArticle);
 articleLinks.forEach((link) => link.addEventListener("click", openArticleView));
