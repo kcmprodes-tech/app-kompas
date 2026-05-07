@@ -1778,9 +1778,7 @@ svg {
   padding: var(--space-16);
   overflow: hidden;
   border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.18) 42%, rgba(0, 0, 0, 0.22) 100%),
-    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=82");
+  background: url("assets/podcast-cover-morning-brief.png");
   background-position: center;
   background-size: cover;
   box-shadow: 0 18px 42px rgba(22, 16, 25, 0.18);
@@ -1857,6 +1855,13 @@ svg {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.podcast-player-view:not(.is-article-audio) .cover-brand,
+.podcast-player-view:not(.is-article-audio) .cover-wave,
+.podcast-player-view:not(.is-article-audio) .cover-title,
+.podcast-player-view:not(.is-article-audio) .cover-date {
+  display: none;
 }
 
 .podcast-player-info {

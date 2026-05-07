@@ -255,6 +255,11 @@ function setAudioMode(mode) {
   const isArticle = mode === "article";
   const articleTitle = articleView?.querySelector(".article-lead h1")?.textContent?.trim() || "Dengarkan artikel";
 
+  if (!isArticle && articleSpeechState !== "idle" && "speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    articleSpeechState = "idle";
+  }
+
   if (playerTitle) {
     playerTitle.textContent = isArticle ? articleTitle : "Skenario Terburuk jika Rupiah Terus Melemah";
   }
@@ -628,7 +633,7 @@ businessBack?.addEventListener("click", closeBusinessView);
 podcastLink?.addEventListener("click", openPodcastView);
 podcastBack?.addEventListener("click", closePodcastView);
 podcastPlayerClose?.addEventListener("click", minimizePodcastPlayer);
-episodeLinks.forEach((link) => link.addEventListener("click", openPodcastPlayerView));
+episodeLinks.forEach((link) => link.addEventListener("click", (event) => openPodcastPlayerView(event, { mode: "podcast" })));
 podcastPlayButtons.forEach((button) => button.addEventListener("click", togglePodcastAudio));
 podcastRewind?.addEventListener("click", () => seekPodcastBy(-15));
 podcastForward?.addEventListener("click", () => seekPodcastBy(15));
