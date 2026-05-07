@@ -27,9 +27,15 @@ const podcastRemaining = document.querySelector(".player-remaining");
 const podcastPip = document.querySelector(".podcast-pip");
 const podcastPipOpen = document.querySelector(".podcast-pip-open");
 const podcastPipClose = document.querySelector(".podcast-pip-close");
+const podcastPipTitle = document.querySelector(".podcast-pip-open span");
+const playerTitle = document.querySelector(".podcast-player-info h1");
+const playerMeta = document.querySelector(".podcast-player-info p");
+const coverTitle = document.querySelector(".cover-title");
+const coverDate = document.querySelector(".cover-date");
 const articleView = document.querySelector(".article-view");
 const articleBack = document.querySelector(".article-back");
 const articleHome = document.querySelector("[data-article-home]");
+const articleListen = document.querySelector(".listen-pill");
 const articleLinks = document.querySelectorAll(".headline a, .story-card > a, .popular-item > a, .popular-copy > a, .business-card a");
 const aiLink = document.querySelector("[data-open-ai]");
 const aiView = document.querySelector(".ai-chat-view");
@@ -42,6 +48,9 @@ const aiSuggestions = document.querySelectorAll(".ai-suggestions button");
 const businessArticleSeed = Array.from(document.querySelectorAll(".business-card")).slice(0, 5);
 let businessIsAppending = false;
 let businessBatch = 0;
+let audioMode = "podcast";
+let articleUtterance = null;
+let articleSpeechState = "idle";
 
 function setActiveNav(event) {
   event.preventDefault();
@@ -154,8 +163,9 @@ function openPodcastPlayerView(event, options = {}) {
   event?.preventDefault();
   if (!phoneApp || !podcastPlayerView) return;
 
-  const { updateHash = true, fromPip = false } = options;
+  const { updateHash = true, fromPip = false, mode = audioMode } = options;
 
+  setAudioMode(mode);
   podcastPlayerView.hidden = false;
   podcastPlayerView.classList.remove("is-leaving", "is-minimizing", "is-from-pip");
   if (fromPip) podcastPlayerView.classList.add("is-from-pip");
@@ -188,6 +198,11 @@ function closePodcastPlayerView(options = {}) {
     }
     playSkeleton(podcastView);
   }, 260);
+}
+
+function openArticleAudioPlayer(event, options = {}) {
+  event?.preventDefault();
+  openPodcastPlayerView(null, { ...options, mode: "article" });
 }
 
 function minimizePodcastPlayer(event) {
@@ -225,8 +240,121 @@ function updatePodcastPlayer() {
   });
 }
 
+function articleTextToRead() {
+  if (!articleView) return "";
+
+  const title = articleView.querySelector(".article-lead h1")?.textContent?.trim() || "";
+  const paragraphs = Array.from(articleView.querySelectorAll(".article-body p"))
+    .map((paragraph) => paragraph.textContent.trim())
+    .filter(Boolean);
+  return [title, ...paragraphs].join(". ");
+}
+
+function setAudioMode(mode) {
+  audioMode = mode;
+  const isArticle = mode === "article";
+  const articleTitle = articleView?.querySelector(".article-lead h1")?.textContent?.trim() || "Dengarkan artikel";
+
+  if (playerTitle) {
+    playerTitle.textContent = isArticle ? articleTitle : "Skenario Terburuk jika Rupiah Terus Melemah";
+  }
+  if (playerMeta) {
+    playerMeta.innerHTML = isArticle ? "Kompas.com <span>•</span> Artikel audio" : "Morning Brief <span>•</span> 4 Mei 2026";
+  }
+  if (coverTitle) {
+    coverTitle.innerHTML = isArticle ? "Audio<br />Artikel" : "Morning<br />Brief";
+  }
+  if (coverDate) {
+    coverDate.textContent = isArticle ? "Kompas.com" : "21 Agustus 2005";
+  }
+  if (podcastPipTitle) {
+    podcastPipTitle.innerHTML = isArticle ? "Menkeu Purbaya:<br />Pegawai Pajak..." : "Menkeu Purbaya:<br />Pegawai Pajak...";
+  }
+
+  podcastPlayerView?.classList.toggle("is-article-audio", isArticle);
+  updateArticleAudioUi();
+  updatePodcastPlayer();
+}
+
+function updateArticleAudioUi() {
+  const isPlaying = articleSpeechState === "playing";
+
+  articleListen?.querySelector("i")?.classList.toggle("ph-play", !isPlaying);
+  articleListen?.querySelector("i")?.classList.toggle("ph-pause", isPlaying);
+
+  if (audioMode === "article") {
+    podcastPlayButtons.forEach((button) => {
+      const icon = button.querySelector("i");
+      button.setAttribute("aria-label", isPlaying ? "Jeda artikel" : "Putar artikel");
+      icon?.classList.toggle("ph-play", !isPlaying);
+      icon?.classList.toggle("ph-pause", isPlaying);
+    });
+  }
+}
+
+function startArticleSpeech() {
+  if (!("speechSynthesis" in window)) return;
+
+  window.speechSynthesis.cancel();
+  articleUtterance = new SpeechSynthesisUtterance(articleTextToRead());
+  articleUtterance.lang = "id-ID";
+  articleUtterance.rate = 0.96;
+  articleUtterance.pitch = 1;
+  articleUtterance.onstart = () => {
+    articleSpeechState = "playing";
+    setAudioMode("article");
+    showPodcastPip();
+    updateArticleAudioUi();
+  };
+  articleUtterance.onend = () => {
+    articleSpeechState = "idle";
+    hidePodcastPip();
+    updateArticleAudioUi();
+  };
+  articleUtterance.onerror = () => {
+    articleSpeechState = "idle";
+    updateArticleAudioUi();
+  };
+
+  articleSpeechState = "playing";
+  setAudioMode("article");
+  showPodcastPip();
+  updateArticleAudioUi();
+  window.speechSynthesis.speak(articleUtterance);
+}
+
+function toggleArticleSpeech(event) {
+  event?.preventDefault();
+  if (!("speechSynthesis" in window)) return;
+
+  setAudioMode("article");
+  podcastAudio?.pause();
+
+  if (articleSpeechState === "playing") {
+    window.speechSynthesis.pause();
+    articleSpeechState = "paused";
+    showPodcastPip();
+    updateArticleAudioUi();
+    return;
+  }
+
+  if (articleSpeechState === "paused") {
+    window.speechSynthesis.resume();
+    articleSpeechState = "playing";
+    showPodcastPip();
+    updateArticleAudioUi();
+    return;
+  }
+
+  startArticleSpeech();
+}
+
 function togglePodcastAudio(event) {
   event?.preventDefault();
+  if (audioMode === "article") {
+    toggleArticleSpeech(event);
+    return;
+  }
   if (!podcastAudio) return;
 
   if (podcastAudio.paused) {
@@ -237,6 +365,7 @@ function togglePodcastAudio(event) {
 }
 
 function seekPodcastBy(seconds) {
+  if (audioMode === "article") return;
   if (!podcastAudio) return;
 
   const duration = Number.isFinite(podcastAudio.duration) ? podcastAudio.duration : podcastAudio.currentTime + seconds;
@@ -245,6 +374,7 @@ function seekPodcastBy(seconds) {
 }
 
 function seekPodcastFromProgress(event) {
+  if (audioMode === "article") return;
   if (!podcastAudio || !podcastProgress || !Number.isFinite(podcastAudio.duration)) return;
 
   const rect = podcastProgress.getBoundingClientRect();
@@ -257,7 +387,11 @@ function showPodcastPip() {
   if (!podcastPip) return;
 
   podcastPip.hidden = false;
-  updatePodcastPlayer();
+  if (audioMode === "article") {
+    updateArticleAudioUi();
+  } else {
+    updatePodcastPlayer();
+  }
 }
 
 function hidePodcastPip() {
@@ -268,13 +402,19 @@ function hidePodcastPip() {
 
 function stopPodcastPip(event) {
   event?.preventDefault();
-  podcastAudio?.pause();
+  if (audioMode === "article" && "speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    articleSpeechState = "idle";
+    updateArticleAudioUi();
+  } else {
+    podcastAudio?.pause();
+  }
   hidePodcastPip();
 }
 
 function restorePodcastPlayer(event) {
   event?.preventDefault();
-  openPodcastPlayerView(null, { fromPip: true });
+  openPodcastPlayerView(null, { fromPip: true, mode: audioMode });
 }
 
 function openArticleView(event, options = {}) {
@@ -363,7 +503,7 @@ function syncRoute() {
     if (podcastPlayerView && !podcastPlayerView.hidden) closePodcastPlayerView({ updateHash: false });
   } else if (window.location.hash === "#podcast-player") {
     openPodcastView(null, { updateHash: false });
-    openPodcastPlayerView(null, { updateHash: false });
+    openPodcastPlayerView(null, { updateHash: false, mode: audioMode });
   } else if (window.location.hash === "#article") {
     openArticleView(null, { updateHash: false });
   } else if (window.location.hash === "#ai-chat") {
@@ -500,6 +640,7 @@ podcastAudio?.addEventListener("pause", updatePodcastPlayer);
 podcastAudio?.addEventListener("ended", updatePodcastPlayer);
 podcastPipOpen?.addEventListener("click", restorePodcastPlayer);
 podcastPipClose?.addEventListener("click", stopPodcastPip);
+articleListen?.addEventListener("click", toggleArticleSpeech);
 articleBack?.addEventListener("click", closeArticleView);
 articleHome?.addEventListener("click", returnHomeFromArticle);
 articleLinks.forEach((link) => link.addEventListener("click", openArticleView));

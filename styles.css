@@ -1707,6 +1707,7 @@ svg {
 
 .podcast-player-view {
   display: block;
+  z-index: 11;
   overflow-y: auto;
   background: #141415;
   color: var(--color-surface);
@@ -1783,6 +1784,14 @@ svg {
   background-position: center;
   background-size: cover;
   box-shadow: 0 18px 42px rgba(22, 16, 25, 0.18);
+}
+
+.podcast-player-view.is-article-audio .podcast-player-cover {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.26) 100%),
+    url("https://asset.kompas.com/crops/byT0bYqYgs1YdGVKWoYdWfmx_DY=/0x0:4989x3326/390x195/data/photo/2026/01/21/696ffc7baf0c6.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .podcast-player-cover::before {
@@ -1999,10 +2008,15 @@ svg {
   transform: none;
 }
 
+.podcast-player-view.is-article-audio .player-progress,
+.podcast-player-view.is-article-audio .player-time {
+  opacity: 0.45;
+}
+
 .podcast-pip {
   position: absolute;
   right: 20px;
-  bottom: 120px;
+  bottom: 152px;
   z-index: 12;
   width: 207px;
   height: 50px;
