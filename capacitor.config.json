@@ -1,0 +1,15 @@
+{
+  "appId": "com.ardisuhanda.kompas",
+  "appName": "KOMPAS.com",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "backgroundColor": "#ffffff"
+  },
+  "ios": {
+    "backgroundColor": "#ffffff"
+  }
+}

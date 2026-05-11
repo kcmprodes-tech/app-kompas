@@ -1,0 +1,22 @@
+{
+  "name": "app-kompas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KOMPAS.com mobile prototype wrapped with Capacitor for Android/iOS.",
+  "scripts": {
+    "prepare:web": "node scripts/prepare-web.mjs",
+    "cap:add:android": "npm run prepare:web && npx cap add android",
+    "cap:sync:android": "npm run prepare:web && npx cap sync android",
+    "apk:debug": "npm run cap:sync:android && cd android && ./gradlew assembleDebug",
+    "cap:add:ios": "npm run prepare:web && npx cap add ios",
+    "cap:sync:ios": "npm run prepare:web && npx cap sync ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
+  }
+}
