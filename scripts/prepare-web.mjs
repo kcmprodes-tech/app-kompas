@@ -5,7 +5,7 @@ const root = new URL("../", import.meta.url);
 const entries = [
   "index.html",
   "styles.css",
-  "app.js",
+  "js",
   "manifest.webmanifest",
   "sw.js",
   "assets"

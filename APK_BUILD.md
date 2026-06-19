@@ -2,6 +2,11 @@
 
 Project ini sudah disiapkan untuk dibungkus menjadi aplikasi Android/iOS memakai Capacitor.
 
+> **Sebelum build:** video konten "Original" tidak lagi di-bundle (di-stream dari
+> CDN) agar APK kecil. Isi `MEDIA_BASE` di `assets/original/original-reader.html`
+> dengan URL CDN bila video ingin tampil. Lihat
+> [README.md](README.md) & [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Android
 
 1. Install Node.js + npm.

@@ -1,0 +1,31 @@
+# ---- Dependencies ----
+node_modules/
+
+# ---- Build output (di-generate dari source via npm run prepare:web) ----
+dist/
+
+# ---- Capacitor / Android build artifacts ----
+android/app/build/
+android/build/
+android/.gradle/
+android/capacitor-cordova-android-plugins/
+android/app/src/main/assets/public/
+*.apk
+*.aab
+
+# ---- iOS build artifacts ----
+ios/App/Pods/
+ios/App/build/
+ios/App/App/public/
+
+# ---- Media sumber (di-host di CDN, tidak di-bundle ke APK) ----
+media-source/
+
+# ---- OS / editor ----
+.DS_Store
+**/.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.log

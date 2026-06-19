@@ -2,8 +2,8 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#edf1ff" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -23,6 +23,16 @@
     <main class="app-shell" aria-label="Beranda KOMPAS.com">
       <section class="phone-app">
         <header class="app-header">
+          <div class="status-bar" aria-hidden="true">
+            <span>5:13 PM</span>
+            <div class="status-icons">
+              <i class="ph ph-alarm"></i>
+              <i class="ph ph-bluetooth"></i>
+              <i class="ph ph-wifi-high"></i>
+              <i class="ph ph-cell-signal-full"></i>
+              <i class="ph ph-battery-medium"></i>
+            </div>
+          </div>
           <div class="brand-row">
             <a class="logo" href="#" aria-label="KOMPAS.com">
               <img src="assets/kompas-logo.png" alt="KOMPAS.com" />
@@ -47,46 +57,65 @@
             <a class="topic-chip" href="#" data-open-business><img src="assets/businessinsight.png" alt="" aria-hidden="true" />Business Insight</a>
             <a class="topic-chip" href="#"><img src="assets/hariankompas.png" alt="" aria-hidden="true" />Harian Kompas</a>
             <a class="topic-chip" href="#"><img src="assets/sajiansedap.png" alt="" aria-hidden="true" />Sajian Sedap</a>
-            <a class="topic-chip" href="#"><i class="ph ph-newspaper" aria-hidden="true"></i>e-Paper</a>
+            <a class="topic-chip" href="#" data-open-epaper><i class="ph ph-newspaper" aria-hidden="true"></i>e-Paper</a>
+            <a class="topic-chip" href="#"><i class="ph ph-puzzle-piece" aria-hidden="true"></i>Croz/word</a>
+            <a class="topic-chip" href="#" data-open-original><i class="ph ph-medal" aria-hidden="true"></i>Orisinal</a>
+            <a class="topic-chip" href="#"><i class="ph ph-film-strip" aria-hidden="true"></i>Rolls</a>
+            <a class="topic-chip" href="#"><i class="ph ph-video" aria-hidden="true"></i>Video</a>
           </nav>
 
-          <section class="breaking-card" aria-labelledby="breaking-label">
-            <span id="breaking-label" class="breaking-label">Breaking News</span>
-            <a href="#">
-              <strong>Reshuffle Kabinet Merah Putih Terbaru: Prabowo Lantik 2 Wakil Menteri Baru</strong>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          <section class="breaking-card" aria-labelledby="breaking-title">
+            <a class="breaking-link" href="#">
+              <span class="breaking-label">Breaking News</span>
+              <h2 id="breaking-title">Reshuffle Kabinet Merah Putih Terbaru: Prabowo Lantik 2 Wakil Menteri Baru</h2>
+              <i class="ph ph-caret-right" aria-hidden="true"></i>
             </a>
           </section>
 
-          <section class="assist-section" aria-labelledby="assist-title">
-            <div class="section-heading">
-              <h2 id="assist-title">Living Assistance</h2>
-              <a href="#" aria-label="Lihat semua Living Assistance">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-              </a>
-            </div>
-            <div class="living-assistance-menu">
-              <article class="assist-card">
+          <section class="living-assistance" aria-label="Living Assistance">
+            <a class="living-title" href="#">Living Assistance</a>
+            <div class="living-rail">
+              <article class="living-card gold-card">
+                <span>Harga Beli Emas</span>
                 <div>
-                  <span>Harga Beli Emas</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                  <img src="assets/emas.png" alt="" aria-hidden="true" />
+                  <strong>2,33 jt<small>/gr</small></strong>
+                  <em>↗ (+1,65%)</em>
                 </div>
-                <strong><span class="gold-icon"></span>2,33 jt/gr</strong>
-                <small>↗ (+1,65%)</small>
               </article>
-              <article class="assist-card">
+              <article class="living-card weather-card">
+                <span>Jakarta</span>
                 <div>
-                  <span>Jakarta</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                  <img src="assets/cuaca.png" alt="" aria-hidden="true" />
+                  <strong>22°</strong>
                 </div>
-                <strong><span class="sun-icon"></span>22°</strong>
               </article>
-              <article class="assist-card air-card">
+              <article class="living-card air-card">
+                <span>Kualitas Udara</span>
                 <div>
-                  <span>Kualitas Udara</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                  <b>150</b>
+                  <strong>Tdk sehat bagi kelompok sensitif</strong>
                 </div>
-                <strong><b>150</b>Tdk sehat kelompok sensitif</strong>
+              </article>
+              <article class="living-card prayer-card">
+                <span>Jadwal Shalat</span>
+                <div>
+                  <img src="assets/jadwal-sholat.png" alt="" aria-hidden="true" />
+                  <strong>Maghrib <small>12:59</small></strong>
+                  <em>Jakarta</em>
+                </div>
+              </article>
+              <article class="living-card quick-card">
+                <img src="assets/baca-cepat.png" alt="" aria-hidden="true" />
+                <strong>Baca Cepat</strong>
+              </article>
+              <article class="living-card health-card">
+                <img src="assets/cek-kesehatan.png" alt="" aria-hidden="true" />
+                <strong>Cek kesehatan</strong>
+              </article>
+              <article class="living-card all-card">
+                <i aria-hidden="true"></i>
+                <strong>Lihat Semua</strong>
               </article>
             </div>
           </section>
@@ -101,10 +130,10 @@
               </a>
               <div class="hero-copy">
                 <a href="#">
-                  <h2>Demo Hardiknas di Jakpus Ricuh, Massa BEM SI Dobrak Barikade dan Bakar Ban</h2>
+                  <h2>Menkeu Purbaya: Pegawai Pajak Tagih Rp 300 Ribu Jam 5 Pagi, Enggak Masuk Akal</h2>
                 </a>
                 <div class="story-meta">
-                  <span>News</span>
+                  <span>Money • 2 jam lalu</span>
                   <button type="button" aria-label="Opsi berita">•••</button>
                 </div>
               </div>
@@ -263,8 +292,257 @@
                 </div>
               </article>
             </section>
+
+            <section class="banner-carousel-section" aria-label="Banner pilihan">
+              <div class="banner-carousel">
+                <a class="promo-banner promo-banner-podcast" href="#">
+                  <span class="promo-person" aria-hidden="true"></span>
+                  <span class="promo-kicker">5th Begini<br /><small>suratnya dari podkesmah</small></span>
+                  <strong>LIVE PODCAST &amp;<br />INTERACTIVE SESSION</strong>
+                  <b>SABTU, 13 DESEMBER, 13:00</b>
+                </a>
+                <a class="promo-banner promo-banner-game" href="#">
+                  <span class="promo-phone" aria-hidden="true"><i class="ph ph-device-mobile"></i></span>
+                  <strong>Main Teka-Teki<br />Kompas Hari Ini</strong>
+                  <b>Hadiah poin setiap hari</b>
+                </a>
+                <a class="promo-banner promo-banner-plus" href="#">
+                  <span class="promo-badge" aria-hidden="true">K+</span>
+                  <strong>Kompas.com Plus</strong>
+                  <b>Artikel eksklusif tanpa iklan</b>
+                </a>
+                <a class="promo-banner promo-banner-newsletter" href="#">
+                  <span class="promo-envelope" aria-hidden="true"><i class="ph ph-envelope-simple"></i></span>
+                  <strong>Newsletter Pagi</strong>
+                  <b>Ringkasan berita pilihan</b>
+                </a>
+                <a class="promo-banner promo-banner-video" href="#">
+                  <span class="promo-play" aria-hidden="true"><i class="ph-fill ph-play"></i></span>
+                  <strong>Video Pilihan</strong>
+                  <b>Update visual hari ini</b>
+                </a>
+              </div>
+            </section>
+
+            <section class="topic-choice-section" aria-labelledby="topic-choice-title">
+              <span>Topik pilihan</span>
+              <h2 id="topic-choice-title">Yaqut Cholil dan Kasus Korupsi Dana Haji</h2>
+              <a class="topic-choice-image" href="#">
+                <img src="https://picsum.photos/seed/kompas-topic-choice/640/360" alt="Foto dummy topik pilihan" />
+              </a>
+              <a class="topic-choice-title" href="#">Kantongi Bukti "Tebal", KPK Pastikan Status Tersangka Gus Yaqut Sah meski Kerugian Masih Dihitung</a>
+              <p>News <i aria-hidden="true"></i> 10 menit lalu</p>
+              <a class="topic-choice-button" href="#">Lihat topik selengkapnya</a>
+            </section>
+
+            <div class="paper-divider" aria-hidden="true"></div>
+
+            <section class="news-update-section" aria-labelledby="news-update-title">
+              <h2 id="news-update-title">News Update</h2>
+              <article class="news-update-item">
+                <a href="#"><img src="assets/artikel/69aa8b28a8d41.jpg" alt="Menko memberi keterangan" /></a>
+                <div>
+                  <a href="#"><h3>7 Menko Prabowo yang Minta Tambahan Anggaran hingga Rp 5,18 Triliun, Siapa Paling Banyak?</h3></a>
+                  <p>News<br />5 jam lalu</p>
+                </div>
+                <button type="button" aria-label="Opsi berita">•••</button>
+              </article>
+              <article class="news-update-item">
+                <a href="#"><img src="assets/artikel/69f9f62da8c5e.jpeg" alt="Kerumunan warga" /></a>
+                <div>
+                  <a href="#"><h3>Cak Imin Tausiah Jumat di Masjid Pemkab Bandung, Bahas Toleransi</h3></a>
+                  <p>Tren<br />5 jam lalu</p>
+                </div>
+                <button type="button" aria-label="Opsi berita">•••</button>
+              </article>
+              <article class="news-update-item">
+                <a href="#"><img src="assets/artikel/69e2ee654c9fe.jpg" alt="Orang berjalan kaki" /></a>
+                <div>
+                  <a href="#"><h3>Jalan Kaki Satu Jam Sehari Setara dengan Menambah Usia Hidup 6 Jam</h3></a>
+                  <p>Health<br />5 jam lalu</p>
+                </div>
+                <button type="button" aria-label="Opsi berita">•••</button>
+              </article>
+              <article class="news-update-item">
+                <a href="#"><img src="assets/artikel/674f456bd4a46.jpg" alt="Tokoh olahraga" /></a>
+                <div>
+                  <a href="#"><h3>Kata Erick Thohir Soal Rumor Irfan Bachdim Jadi Asisten Pelatih Timnas Indonesia</h3></a>
+                  <p>Bola<br />5 jam lalu</p>
+                </div>
+                <button type="button" aria-label="Opsi berita">•••</button>
+              </article>
+              <article class="news-update-item">
+                <a href="#"><img src="assets/artikel/69fd3040d1921.png" alt="Suasana sekolah" /></a>
+                <div>
+                  <a href="#"><h3>Libur Sekolah Selama Ramadhan 2025 dan Dampaknya pada Gaji Guru</h3></a>
+                  <p>News<br />5 jam lalu</p>
+                </div>
+                <button type="button" aria-label="Opsi berita">•••</button>
+              </article>
+              <a class="news-update-button" href="#">Lihat semua news update</a>
+            </section>
+
+            <div class="paper-divider" aria-hidden="true"></div>
+
+            <section class="spotlight-section" aria-labelledby="spotlight-title">
+              <h2 id="spotlight-title">Sorotan</h2>
+              <div class="spotlight-carousel">
+                <article class="spotlight-card">
+                  <a href="#"><img src="assets/artikel/69f07cf452b05.jpg" alt="Warga di area bencana" /></a>
+                  <a href="#"><h3>7 Menko Prabowo yang Minta Tambahan Anggaran hingga Rp 5,18 Triliun, Siapa Paling Banyak?</h3></a>
+                  <div class="story-meta"><span>News</span><button type="button" aria-label="Opsi berita">•••</button></div>
+                </article>
+                <article class="spotlight-card">
+                  <a href="#"><img src="assets/artikel/69f9df10ecc49.jpeg" alt="Tokoh politik memakai jas" /></a>
+                  <a href="#"><h3>Mahfud MD Jelaskan Peluang Reformasi Politik Jelang Pemilu</h3></a>
+                  <div class="story-meta"><span>News</span><button type="button" aria-label="Opsi berita">•••</button></div>
+                </article>
+                <article class="spotlight-card">
+                  <a href="#"><img src="assets/artikel/69fdc103851c9.jpeg" alt="Konferensi pers aparat" /></a>
+                  <a href="#"><h3>Polisi Ungkap Perkembangan Kasus Baru di Jakarta</h3></a>
+                  <div class="story-meta"><span>News</span><button type="button" aria-label="Opsi berita">•••</button></div>
+                </article>
+                <article class="spotlight-card">
+                  <a href="#"><img src="assets/artikel/69ff045686fdc.jpeg" alt="Petugas memeriksa dokumen" /></a>
+                  <a href="#"><h3>KPK Dalami Aliran Dana Baru dalam Kasus Pengadaan Daerah</h3></a>
+                  <div class="story-meta"><span>News</span><button type="button" aria-label="Opsi berita">•••</button></div>
+                </article>
+                <article class="spotlight-card">
+                  <a href="#"><img src="assets/artikel/69fef674cd45a.jpg" alt="Transportasi umum perkotaan" /></a>
+                  <a href="#"><h3>Transportasi Publik Didorong Jadi Solusi Kemacetan Harian</h3></a>
+                  <div class="story-meta"><span>News</span><button type="button" aria-label="Opsi berita">•••</button></div>
+                </article>
+              </div>
+            </section>
+
+            <aside class="shopee-ad-section" aria-label="Iklan Shopee">
+              <p>Iklan - Scroll ke bawah untuk melanjutkan</p>
+              <div class="shopee-ad" role="img" aria-label="Shopee 6 Miliar Hadiah Gratis">
+                <span class="shopee-muted" aria-hidden="true"><i class="ph ph-speaker-slash"></i></span>
+                <span class="shopee-badge">Shopee</span>
+                <div class="shopee-stage">
+                  <span class="shopee-bag" aria-hidden="true">S</span>
+                  <span class="shopee-dancer one" aria-hidden="true"></span>
+                  <span class="shopee-dancer two" aria-hidden="true"></span>
+                  <span class="shopee-dancer three" aria-hidden="true"></span>
+                  <span class="shopee-dancer four" aria-hidden="true"></span>
+                </div>
+                <strong>6 MILIAR HADIAH GRATIS</strong>
+                <button type="button">Buka</button>
+                <i class="ph ph-info shopee-info" aria-hidden="true"></i>
+              </div>
+              <p class="shopee-ad-cta">Baca berita tanpa iklan. <a href="#">Gabung Kompas.com+</a></p>
+            </aside>
+
+            <section class="original-section" aria-labelledby="original-title">
+              <div class="section-title section-title--icon">
+                <a class="section-title__link" href="#original" data-open-original aria-label="Lihat indeks Orisinal">
+                  <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+                  <h2 id="original-title">Orisinal</h2>
+                </a>
+              </div>
+              <div class="original-grid">
+                <article class="original-card" data-open-original data-original-part="4" tabindex="0" role="link">
+                  <div class="original-card__media original-card__media--red">
+                    <span>Laya</span>
+                    <strong>Tato Dayak Terakhir</strong>
+                  </div>
+                  <h3>Bagian 4: Tato Dayak Terakhir</h3>
+                  <p>Tato Dayak Series</p>
+                  <time>2 jam lalu</time>
+                </article>
+                <article class="original-card" data-open-original data-original-part="3" tabindex="0" role="link">
+                  <div class="original-card__media original-card__media--green">
+                    <span>Laya</span>
+                    <strong>Tato Dayak Terakhir</strong>
+                  </div>
+                  <h3>Bagian 3: Tato Dayak Terakhir</h3>
+                  <p>Tato Dayak Series</p>
+                  <time>2 jam lalu</time>
+                </article>
+                <article class="original-card" data-open-original tabindex="0" role="link">
+                  <div class="original-card__media original-card__media--blue">
+                    <span>JEO</span>
+                    <strong>Kota Masa Depan</strong>
+                  </div>
+                  <h3>Kota Masa Depan dan Transportasi Publik</h3>
+                  <p>JEO Series</p>
+                  <time>3 jam lalu</time>
+                </article>
+                <article class="original-card" data-open-original tabindex="0" role="link">
+                  <div class="original-card__media original-card__media--amber">
+                    <span>VIK</span>
+                    <strong>Jejak Rempah</strong>
+                  </div>
+                  <h3>Jejak Rempah yang Mengubah Jalur Dagang</h3>
+                  <p>Visual Interaktif</p>
+                  <time>5 jam lalu</time>
+                </article>
+                <article class="original-card" data-open-original tabindex="0" role="link">
+                  <div class="original-card__media original-card__media--purple">
+                    <span>Laya</span>
+                    <strong>Hutan Terakhir</strong>
+                  </div>
+                  <h3>Hutan Terakhir dan Cerita Masyarakat Adat</h3>
+                  <p>Laya Series</p>
+                  <time>7 jam lalu</time>
+                </article>
+              </div>
+            </section>
+
+            <section class="short-video-section" aria-labelledby="short-video-title">
+              <a class="short-video-heading" href="#article" aria-label="Lihat semua rolls">
+                <h2 id="short-video-title">Rolls</h2>
+              </a>
+              <div class="short-video-rail">
+                <article class="short-video-card" tabindex="0" role="link">
+                  <img src="assets/artikel/69ff045686fdc.jpeg" alt="Reportase lorong kota" />
+                  <span class="short-video-logo">KOMPAS.com</span>
+                  <button type="button" aria-label="Putar video"><i class="ph-fill ph-play" aria-hidden="true"></i></button>
+                  <h3>KITA MAU</h3>
+                </article>
+                <article class="short-video-card" tabindex="0" role="link">
+                  <img src="assets/artikel/69fef674cd45a.jpg" alt="Reportase transportasi kota" />
+                  <span class="short-video-logo">KOMPAS.com</span>
+                  <button type="button" aria-label="Putar video"><i class="ph-fill ph-play" aria-hidden="true"></i></button>
+                  <h3>PERTANYAANNYA</h3>
+                </article>
+                <article class="short-video-card" tabindex="0" role="link">
+                  <img src="assets/artikel/69f9f62da8c5e.jpeg" alt="Tokoh perempuan berbicara" />
+                  <span class="short-video-logo">KOMPAS.com</span>
+                  <button type="button" aria-label="Putar video"><i class="ph-fill ph-play" aria-hidden="true"></i></button>
+                  <h3>INI CERITANYA</h3>
+                </article>
+                <article class="short-video-card" tabindex="0" role="link">
+                  <img src="assets/artikel/69f9df10ecc49.jpeg" alt="Tokoh politik di ruang publik" />
+                  <span class="short-video-logo">KOMPAS.com</span>
+                  <button type="button" aria-label="Putar video"><i class="ph-fill ph-play" aria-hidden="true"></i></button>
+                  <h3>FOKUS HARI INI</h3>
+                </article>
+              </div>
+            </section>
           </section>
         </div>
+
+        <section class="original-frame-view" aria-label="Orisinal Kompas.com" hidden>
+          <header class="original-frame-header">
+            <button class="original-frame-back" type="button" data-original-back aria-label="Kembali">
+              <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            </button>
+            <img src="assets/kompas-logo.png" alt="KOMPAS.com" />
+            <div class="original-frame-actions">
+              <button type="button" aria-label="Bagikan">
+                <img class="original-frame-share" src="assets/share.svg" alt="" aria-hidden="true" />
+              </button>
+            </div>
+          </header>
+          <iframe
+            class="original-frame"
+            title="Orisinal Kompas.com"
+            src="about:blank"
+            loading="lazy"
+          ></iframe>
+        </section>
 
         <section class="business-view" aria-label="Business Insight" hidden>
           <header class="business-header">
@@ -367,51 +645,226 @@
           </div>
         </section>
 
-        <section class="ai-chat-view" aria-label="Kompas AI" hidden>
-          <header class="ai-chat-header">
-            <button class="ai-back" type="button" aria-label="Kembali ke beranda">
+        <section class="epaper-view" aria-label="e-paper" hidden>
+          <header class="epaper-header">
+            <button class="epaper-back" type="button" aria-label="Kembali ke beranda">
               <i class="ph ph-arrow-left" aria-hidden="true"></i>
             </button>
-            <div>
-              <strong>Kompas AI</strong>
-              <span>Asisten berita dan insight</span>
-            </div>
-            <button class="ai-header-action" type="button" aria-label="Percakapan baru">
-              <i class="ph ph-note-pencil" aria-hidden="true"></i>
+            <h1>e-paper</h1>
+            <button type="button" aria-label="Daftar edisi">
+              <i class="ph ph-list-bullets" aria-hidden="true"></i>
             </button>
           </header>
 
-          <div class="ai-chat-scroll" aria-live="polite">
-            <section class="ai-welcome">
-              <div class="ai-orb">K</div>
-              <h1>Apa yang ingin kamu pahami hari ini?</h1>
-              <p>Tanya ringkasan berita, konteks isu, atau minta rekomendasi bacaan dari Kompas.</p>
-            </section>
+          <div class="epaper-scroll">
+            <nav class="epaper-tabs" aria-label="Kategori e-paper">
+              <button class="active" type="button">Semua</button>
+              <button type="button">Harian Kompas</button>
+              <button type="button">Kontan</button>
+              <button type="button">Majalah</button>
+              <button type="button">Tribunnews</button>
+            </nav>
 
-            <div class="ai-suggestions" aria-label="Saran pertanyaan">
-              <button type="button">Ringkas berita utama hari ini</button>
-              <button type="button">Apa dampak rupiah melemah?</button>
-              <button type="button">Rekomendasikan bacaan ekonomi</button>
-              <button type="button">Jelaskan isu pendidikan terbaru</button>
-            </div>
-
-            <div class="ai-messages">
-              <article class="ai-message assistant">
-                <div class="ai-avatar">K</div>
-                <p>Halo, saya Kompas AI. Saya bisa bantu merangkum berita, menjelaskan konteks, atau menyusun daftar bacaan singkat.</p>
+            <div class="epaper-grid">
+              <article class="epaper-card harian">
+                <a href="#"><img src="assets/epaper-harian-kompas.png" alt="Harian Kompas 27 Oktober 2025" /></a>
+                <p><span>K</span>Harian Kompas</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card kontan">
+                <a href="#"><img src="assets/epaper-kontan.png" alt="Kontan 27 Oktober 2025" /></a>
+                <p><span>K</span>Kontan</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card bobo">
+                <a href="#"><img src="assets/epaper-bobo.png" alt="Majalah Bobo 27 Oktober 2025" /></a>
+                <p><span>B</span>Majalah Bobo</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card tribun">
+                <a href="#"><img src="assets/epaper-tribun.png" alt="Tribunnews 27 Oktober 2025" /></a>
+                <p><span>T</span>Tribunnews</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card harian">
+                <a href="#"><img src="assets/epaper-harian-kompas.png" alt="Harian Kompas 27 Oktober 2025" /></a>
+                <p><span>K</span>Harian Kompas</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card kontan">
+                <a href="#"><img src="assets/epaper-kontan.png" alt="Kontan 27 Oktober 2025" /></a>
+                <p><span>K</span>Kontan</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card bobo">
+                <a href="#"><img src="assets/epaper-bobo.png" alt="Majalah Bobo 27 Oktober 2025" /></a>
+                <p><span>B</span>Majalah Bobo</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card tribun">
+                <a href="#"><img src="assets/epaper-tribun.png" alt="Tribunnews 27 Oktober 2025" /></a>
+                <p><span>T</span>Tribunnews</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card harian">
+                <a href="#"><img src="assets/epaper-harian-kompas.png" alt="Harian Kompas 27 Oktober 2025" /></a>
+                <p><span>K</span>Harian Kompas</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card kontan">
+                <a href="#"><img src="assets/epaper-kontan.png" alt="Kontan 27 Oktober 2025" /></a>
+                <p><span>K</span>Kontan</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card bobo">
+                <a href="#"><img src="assets/epaper-bobo.png" alt="Majalah Bobo 27 Oktober 2025" /></a>
+                <p><span>B</span>Majalah Bobo</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
+              </article>
+              <article class="epaper-card tribun">
+                <a href="#"><img src="assets/epaper-tribun.png" alt="Tribunnews 27 Oktober 2025" /></a>
+                <p><span>T</span>Tribunnews</p>
+                <h2>27 Oktober 2025</h2>
+                <div><small>16 halaman</small><button type="button" aria-label="Opsi e-paper">•••</button></div>
               </article>
             </div>
           </div>
+        </section>
 
-          <form class="ai-composer" aria-label="Kirim pesan ke Kompas AI">
-            <button type="button" aria-label="Tambah lampiran">
-              <i class="ph ph-plus" aria-hidden="true"></i>
+        <section class="ai-chat-view karin-chat-page" aria-label="Karin KOMPAS.com AI" hidden>
+          <header class="karin-chat-top">
+            <div class="karin-chat-brand">
+              <strong>Karin</strong>
+              <p>KOMPAS.com AI</p>
+            </div>
+            <div class="karin-chat-top-actions">
+              <span>Kuota 0/7 <i aria-hidden="true"></i></span>
+              <button class="ai-back" type="button" aria-label="Tutup Karin" data-close-ai>
+                <i class="ph ph-x" aria-hidden="true"></i>
+              </button>
+            </div>
+          </header>
+
+          <header class="karin-answer-top">
+            <button class="karin-answer-back" type="button" aria-label="Kembali ke indeks chat" data-close-karin-answer>
+              <i class="ph ph-arrow-left" aria-hidden="true"></i>
             </button>
-            <input type="text" name="message" placeholder="Tulis pertanyaan..." autocomplete="off" />
-            <button class="ai-send" type="submit" aria-label="Kirim">
-              <i class="ph ph-arrow-up" aria-hidden="true"></i>
-            </button>
+            <div>
+              <img src="assets/karinlogo.svg" alt="" aria-hidden="true" />
+              <div>
+                <strong>Karin</strong>
+                <p>KOMPAS.com AI</p>
+              </div>
+            </div>
+          </header>
+
+          <section class="karin-chat-hero">
+            <img src="assets/karinlogo.svg" alt="" aria-hidden="true" />
+            <h1 class="karin-chat-title" aria-label="Mau update informasi apa hari ini?">
+              <span>Mau update</span>
+              <span>informasi apa hari ini?</span>
+            </h1>
+          </section>
+
+          <section class="karin-chat-suggestions" aria-label="Pertanyaan rekomendasi">
+            <button type="button">Apa dampak kenaikan harga pangan terhadap daya beli masyarakat?</button>
+            <button type="button">Mengapa isu transportasi publik kembali ramai dibahas?</button>
+            <button type="button">Bagaimana perkembangan terbaru ekonomi digital di Indonesia?</button>
+            <button type="button">Apa yang membuat kualitas udara kota besar jadi perhatian?</button>
+            <button type="button">Mengapa reformasi birokrasi sering menjadi sorotan publik?</button>
+          </section>
+
+          <section class="karin-answer-view" aria-live="polite">
+            <p class="karin-answer-question">Apa dampak rupiah melemah terhadap harga kebutuhan?</p>
+            <div class="karin-answer-loading" aria-label="Memuat jawaban">
+              <div class="karin-answer-dots"><span></span><span></span><span></span></div>
+              <div class="karin-answer-ad" role="img" aria-label="Iklan Pasang iklan UMKM mulai hanya Rp 50.000">
+                <i aria-hidden="true">i</i>
+                <span>Pasang iklan UMKM</span>
+                <strong>mulai hanya</strong>
+                <b>Rp 50.000</b>
+                <em>di Pasangiklan.com</em>
+              </div>
+              <p class="karin-answer-ad-caption">Dapatkan pengalaman AI tanpa iklan. <a href="#">Gabung KOMPAS.com+</a></p>
+            </div>
+            <div class="karin-answer-result">
+              <article class="karin-answer-copy">
+                <h2>Berikut jawaban dari pertanyaanmu</h2>
+                <p>Rupiah yang melemah biasanya memberi tekanan pada barang impor, bahan baku industri, dan biaya logistik yang masih bergantung pada mata uang asing.</p>
+                <p>Dampaknya tidak selalu langsung terasa di hari yang sama, tetapi bisa muncul bertahap ketika pelaku usaha menyesuaikan harga beli, ongkos produksi, dan strategi stok.</p>
+                <p>Untuk rumah tangga, efek yang paling mudah dirasakan biasanya ada pada produk pangan impor, elektronik, obat tertentu, dan barang konsumsi yang bahan bakunya dibeli dari luar negeri.</p>
+                <p>Namun besar kecilnya dampak tetap dipengaruhi oleh kebijakan pemerintah, cadangan stok, subsidi, dan kemampuan perusahaan menahan kenaikan biaya agar tidak seluruhnya dibebankan ke konsumen.</p>
+                <p>Karena itu, pelemahan rupiah perlu dibaca bersama indikator lain seperti inflasi, harga minyak, suku bunga, dan tren permintaan masyarakat.</p>
+              </article>
+
+              <section class="karin-answer-sources" aria-label="Sumber jawaban">
+                <h3>Mengutip dari 5 sumber:</h3>
+                <div>
+                  <a href="#article"><strong>Rupiah Melemah, Pelaku Usaha Pantau Harga Bahan Baku Impor</strong><span>KOMPAS.com</span><time>14 Mei 2026 - 09:15 WIB</time></a>
+                  <a href="#article"><strong>Harga Pangan dan Daya Beli Jadi Perhatian Pemerintah</strong><span>KOMPAS.com</span><time>14 Mei 2026 - 11:20 WIB</time></a>
+                  <a href="#article"><strong>Ekonom Jelaskan Dampak Nilai Tukar ke Inflasi</strong><span>KOMPAS.com</span><time>13 Mei 2026 - 17:40 WIB</time></a>
+                  <a href="#article"><strong>BI Pantau Stabilitas Rupiah di Tengah Tekanan Global</strong><span>KOMPAS.com</span><time>13 Mei 2026 - 15:05 WIB</time></a>
+                  <a href="#article"><strong>Strategi Belanja Rumah Tangga Saat Harga Naik</strong><span>KOMPAS.com</span><time>12 Mei 2026 - 18:22 WIB</time></a>
+                </div>
+              </section>
+
+              <div class="karin-answer-actions" aria-label="Aksi jawaban">
+                <button type="button" aria-label="Salin"><i class="ph ph-copy" aria-hidden="true"></i></button>
+                <button type="button" aria-label="Bagikan"><i class="ph ph-share-fat" aria-hidden="true"></i></button>
+                <button type="button" aria-label="Suka"><i class="ph ph-thumbs-up" aria-hidden="true"></i></button>
+                <button class="karin-feedback-trigger" type="button" aria-label="Tidak suka"><i class="ph ph-thumbs-down" aria-hidden="true"></i></button>
+              </div>
+
+              <section class="karin-answer-followups" aria-label="Saran pertanyaan">
+                <h3>Saran Pertanyaan:</h3>
+                <button type="button"><i class="ph ph-arrow-bend-down-right" aria-hidden="true"></i><span>Apa dampak nilai tukar ke harga BBM dan pangan?</span></button>
+                <button type="button"><i class="ph ph-arrow-bend-down-right" aria-hidden="true"></i><span>Bagaimana cara membaca inflasi bulanan dengan sederhana?</span></button>
+                <button type="button"><i class="ph ph-arrow-bend-down-right" aria-hidden="true"></i><span>Apa peran Bank Indonesia saat rupiah tertekan?</span></button>
+                <button type="button"><i class="ph ph-arrow-bend-down-right" aria-hidden="true"></i><span>Berita ekonomi apa yang perlu dipantau minggu ini?</span></button>
+              </section>
+
+              <div class="karin-answer-ad" role="img" aria-label="Iklan Pasang iklan UMKM mulai hanya Rp 50.000">
+                <i aria-hidden="true">i</i>
+                <span>Pasang iklan UMKM</span>
+                <strong>mulai hanya</strong>
+                <b>Rp 50.000</b>
+                <em>di Pasangiklan.com</em>
+              </div>
+              <p>Dapatkan pengalaman AI tanpa iklan. <a href="#">Gabung KOMPAS.com+</a></p>
+            </div>
+          </section>
+
+          <form class="ai-composer karin-chat-composer" aria-label="Tulis pertanyaan ke Karin">
+            <p><i aria-hidden="true"></i>Kamu sedang dalam masa free trial selama 7 hari.</p>
+            <div>
+              <textarea rows="1" name="message" placeholder="Tanya apa saja" aria-label="Tanya apa saja"></textarea>
+              <button class="ai-send" type="submit" aria-label="Kirim">
+                <i class="ph ph-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+            <small>KARIN adalah AI dan dapat melakukan kesalahan.</small>
           </form>
+
+          <div class="karin-feedback-modal" hidden data-karin-feedback-modal>
+            <div class="karin-feedback-card" role="dialog" aria-modal="true" aria-label="Beri umpan balik">
+              <img src="assets/feedback-mobile.svg" alt="" aria-hidden="true" data-karin-feedback-image />
+              <button class="karin-feedback-close" type="button" aria-label="Tutup umpan balik" data-karin-feedback-close></button>
+              <button class="karin-feedback-option karin-feedback-option--first" type="button" aria-label="Tidak akurat" data-karin-feedback-option></button>
+              <button class="karin-feedback-submit" type="button" aria-label="Kirim masukan" data-karin-feedback-submit></button>
+              <button class="karin-feedback-cancel" type="button" aria-label="Batal" data-karin-feedback-close></button>
+            </div>
+          </div>
         </section>
 
         <section class="podcast-view" aria-label="Podcast" hidden>
@@ -815,38 +1268,640 @@
                 <i class="ph ph-house" aria-hidden="true"></i>
               </button>
               <span class="floating-divider" aria-hidden="true"></span>
-              <button class="floating-like" type="button" aria-label="Suka">
+              <button class="floating-like" type="button" aria-label="Suka" data-article-like>
                 <i class="ph ph-thumbs-up" aria-hidden="true"></i>
               </button>
               <button class="floating-bookmark" type="button" aria-label="Simpan">
                 <i class="ph ph-bookmark-simple" aria-hidden="true"></i>
               </button>
-              <button class="floating-reward" type="button" aria-label="Reward">
+              <button class="floating-reward" type="button" aria-label="Reward" data-open-appreciation>
                 <i class="ph ph-gift" aria-hidden="true"></i>
               </button>
               <span class="floating-divider" aria-hidden="true"></span>
-              <button class="floating-comment" type="button" aria-label="Komentar">
+              <button class="floating-comment" type="button" aria-label="Komentar" data-open-comments>
                 <i class="ph ph-chat-centered-text" aria-hidden="true"></i>
               </button>
             </div>
           </div>
+
+          <div class="comment-sheet" aria-hidden="true" data-comment-sheet>
+            <button class="comment-backdrop" type="button" aria-label="Tutup komentar" data-close-comments></button>
+            <section class="comment-panel" role="dialog" aria-modal="true" aria-labelledby="comment-title">
+              <span class="comment-handle" aria-hidden="true" data-comment-handle></span>
+              <header class="comment-header">
+                <div>
+                  <h2 id="comment-title">Komentar</h2>
+                  <p><span data-comment-count>8</span> komentar</p>
+                </div>
+                <button type="button" aria-label="Tutup komentar" data-close-comments><i class="ph ph-x" aria-hidden="true"></i></button>
+              </header>
+              <div class="comment-list" data-comment-list></div>
+              <div class="comment-tools" hidden data-comment-tools>
+                <button type="button" data-comment-emoji="😊">😊</button>
+                <button type="button" data-comment-emoji="🔥">🔥</button>
+                <button type="button" data-comment-emoji="👏">👏</button>
+                <button type="button" data-comment-emoji="❤️">❤️</button>
+                <button type="button" data-comment-emoji="🙏">🙏</button>
+                <button type="button" data-comment-sticker="Setuju">Setuju</button>
+                <button type="button" data-comment-sticker="Mantap">Mantap</button>
+                <button type="button" data-comment-sticker="Fakta">Fakta</button>
+              </div>
+              <form class="comment-composer" data-comment-form>
+                <div class="comment-replying" hidden data-comment-replying>
+                  <span></span>
+                  <button type="button" aria-label="Batalkan balasan" data-cancel-reply><i class="ph ph-x" aria-hidden="true"></i></button>
+                </div>
+                <div class="comment-input-row">
+                  <button type="button" aria-label="Emoji" data-toggle-comment-tools><i class="ph ph-smiley" aria-hidden="true"></i></button>
+                  <button type="button" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
+                  <input type="text" placeholder="Tambahkan komentar..." data-comment-input />
+                  <button type="submit" aria-label="Kirim komentar"><i class="ph-fill ph-paper-plane-tilt" aria-hidden="true"></i></button>
+                </div>
+              </form>
+            </section>
+          </div>
         </article>
 
+        <section class="appreciation-view" aria-label="Apresiasi Spesial" hidden>
+          <header class="appreciation-header">
+            <button type="button" aria-label="Kembali" data-close-appreciation><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+            <h1>Apresiasi Spesial</h1>
+            <button type="button" aria-label="Bantuan"><i class="ph ph-question" aria-hidden="true"></i></button>
+          </header>
+
+          <div class="appreciation-scroll">
+            <p class="appreciation-intro">Kirimkan Apresiasi Spesial untuk mendukung Jurnalisme Jernih KOMPAS.com</p>
+
+            <div class="appreciation-tabs" role="tablist" aria-label="Pilihan apresiasi">
+              <button class="active" type="button" role="tab" aria-selected="true" data-appreciation-tab="once"><span>Apresiasi</span><strong>Satu kali</strong></button>
+              <button type="button" role="tab" aria-selected="false" data-appreciation-tab="monthly"><span>Membership</span><strong>Bulanan</strong></button>
+              <button type="button" role="tab" aria-selected="false" data-appreciation-tab="yearly"><span>Membership</span><strong>Tahunan</strong></button>
+            </div>
+
+            <div class="appreciation-panel active" data-appreciation-panel="once">
+              <label><input type="radio" name="appreciation-once" value="5000" /><span>Rp5.000</span></label>
+              <label><input type="radio" name="appreciation-once" value="10000" /><span>Rp10.000</span></label>
+              <label><input type="radio" name="appreciation-once" value="20000" /><span>Rp20.000</span></label>
+              <label><input type="radio" name="appreciation-once" value="50000" /><span>Rp50.000</span></label>
+              <label><input type="radio" name="appreciation-once" value="100000" /><span>Rp100.000</span></label>
+              <label><input type="radio" name="appreciation-once" value="250000" /><span>Rp250.000</span></label>
+            </div>
+
+            <div class="appreciation-panel" data-appreciation-panel="monthly" hidden>
+              <label><input type="radio" name="appreciation-monthly" value="Rp10.000/bulan" data-benefit-level="basic" /><span>Rp10.000/bulan</span></label>
+              <label><input type="radio" name="appreciation-monthly" value="Rp39.000/bulan" data-benefit-level="plus" /><span>Rp39.000/bulan</span></label>
+              <label><input type="radio" name="appreciation-monthly" value="Rp69.000/bulan" data-benefit-level="premium" /><span>Rp69.000/bulan</span></label>
+              <p>Dengan Membership bulanan, kamu ikut mendukung Jurnalisme Jernih KOMPAS.com secara berkelanjutan dan menikmati benefit member.</p>
+              <ul class="appreciation-benefits" hidden data-appreciation-benefits="monthly"></ul>
+            </div>
+
+            <div class="appreciation-panel" data-appreciation-panel="yearly" hidden>
+              <label><input type="radio" name="appreciation-yearly" value="Rp59.000" data-benefit-level="basic" /><span>Rp59.000</span></label>
+              <label><input type="radio" name="appreciation-yearly" value="Rp99.000" data-benefit-level="plus" /><span>Rp99.000</span></label>
+              <label><input type="radio" name="appreciation-yearly" value="Rp599.000" data-benefit-level="premium" /><span>Rp599.000</span></label>
+              <p>Dengan Membership tahunan, kamu ikut mendukung Jurnalisme Jernih KOMPAS.com secara berkelanjutan dan menikmati benefit member.</p>
+              <ul class="appreciation-benefits" hidden data-appreciation-benefits="yearly"></ul>
+            </div>
+          </div>
+
+          <div class="appreciation-bottom">
+            <button type="button" disabled data-appreciation-submit>Kirim apresiasi</button>
+          </div>
+
+          <div class="appreciation-drawer" aria-hidden="true" data-appreciation-login-drawer>
+            <button class="appreciation-drawer-backdrop" type="button" aria-label="Tutup login" data-close-appreciation-login></button>
+            <div class="appreciation-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="appreciation-login-title">
+              <span class="login-drawer-handle" aria-hidden="true"></span>
+              <section class="login-drawer-card">
+                <h2 id="appreciation-login-title"><img src="assets/kompas-logo-login.png" alt="KOMPAS.com" /></h2>
+                <p>Login untuk melanjutkan apresiasi dan mengaktifkan membership kamu.</p>
+                <div class="login-options">
+                  <a class="login-option" href="#" data-appreciation-login-google><img class="login-provider-icon" src="assets/google-logo.png" alt="" aria-hidden="true" /><strong>Login dengan Google</strong></a>
+                  <a class="login-option" href="#"><i class="ph ph-envelope-simple" aria-hidden="true"></i><strong>Login dengan Email</strong></a>
+                  <a class="login-option" href="#"><img class="login-provider-icon" src="assets/apple-logo.png" alt="" aria-hidden="true" /><strong>Login dengan Apple ID</strong></a>
+                </div>
+              </section>
+              <p class="login-terms">Dengan menekan tombol “Login”, kamu menyetujui bahwa data dan informasi KG Media ID milikmu akan digunakan untuk memberikan layanan sesuai <a href="#">Kebijakan Data Pribadi KG Media</a>.</p>
+            </div>
+          </div>
+
+          <div class="appreciation-drawer" aria-hidden="true" data-appreciation-payment-drawer>
+            <button class="appreciation-drawer-backdrop" type="button" aria-label="Tutup pembayaran" data-close-appreciation-payment></button>
+            <div class="appreciation-drawer-panel appreciation-payment-panel" role="dialog" aria-modal="true" aria-labelledby="appreciation-payment-title">
+              <span class="login-drawer-handle" aria-hidden="true"></span>
+              <section class="appreciation-payment-card">
+                <h2 id="appreciation-payment-title">Pembayaran</h2>
+                <p>Membership KOMPAS.com</p>
+                <strong data-appreciation-payment-total>Rp599.000/tahun</strong>
+                <button type="button" data-pay-google>
+                  <span class="google-pay-logo"><b>G</b> Pay</span>
+                  <small>Bayar sekarang</small>
+                </button>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="transaction-success-view" aria-label="Transaksi berhasil" hidden>
+          <div class="transaction-success-scroll">
+            <div class="success-illustration" aria-hidden="true">
+              <span class="success-head"></span>
+              <span class="success-body"></span>
+              <span class="success-phone"></span>
+              <span class="success-receipt"></span>
+              <span class="success-line"></span>
+            </div>
+            <h1>Membership kamu telah aktif</h1>
+            <p>Kamu dapat login di Kompas.id dan Kontan dengan email yang sama mengakses konten premium dan e-paper.</p>
+            <button type="button" data-success-back-article>Lanjutkan baca artikel</button>
+            <a href="#">Halaman detail membership</a>
+          </div>
+        </section>
+
+        <section class="account-view" aria-label="Akun" hidden>
+          <div class="account-scroll">
+            <a class="account-login" href="#" data-open-login-drawer>
+              <span class="account-avatar" data-account-avatar><i class="ph ph-user" aria-hidden="true"></i></span>
+              <span class="account-identity">
+                <strong data-account-name>Login</strong>
+                <small data-account-email hidden>dianmeidina@gmail.com</small>
+              </span>
+              <span class="account-profile-pill" hidden data-account-profile>Profil <i class="ph ph-caret-right" aria-hidden="true"></i></span>
+              <i class="ph ph-caret-right account-login-caret" aria-hidden="true" data-account-login-caret></i>
+            </a>
+
+            <a class="membership-card" href="#">
+              <span>
+                <strong>Gabung Membership KOMPAS.com <em>Plus</em></strong>
+                <small>Nikmati artikel eksklusif, analisis mendalam,<br />dan pengalaman bebas iklan.</small>
+              </span>
+              <i class="ph ph-caret-right" aria-hidden="true"></i>
+            </a>
+
+            <div class="account-promo-grid">
+              <a class="account-mini-card" href="#">
+                <span>Paratroopers Reward</span>
+                <strong data-account-reward>Lihat reward</strong>
+                <i class="ph ph-caret-right" aria-hidden="true"></i>
+              </a>
+              <a class="account-mini-card" href="#">
+                <span>Voucher Buat kamu</span>
+                <strong data-account-voucher>Lihat voucher</strong>
+                <i class="ph ph-caret-right" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <section class="account-section" aria-labelledby="account-activity">
+              <h2 id="account-activity">Aktivitas</h2>
+              <a class="account-row" href="#"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i><span>Riwayat</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#" data-open-account-detail="saved"><i class="ph ph-bookmark-simple" aria-hidden="true"></i><span>Konten disimpan</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#" data-open-account-detail="liked"><i class="ph ph-thumbs-up" aria-hidden="true"></i><span>Konten disukai</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span>Konten dikomentari</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+            </section>
+
+            <section class="account-section" aria-labelledby="account-transaction">
+              <h2 id="account-transaction">Transaksi</h2>
+              <a class="account-row" href="#" data-open-account-detail="transactions"><i class="ph ph-credit-card" aria-hidden="true"></i><span>Riwayat transaksi</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#" data-open-account-detail="tickets"><i class="ph ph-ticket" aria-hidden="true"></i><span>Tiketmu</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+            </section>
+
+            <section class="account-section" aria-labelledby="account-settings">
+              <h2 id="account-settings">Pengaturan</h2>
+              <a class="account-row account-row-value" href="#"><i class="ph ph-sun" aria-hidden="true"></i><span>Mode tampilan</span><strong>Terang</strong></a>
+              <a class="account-row" href="#"><i class="ph ph-sparkle" aria-hidden="true"></i><span>Minat</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-bell" aria-hidden="true"></i><span>Notifikasi</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>Newsletter</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+            </section>
+
+            <section class="account-section" aria-labelledby="account-other">
+              <h2 id="account-other">Lainnya</h2>
+              <a class="account-row" href="#"><i class="ph ph-pencil-simple-line" aria-hidden="true"></i><span>Berikan masukanmu</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-question" aria-hidden="true"></i><span>Bantuan</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-lock-key" aria-hidden="true"></i><span>Kebijakan privasi</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+              <a class="account-row" href="#"><i class="ph ph-article" aria-hidden="true"></i><span>Ketentuan pengguna</span><i class="ph ph-caret-right" aria-hidden="true"></i></a>
+            </section>
+          </div>
+
+          <div class="login-drawer" aria-hidden="true" data-login-drawer>
+            <button class="login-drawer-backdrop" type="button" aria-label="Tutup login" data-close-login-drawer></button>
+            <div class="login-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="login-drawer-title">
+              <span class="login-drawer-handle" aria-hidden="true"></span>
+              <section class="login-drawer-card">
+                <h2 id="login-drawer-title"><img src="assets/kompas-logo-login.png" alt="KOMPAS.com" /></h2>
+                <p>Login untuk menyimpan artikel, mendapatkan berita sesuai minat, dan fitur menarik lainnya.</p>
+                <div class="login-options">
+                  <a class="login-option" href="#" data-login-google><img class="login-provider-icon" src="assets/google-logo.png" alt="" aria-hidden="true" /><strong>Login dengan Google</strong></a>
+                  <a class="login-option" href="#"><i class="ph ph-envelope-simple" aria-hidden="true"></i><strong>Login dengan Email</strong></a>
+                  <a class="login-option" href="#"><img class="login-provider-icon" src="assets/apple-logo.png" alt="" aria-hidden="true" /><strong>Login dengan Apple ID</strong></a>
+                </div>
+              </section>
+              <p class="login-terms">Dengan menekan tombol “Login”, kamu menyetujui bahwa data dan informasi KG Media ID milikmu akan digunakan untuk memberikan layanan sesuai <a href="#">Kebijakan Data Pribadi KG Media</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="account-detail-view" aria-label="Detail akun" hidden>
+          <header class="account-detail-header">
+            <button type="button" aria-label="Kembali ke akun" data-account-detail-back><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+            <h1 data-account-detail-title>Konten disukai</h1>
+            <button class="account-detail-filter" type="button" aria-label="Filter transaksi" hidden data-account-detail-filter><i class="ph ph-sliders-horizontal" aria-hidden="true"></i></button>
+            <button class="account-detail-history" type="button" aria-label="Riwayat tiket" hidden data-account-detail-history><i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i></button>
+          </header>
+
+          <div class="account-detail-scroll">
+            <section class="account-detail-panel" data-account-detail-panel="liked">
+              <nav class="detail-chip-row" aria-label="Filter konten disukai">
+                <button class="active" type="button">Semua</button>
+                <button type="button">Artikel</button>
+                <button type="button">Video</button>
+                <button type="button">Rolls</button>
+              </nav>
+              <div class="content-history-list" data-content-list="liked"></div>
+              <div class="detail-loader" aria-hidden="true"><span></span></div>
+            </section>
+
+            <section class="account-detail-panel" data-account-detail-panel="saved" hidden>
+              <nav class="detail-chip-row outlined" aria-label="Filter konten disimpan">
+                <button class="active" type="button">Semua</button>
+                <button type="button">Artikel</button>
+                <button type="button">Video</button>
+                <button type="button">Rolls</button>
+              </nav>
+              <div class="content-history-list" data-content-list="saved"></div>
+              <div class="detail-loader" aria-hidden="true"><span></span></div>
+            </section>
+
+            <section class="account-detail-panel" data-account-detail-panel="transactions" hidden>
+              <nav class="detail-chip-row transaction-tabs" aria-label="Filter transaksi">
+                <button class="active" type="button">Semua</button>
+                <button type="button">Membership</button>
+                <button type="button">Event</button>
+                <button type="button">Apresiasi</button>
+              </nav>
+              <section class="pending-transaction-block">
+                <h2>Menunggu pembayaran</h2>
+                <article class="transaction-card">
+                  <span class="transaction-icon appreciation"><i class="ph ph-gift" aria-hidden="true"></i></span>
+                  <div>
+                    <p>Apresiasi • 23 Agustus 2025</p>
+                    <h3>Apresiasi spesial</h3>
+                    <div><strong>Rp99.000</strong><small class="status waiting">Menunggu pembayaran</small></div>
+                  </div>
+                </article>
+                <article class="transaction-card">
+                  <span class="transaction-icon member">K+</span>
+                  <div>
+                    <p>Membership • 23 Agustus 2025</p>
+                    <h3>KOMPAS.com+ MAX Bulanan</h3>
+                    <div><strong>Rp99.000</strong><small class="status waiting">Menunggu pembayaran</small></div>
+                  </div>
+                </article>
+              </section>
+              <div class="transaction-list">
+                <article class="transaction-card">
+                  <span class="transaction-icon event"><i class="ph ph-ticket" aria-hidden="true"></i></span>
+                  <div>
+                    <p>Event • 23 Agustus 2025</p>
+                    <h3>SHOW 6 SUCI X - Stand Up Comedy Indonesia</h3>
+                    <div><strong>Rp445.000</strong><small class="status success">Sukses</small></div>
+                  </div>
+                </article>
+                <article class="transaction-card">
+                  <span class="transaction-icon member">K+</span>
+                  <div>
+                    <p>Membership • 23 Agustus 2025</p>
+                    <h3>KOMPAS.com+ MAX Bulanan</h3>
+                    <div><strong>Rp99.000</strong><small class="status success">Sukses</small></div>
+                  </div>
+                </article>
+                <article class="transaction-card">
+                  <span class="transaction-icon event"><i class="ph ph-ticket" aria-hidden="true"></i></span>
+                  <div>
+                    <p>Event • 23 Agustus 2025</p>
+                    <h3>SHOW 6 SUCI X - Stand Up Comedy Indonesia</h3>
+                    <div><strong>Rp445.000</strong><small class="status success">Sukses</small></div>
+                  </div>
+                </article>
+                <article class="transaction-card">
+                  <span class="transaction-icon appreciation"><i class="ph ph-gift" aria-hidden="true"></i></span>
+                  <div>
+                    <p>Apresiasi • 23 Agustus 2025</p>
+                    <h3>Apresiasi spesial</h3>
+                    <div><strong>Rp20.000</strong><small class="status success">Sukses</small></div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="account-detail-panel" data-account-detail-panel="tickets" hidden>
+              <section class="ticket-today-block">
+                <h2>Hari ini</h2>
+                <article class="user-ticket-card">
+                  <img src="https://picsum.photos/seed/show-6-suci-ticket/72/72" alt="SHOW 6 SUCI X" />
+                  <div>
+                    <h3>SHOW 6 SUCI X - Stand Up Comedy Indonesia</h3>
+                    <p>Rabu, 27 April 2025, 17.00-21.00 WIB</p>
+                    <small>Gelora Bung Karno Main Stadium</small>
+                  </div>
+                  <button type="button">Lihat tiket <i class="ph ph-caret-right" aria-hidden="true"></i></button>
+                </article>
+              </section>
+              <div class="ticket-list">
+                <article class="user-ticket-card">
+                  <img src="https://picsum.photos/seed/show-6-suci-ticket/72/72" alt="SHOW 6 SUCI X" />
+                  <div>
+                    <h3>SHOW 6 SUCI X - Stand Up Comedy Indonesia</h3>
+                    <p>Rabu, 27 April 2025, 17.00-21.00 WIB</p>
+                    <small>Gelora Bung Karno Main Stadium</small>
+                  </div>
+                  <button type="button">Lihat tiket <i class="ph ph-caret-right" aria-hidden="true"></i></button>
+                </article>
+                <article class="user-ticket-card">
+                  <img src="https://picsum.photos/seed/workshop-ticket/72/72" alt="Workshop Rahasia Konten" />
+                  <div>
+                    <h3>Workshop Rahasia Konten 2026: Cara Viral Tanpa Mikirin...</h3>
+                    <p>Rabu, 27 April 2025, 17.00-21.00 WIB</p>
+                    <small>Online via Zoom</small>
+                  </div>
+                  <button type="button">Buka link <i class="ph ph-caret-right" aria-hidden="true"></i></button>
+                </article>
+                <article class="user-ticket-card">
+                  <img src="https://picsum.photos/seed/gaspol-ticket/72/72" alt="GASPOL goes to Campus" />
+                  <div>
+                    <h3>GASPOL goes to Campus (UAJY): Live Podcast &amp; Coachi...</h3>
+                    <p>Rabu, 27 April 2025, 17.00-21.00 WIB</p>
+                    <small>Gelora Bung Karno Main Stadium</small>
+                  </div>
+                  <button type="button">Lihat tiket <i class="ph ph-caret-right" aria-hidden="true"></i></button>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="event-view" aria-label="Event" hidden>
+          <header class="event-header">
+            <div class="event-title">
+              <span><i class="ph-fill ph-confetti" aria-hidden="true"></i></span>
+              <h1>Event</h1>
+            </div>
+            <nav aria-label="Aksi Event">
+              <button type="button" aria-label="Cari event"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></button>
+              <button type="button" aria-label="Notifikasi event"><i class="ph ph-bell" aria-hidden="true"></i></button>
+              <button type="button" aria-label="Tiket event"><i class="ph ph-ticket" aria-hidden="true"></i></button>
+            </nav>
+          </header>
+
+          <div class="event-scroll">
+            <section class="event-hero" aria-label="Jagat Literasi Festival">
+              <div class="event-hero-stage">
+                <span class="event-alien" aria-hidden="true"></span>
+                <span class="event-planet event-planet-left" aria-hidden="true"></span>
+                <span class="event-planet event-planet-right" aria-hidden="true"></span>
+                <span class="event-kid" aria-hidden="true"></span>
+                <span class="event-astronaut" aria-hidden="true"></span>
+                <span class="event-brand">30 KOMPAS.com</span>
+                <strong>JAGAT<br />LITERASI</strong>
+                <em>FESTIVAL</em>
+                <p>15 September 2025</p>
+                <small>Menara Kompas<br />(Studio Lt.1 / Lt.2 &amp; Rooftop Lt.7)</small>
+                <b><i aria-hidden="true"></i> Live Streaming tersedia</b>
+                <span class="event-ribbon">FESTIVAL</span>
+                <span class="event-subcopy">Literatalk | ONR on Stage<br />Launching Buku | Awarding</span>
+              </div>
+              <div class="event-dots" aria-hidden="true"><span></span><span></span></div>
+            </section>
+
+            <section class="my-ticket-card" aria-labelledby="my-ticket-title">
+              <h2 id="my-ticket-title">Tiket saya <i class="ph ph-caret-right" aria-hidden="true"></i></h2>
+              <a href="#">
+                <img src="https://picsum.photos/seed/kompas-ticket/88/54" alt="Thumbnail tiket event" />
+                <span>Grand Final Stand Up Comedy Indonesia - Komp...</span>
+                <i class="ph ph-qr-code" aria-hidden="true"></i>
+              </a>
+            </section>
+
+            <section class="event-list" aria-label="Daftar event">
+              <article class="event-card" data-open-event-detail>
+                <img src="https://picsum.photos/seed/creator-lab-1/640/360" alt="Kuasa 6 Kemampuan Mengubah Riset Menjadi Tulisan Populer" />
+                <div>
+                  <h2>Kuasa 6 Kemampuan Mengubah Riset Menjadi Tulisan Populer</h2>
+                  <p><i class="ph ph-map-pin" aria-hidden="true"></i> Istora Gelora Bung Karno, Jakarta</p>
+                  <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> 25 April 2025 ·</p>
+                  <small>Harga Mulai</small>
+                  <strong>Rp100.000</strong>
+                </div>
+              </article>
+              <article class="event-card" data-open-event-detail>
+                <img src="https://picsum.photos/seed/gaspol-campus/640/360" alt="GASPOL goes to Campus" />
+                <div>
+                  <h2>GASPOL goes to Campus (UAJY): Live Podcast &amp; Coaching Class Experience!</h2>
+                  <p><i class="ph ph-map-pin" aria-hidden="true"></i> Universitas Atma Jaya, Yogyakarta</p>
+                  <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> 25 April 2025 ·</p>
+                  <strong>Event berakhir</strong>
+                </div>
+              </article>
+              <article class="event-card" data-open-event-detail>
+                <img src="https://picsum.photos/seed/creator-lab-2/640/360" alt="Workshop Rahasia Konten 2026" />
+                <div>
+                  <h2>Workshop Rahasia Konten 2026: Cara Viral Tanpa Mikirin Algoritma</h2>
+                  <p><i class="ph ph-map-pin" aria-hidden="true"></i> Menara Kompas, Jakarta | Online Zoom</p>
+                  <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> 25 April 2025 ·</p>
+                  <strong>Event berakhir</strong>
+                </div>
+              </article>
+              <article class="event-card" data-open-event-detail>
+                <img src="https://picsum.photos/seed/kompas-talks-jember/640/360" alt="Kompas.com Talks x Universitas Jember" />
+                <div>
+                  <h2>Kompas.com Talks x Universitas Jember</h2>
+                  <p><i class="ph ph-map-pin" aria-hidden="true"></i> Universitas Jember, Jember</p>
+                  <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> 25 April 2025 ·</p>
+                  <strong>Gratis</strong>
+                </div>
+              </article>
+              <article class="event-card" data-open-event-detail>
+                <img src="https://picsum.photos/seed/creator-lab-3/640/360" alt="Kuasa 6 Kemampuan Mengubah Riset Menjadi Tulisan Populer" />
+                <div>
+                  <h2>Kuasa 6 Kemampuan Mengubah Riset Menjadi Tulisan Populer</h2>
+                  <p><i class="ph ph-map-pin" aria-hidden="true"></i> Istora Gelora Bung Karno, Jakarta</p>
+                  <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> 25 April 2025 ·</p>
+                  <small>Harga Mulai</small>
+                  <strong>Rp100.000</strong>
+                </div>
+              </article>
+              <div class="event-loader" aria-hidden="true"><span></span></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="event-detail-view" aria-label="Detail Event" hidden>
+          <div class="event-detail-scroll">
+            <section class="event-detail-hero" aria-label="Jagat Literasi Festival">
+              <button class="event-floating-back" type="button" aria-label="Kembali ke event" data-event-detail-back><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+              <button class="event-floating-share" type="button" aria-label="Bagikan event"><i class="ph ph-share-fat" aria-hidden="true"></i></button>
+              <div class="event-detail-poster">
+                <span class="event-alien" aria-hidden="true"></span>
+                <span class="event-kid" aria-hidden="true"></span>
+                <span class="event-astronaut" aria-hidden="true"></span>
+                <span class="event-brand">30 KOMPAS.com</span>
+                <strong>JAGAT<br />LITERASI</strong>
+                <em>FESTIVAL</em>
+                <p>15 September 2025</p>
+                <small>Menara Kompas<br />(Studio Lt.1 / Lt.2 &amp; Rooftop Lt.7)</small>
+                <b><i aria-hidden="true"></i> Live Streaming tersedia</b>
+                <span class="event-ribbon">FESTIVAL</span>
+                <span class="event-subcopy">Literatalk | ONR on Stage<br />Launching Buku | Awarding</span>
+              </div>
+            </section>
+
+            <section class="event-detail-main">
+              <h1>Jagat Literasi festival 2025</h1>
+              <p><i class="ph ph-calendar-blank" aria-hidden="true"></i> Senin, 20 Juni 2025, 14:00 WIB</p>
+              <p><i class="ph ph-map-pin" aria-hidden="true"></i> Gelora Bung Karno Main Stadium</p>
+              <p><i class="ph ph-ticket" aria-hidden="true"></i> Harga mulai <strong>Rp100.000</strong></p>
+              <button type="button" data-open-ticket-select>Pesan Tiket</button>
+            </section>
+
+            <section class="event-detail-copy">
+              <h2>Tentang Event</h2>
+              <p>Setelah melewati perjalanan panjang penuh tawa, tantangan, dan perjuangan tanpa henti, kini tibalah saat yang ditunggu-tunggu. Tiga finalis terbaik telah berdiri di puncak panggung SUCI 11 — Aldo,...</p>
+              <a href="#">Selengkapnya</a>
+              <hr />
+              <h2>Info Umum Pembelian Tiket</h2>
+              <ul>
+                <li>Pastikan data diri yang diisi sesuai dengan kartu identitas yang valid.</li>
+                <li>E-Ticket akan dikirimkan ke email yang terdafta atau WhatsApp setelah pembayaran selesai.</li>
+                <li>Untuk pertanyaan mengenai registrasi, silakan hubungi +62 8xxxxx pada jam kerja Senin-</li>
+              </ul>
+              <a href="#">Selengkapnya</a>
+              <article class="event-location-card">
+                <h2>Lokasi</h2>
+                <div>
+                  <span aria-hidden="true"></span>
+                  <p>Jl. Pintu Satu Senayan No.1, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat</p>
+                </div>
+              </article>
+            </section>
+          </div>
+          <div class="event-bottom-bar">
+            <p><span>🔥</span> Amankan tiket kamu sebelum kehabisan</p>
+            <div>
+              <div class="event-bottom-price">
+                <span>Harga mulai dari</span>
+                <strong>Rp400.000</strong>
+              </div>
+              <button type="button" data-open-ticket-select>Pesan tiket</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="ticket-select-view" aria-label="Pesan tiket" hidden>
+          <header class="ticket-flow-header">
+            <button type="button" aria-label="Kembali ke detail event" data-ticket-back><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+            <h1>Pesan tiket</h1>
+          </header>
+          <div class="ticket-select-scroll">
+            <article class="ticket-type-card" data-ticket-type="regular">
+              <div>
+                <h2><i class="ph ph-ticket" aria-hidden="true"></i> Regular</h2>
+                <ul>
+                  <li>Tidak bisa refund.</li>
+                  <li>Seluruh tiket regular untuk area khusus berdiri.</li>
+                </ul>
+                <strong>Rp200.000<span>/pax</span></strong>
+              </div>
+              <div class="ticket-stepper">
+                <button type="button" aria-label="Kurangi regular" data-ticket-minus="regular"><i class="ph ph-minus" aria-hidden="true"></i></button>
+                <span data-ticket-count="regular">0</span>
+                <button type="button" aria-label="Tambah regular" data-ticket-plus="regular"><i class="ph ph-plus" aria-hidden="true"></i></button>
+              </div>
+            </article>
+            <article class="ticket-type-card" data-ticket-type="vip">
+              <div>
+                <h2><i class="ph-fill ph-ticket" aria-hidden="true"></i> VIP</h2>
+                <ul>
+                  <li>Tidak bisa refund.</li>
+                  <li>Seluruh tiket VIP untuk area kursi</li>
+                  <li>Kursi diatur oleh sistme</li>
+                </ul>
+                <strong>Rp400.000<span>/pax</span></strong>
+              </div>
+              <div class="ticket-stepper">
+                <button type="button" aria-label="Kurangi VIP" data-ticket-minus="vip"><i class="ph ph-minus" aria-hidden="true"></i></button>
+                <span data-ticket-count="vip">0</span>
+                <button type="button" aria-label="Tambah VIP" data-ticket-plus="vip"><i class="ph ph-plus" aria-hidden="true"></i></button>
+              </div>
+            </article>
+          </div>
+          <div class="ticket-bottom-bar">
+            <p><span>🔥</span> Amankan tiket kamu sebelum kehabisan</p>
+            <div>
+              <div class="ticket-bottom-price">
+                <span data-ticket-summary-label>Harga mulai dari</span>
+                <strong data-ticket-total>Rp400.000</strong>
+              </div>
+              <button type="button" disabled data-open-order-detail>Pesan tiket</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="order-detail-view" aria-label="Detail pesanan" hidden>
+          <header class="ticket-flow-header">
+            <button type="button" aria-label="Kembali ke pilih tiket" data-order-back><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+            <h1>Detail pesanan</h1>
+          </header>
+          <div class="order-detail-scroll">
+            <article class="order-summary-card">
+              <img src="https://picsum.photos/seed/show-6-suci/96/96" alt="SHOW 6 SUCI X" />
+              <h2>SHOW 6 SUCI X - Stand Up Comedy Indonesia</h2>
+              <dl>
+                <div><dt>Regular</dt><dd data-order-regular>0 Pax</dd></div>
+                <div><dt>VIP</dt><dd data-order-vip>1 Pax</dd></div>
+                <div><dt>Tanggal Event</dt><dd>Minggu, 27 April 2025</dd></div>
+                <div><dt>Waktu</dt><dd>16:00 WIB</dd></div>
+              </dl>
+            </article>
+            <section class="buyer-detail">
+              <h2>Detail Pemesan</h2>
+              <div class="buyer-warning">
+                <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                <p><strong>Isi Datamu dengan Teliti, Ya!</strong>Tiket event ini bakal langsung dikirim ke email yang kamu daftarin.</p>
+              </div>
+              <p>Isi data menggunakan akun, <a href="#">Login sekarang</a></p>
+              <input type="text" placeholder="Nama lengkap sesuai ID" />
+              <input type="text" placeholder="Gender" />
+              <input type="tel" placeholder="Nomor whatsapp" />
+              <input type="email" placeholder="Alamat email" />
+              <small>E-tiket juga akan dikirim ke email ini</small>
+            </section>
+          </div>
+          <div class="order-bottom-bar">
+            <p>Dengan menekan tombol bayar, kamu menyetujui <a href="#">Syarat &amp; Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Kompas.com</p>
+            <div>
+              <div class="order-bottom-price">
+                <strong data-order-total>Rp400.000</strong>
+                <i class="ph ph-caret-down" aria-hidden="true"></i>
+              </div>
+              <button type="button">Pesan tiket</button>
+            </div>
+          </div>
+        </section>
+
         <nav class="bottom-nav" aria-label="Navigasi utama">
-          <a class="active" href="#" aria-label="Hari ini">
+          <a class="active" href="#" aria-label="Hari ini" data-open-home>
             <i class="ph ph-house" aria-hidden="true"></i>
             <span>Hari ini</span>
           </a>
           <a href="#" aria-label="Video">
-            <i class="ph ph-play-circle" aria-hidden="true"></i>
-            <span>Video</span>
+            <i class="ph ph-squares-four" aria-hidden="true"></i>
+            <span>Hub</span>
           </a>
           <a class="brand-tab" href="#" aria-label="Kompas AI" data-open-ai><span><img src="assets/icon-chat.png" alt="" aria-hidden="true" /></span></a>
-          <a href="#" aria-label="Fest">
+          <a href="#" aria-label="Event" data-open-event>
             <i class="ph ph-confetti" aria-hidden="true"></i>
             <span>Fest</span>
           </a>
-          <a href="#" aria-label="Akun">
+          <a href="#" aria-label="Akun" data-open-account>
             <i class="ph ph-user-circle" aria-hidden="true"></i>
             <span>Akun</span>
           </a>
@@ -854,6 +1909,19 @@
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <!-- app.js dipecah per-fitur ke js/. Urutan penting: core dulu, init terakhir. -->
+    <script src="js/01-core.js"></script>
+    <script src="js/02-shell.js"></script>
+    <script src="js/03-comments.js"></script>
+    <script src="js/04-business-epaper.js"></script>
+    <script src="js/05-original.js"></script>
+    <script src="js/06-podcast.js"></script>
+    <script src="js/07-article.js"></script>
+    <script src="js/08-appreciation.js"></script>
+    <script src="js/09-ai-chat.js"></script>
+    <script src="js/10-account-event.js"></script>
+    <script src="js/11-home-router.js"></script>
+    <script src="js/12-extras.js"></script>
+    <script src="js/99-init.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "app-kompas",
-  "version": "0.1.0",
+  "version": "1.0.20260514-2008",
   "private": true,
   "description": "KOMPAS.com mobile prototype wrapped with Capacitor for Android/iOS.",
   "scripts": {
@@ -14,7 +14,9 @@
   "dependencies": {
     "@capacitor/android": "^7.0.0",
     "@capacitor/core": "^7.0.0",
-    "@capacitor/ios": "^7.0.0"
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/status-bar": "^7.0.6",
+    "@fontsource/inter": "^5.2.8"
   },
   "devDependencies": {
     "@capacitor/cli": "^7.0.0"
