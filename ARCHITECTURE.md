@@ -91,17 +91,19 @@ semuanya **gitignored** (di-generate atau aset berat).
 
 ## Roadmap (langkah berikutnya)
 
-Sudah selesai: repo hygiene (`.gitignore` + untrack), video "Original" keluar
-dari bundle (slide 2–9 diganti frame PNG statis, slide 1 YouTube), pemecahan
-`app.js` per-fitur, dokumentasi.
+Sudah selesai: repo hygiene (`.gitignore` + untrack); video "Original" keluar
+dari bundle (slide 2–9 → frame **JPEG** statis, slide 1 YouTube); pemecahan
+`app.js` per-fitur; **kompres gambar** (PNG besar → JPEG q85) + hapus 3 gambar
+yatim (~3.3 MB); **audio** podcast → AAC 64k (3.8 → 1.9 MB); dokumentasi.
+**APK debug: 360 MB → 11 MB.**
 
 ### Prioritas tinggi
-- [ ] **Kompres gambar:** beberapa PNG masih 1–3 MB (`tato-dayak1.png`,
-      `original-tato-dayak*.png`). Konversi ke **WebP/JPEG** + resize → hemat ~6–7 MB.
-      (Frame reel `tato-dayak-eps-*.jpg` sudah dikompres ke JPEG q85, ~0.6 MB.)
-- [ ] **Dedupe aset:** `tato-dayak1.png`/`tato-dayak2.png` ada ganda di
-      `assets/` dan `assets/original/assets/`.
-- [ ] **Audio podcast** (`podcast-sample.mp3`, 3.8 MB) — stream dari CDN juga.
+- [ ] **Release build + R8/ProGuard** (minify kode + resource shrinking).
+      `classes.dex` ~8 MB adalah komponen terbesar tersisa di APK debug; build
+      rilis ter-minify dapat memangkasnya signifikan.
+- [ ] **Dedupe** `tato-dayak1.jpg`/`tato-dayak2.jpg` yang masih ganda di
+      `assets/` dan `assets/original/assets/` (~0.8 MB; perlu penyesuaian path
+      antar sub-app).
 
 ### Menengah
 - [ ] **Pecah `styles.css`** (152 KB) per-komponen (mis. via folder `css/` +

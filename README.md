@@ -54,9 +54,11 @@ lagi sebagai video.
 
 | Komponen | Sebelum | Sesudah |
 |---|---|---|
-| Video di bundle | ~64 MB | 0 (diganti frame JPEG ~0.6 MB) |
-| `dist/` (payload web) | 84 MB | ~23 MB |
-| File yang di-track git | 2000+ (incl. node_modules) | ~90 |
+| **APK debug** | 360 MB | **11 MB** |
+| Video di bundle | ~64 MB | 0 (frame JPEG ~0.6 MB) |
+| Gambar + audio berat | ~13 MB | ~3 MB (JPEG q85 + AAC) |
+| `dist/` (payload web) | 84 MB | ~9 MB |
+| File yang di-track git | 2000+ (incl. node_modules) | ~95 |
 
 Optimasi lanjutan (kompres gambar, stream audio, dll.) ada di
 roadmap **[ARCHITECTURE.md → Roadmap](ARCHITECTURE.md#roadmap-langkah-berikutnya)**.

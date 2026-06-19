@@ -27,7 +27,7 @@ const APP_SHELL = [
   "./assets/share.svg",
   "./assets/podcast-player-gradient.png",
   "./assets/podcast-cover-morning-brief.png",
-  "./assets/podcast-sample.mp3",
+  "./assets/podcast-sample.m4a",
   "./assets/kompas-logo.png"
 ];
 
