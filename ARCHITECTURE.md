@@ -83,21 +83,22 @@ semuanya **gitignored** (di-generate atau aset berat).
 
 - `assets/` — gambar, ikon, font Inter (woff2), audio podcast, dan mini-site
   `assets/original/` (HTML+CSS terpisah, di-load via iframe).
-- `media-source/` — video berat yang **di-host di CDN**, tidak di-bundle.
-  Lihat `media-source/README.md` dan konstanta `MEDIA_BASE`.
+- `media-source/` — **arsip** video "Original" asli (tidak di-bundle). Slide 2–9
+  pada reader kini berupa frame **JPEG statis** (`assets/original/assets/tato-dayak-eps-*.jpg`,
+  diekstrak dari video, ~0.6 MB); slide 1 streaming via YouTube. Lihat `media-source/README.md`.
 
 ---
 
 ## Roadmap (langkah berikutnya)
 
-Sudah selesai: repo hygiene (`.gitignore` + untrack), video keluar dari bundle
-(streaming CDN), pemecahan `app.js` per-fitur, dokumentasi.
+Sudah selesai: repo hygiene (`.gitignore` + untrack), video "Original" keluar
+dari bundle (slide 2–9 diganti frame PNG statis, slide 1 YouTube), pemecahan
+`app.js` per-fitur, dokumentasi.
 
 ### Prioritas tinggi
-- [ ] **Isi `MEDIA_BASE`** dengan URL CDN setelah video diunggah, lalu uji
-      pemutaran di perangkat.
 - [ ] **Kompres gambar:** beberapa PNG masih 1–3 MB (`tato-dayak1.png`,
-      `original-tato-dayak*.png`). Konversi ke **WebP** + resize → hemat ~7–8 MB.
+      `original-tato-dayak*.png`). Konversi ke **WebP/JPEG** + resize → hemat ~6–7 MB.
+      (Frame reel `tato-dayak-eps-*.jpg` sudah dikompres ke JPEG q85, ~0.6 MB.)
 - [ ] **Dedupe aset:** `tato-dayak1.png`/`tato-dayak2.png` ada ganda di
       `assets/` dan `assets/original/assets/`.
 - [ ] **Audio podcast** (`podcast-sample.mp3`, 3.8 MB) — stream dari CDN juga.

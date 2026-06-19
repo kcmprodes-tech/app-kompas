@@ -2,10 +2,9 @@
 
 Project ini sudah disiapkan untuk dibungkus menjadi aplikasi Android/iOS memakai Capacitor.
 
-> **Sebelum build:** video konten "Original" tidak lagi di-bundle (di-stream dari
-> CDN) agar APK kecil. Isi `MEDIA_BASE` di `assets/original/original-reader.html`
-> dengan URL CDN bila video ingin tampil. Lihat
-> [README.md](README.md) & [ARCHITECTURE.md](ARCHITECTURE.md).
+> **Catatan:** konten "Original" tidak lagi memakai video besar, jadi APK kecil.
+> Slide 2–9 kini gambar PNG statis & slide 1 streaming via YouTube — tanpa langkah
+> CDN/setup tambahan. Lihat [README.md](README.md) & [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Android
 

@@ -14,8 +14,6 @@
       <section class="reel-slide reel-slide--one" aria-label="Halaman 1 dari 9">
         <iframe
           class="reel-youtube"
-          data-remote-video="tato-dayak-eps-1.m4v"
-          data-local-poster="./assets/original-tato-dayak-banner.png"
           src="https://www.youtube-nocookie.com/embed/Ggq0E3DzPLk?autoplay=1&mute=1&playsinline=1&loop=1&playlist=Ggq0E3DzPLk&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0"
           title="Tato Dayak - Slide 1"
           allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
@@ -72,7 +70,7 @@
       </section>
 
       <section class="reel-slide reel-slide--two" aria-label="Halaman 2 dari 9">
-        <video data-remote-video="tato-dayak-eps-2.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-2.jpg" alt="Tato Dayak halaman 2" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -115,7 +113,7 @@
       </section>
 
       <section class="reel-slide reel-slide--three" aria-label="Halaman 3 dari 9">
-        <video data-remote-video="tato-dayak-eps-3.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-3.jpg" alt="Tato Dayak halaman 3" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -157,7 +155,7 @@
       </section>
 
       <section class="reel-slide reel-slide--four" aria-label="Halaman 4 dari 9">
-        <video data-remote-video="tato-dayak-eps-4.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-4.jpg" alt="Tato Dayak halaman 4" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -199,7 +197,7 @@
       </section>
 
       <section class="reel-slide reel-slide--five" aria-label="Halaman 5 dari 9">
-        <video data-remote-video="tato-dayak-eps-5.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-5.jpg" alt="Tato Dayak halaman 5" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -242,7 +240,7 @@
       </section>
 
       <section class="reel-slide reel-slide--six" aria-label="Halaman 6 dari 9">
-        <video data-remote-video="tato-dayak-eps-6.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-6.jpg" alt="Tato Dayak halaman 6" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -284,7 +282,7 @@
       </section>
 
       <section class="reel-slide reel-slide--seven" aria-label="Halaman 7 dari 9">
-        <video data-remote-video="tato-dayak-eps-7.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-7.jpg" alt="Tato Dayak halaman 7" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -326,7 +324,7 @@
       </section>
 
       <section class="reel-slide reel-slide--eight" aria-label="Halaman 8 dari 9">
-        <video data-remote-video="tato-dayak-eps-8.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-8.jpg" alt="Tato Dayak halaman 8" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -369,7 +367,7 @@
       </section>
 
       <section class="reel-slide reel-slide--nine" aria-label="Halaman 9 dari 9">
-        <video data-remote-video="tato-dayak-eps-9.m4v" poster="./assets/original-tato-dayak-banner.png" autoplay muted loop playsinline></video>
+        <img src="./assets/tato-dayak-eps-9.jpg" alt="Tato Dayak halaman 9" />
         <div class="reel-top">
           <div>
             <img src="./assets/kompas-triangle.png" alt="" aria-hidden="true" />
@@ -412,22 +410,6 @@
       </section>
     </main>
     <script>
-      // ============================================================
-      //  KONFIGURASI SUMBER VIDEO (CDN streaming)
-      //  Video tidak lagi di-bundle ke APK. Unggah file
-      //  tato-dayak-eps-*.m4v ke CDN/hosting Anda, lalu isi
-      //  MEDIA_BASE dengan base URL-nya. Contoh:
-      //    "https://cdn.kompas.com/app-original/tato-dayak"
-      //  Biarkan "" jika belum ada CDN: slide menampilkan poster
-      //  (slide 1 tetap streaming via YouTube).
-      // ============================================================
-      const MEDIA_BASE = "";
-
-      function resolveMediaUrl(fileName) {
-        if (!MEDIA_BASE || !fileName) return "";
-        return `${MEDIA_BASE.replace(/\/+$/, "")}/${fileName}`;
-      }
-
       function navigateOriginal(href, direction = "left") {
         document.body.classList.remove("original-route-enter", "original-route-enter-up", "original-route-exit-left", "original-route-exit-right", "original-route-exit-down");
         const exitClass = direction === "down" ? "original-route-exit-down" : direction === "right" ? "original-route-exit-right" : "original-route-exit-left";
@@ -455,26 +437,6 @@
       if (isReaderExperiment) {
         document.body.classList.add("reader-experiment-b");
       }
-
-      // Slide 1: bila MEDIA_BASE diisi, pakai video CDN; jika tidak, biarkan streaming via YouTube.
-      document.querySelectorAll(".reel-youtube[data-remote-video]").forEach((iframe) => {
-        const remoteUrl = resolveMediaUrl(iframe.dataset.remoteVideo);
-        if (!remoteUrl) return;
-        const video = document.createElement("video");
-        video.src = remoteUrl;
-        video.poster = iframe.dataset.localPoster || "";
-        video.autoplay = true;
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        iframe.replaceWith(video);
-      });
-
-      // Slide 2-9: set sumber video dari CDN bila MEDIA_BASE diisi (jika kosong, poster yang tampil).
-      document.querySelectorAll("video[data-remote-video]").forEach((video) => {
-        const remoteUrl = resolveMediaUrl(video.dataset.remoteVideo);
-        if (remoteUrl) video.src = remoteUrl;
-      });
 
       document.querySelectorAll(".reel-slide").forEach((slide) => {
         const media = slide.querySelector("video, iframe, img");

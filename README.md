@@ -18,7 +18,7 @@ app-kompas/
 │   └── 99-init.js          #   pasang listener & bootstrap (load TERAKHIR)
 ├── assets/                 # Gambar, ikon, audio, font, mini-site "original"
 │   └── original/           # Konten branded "Original" (di-load via iframe)
-├── media-source/           # Video berat — TIDAK di-bundle (di-host di CDN) ⚠ gitignored
+├── media-source/           # Arsip video "Original" asli (tidak di-bundle) ⚠ gitignored
 ├── scripts/prepare-web.mjs # Menyalin source → dist/
 ├── dist/                   # Output build (di-generate) ⚠ gitignored
 ├── android/                # Project Android Capacitor (build/ gitignored)
@@ -37,24 +37,24 @@ npm run prepare:web      # bangun dist/ dari source
 
 Build APK Android: lihat [APK_BUILD.md](APK_BUILD.md) → ringkasnya `npm run apk:debug`.
 
-## ⚠ Konfigurasi video (CDN)
+## Konten "Original" (Tato Dayak)
 
-Video konten "Original" (~64 MB) **tidak lagi di-bundle** ke APK supaya ukuran
-tetap kecil. File-nya ada di `media-source/` (lokal, gitignored).
+Reader "Original" ([assets/original/original-reader.html](assets/original/original-reader.html))
+punya 9 slide:
 
-Untuk mengaktifkan video:
+- **Slide 1** — streaming via embed YouTube.
+- **Slide 2–9** — **gambar statis JPEG** (`assets/original/assets/tato-dayak-eps-*.jpg`),
+  diekstrak dari frame video aslinya (~0.6 MB total). Ringan, ikut bundle, tanpa CDN.
 
-1. Unggah `media-source/tato-dayak/*.m4v` ke CDN/hosting Anda.
-2. Buka [`assets/original/original-reader.html`](assets/original/original-reader.html),
-   isi konstanta `MEDIA_BASE` dengan base URL CDN tersebut.
-
-Jika `MEDIA_BASE` kosong, slide menampilkan poster (slide 1 tetap via YouTube).
+Dulu slide 2–9 berupa video `.m4v` (~64 MB) yang membengkakkan APK. File asli
+itu kini diarsipkan di `media-source/` (gitignored) bila suatu saat ingin dipakai
+lagi sebagai video.
 
 ## Catatan ukuran APK
 
 | Komponen | Sebelum | Sesudah |
 |---|---|---|
-| Video di bundle | ~64 MB | 0 (streaming CDN) |
+| Video di bundle | ~64 MB | 0 (diganti frame JPEG ~0.6 MB) |
 | `dist/` (payload web) | 84 MB | ~23 MB |
 | File yang di-track git | 2000+ (incl. node_modules) | ~90 |
 
