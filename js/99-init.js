@@ -64,24 +64,45 @@ commentOpen?.addEventListener("click", openCommentSheet);
 commentCloseButtons.forEach((button) => button.addEventListener("click", closeCommentSheet));
 commentForm?.addEventListener("submit", submitComment);
 cancelReply?.addEventListener("click", clearReplyTarget);
-commentToolToggles.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (commentTools) commentTools.hidden = !commentTools.hidden;
-    commentSheet?.classList.add("is-full");
-  });
+commentInput?.addEventListener("focus", () => commentForm?.classList.add("is-focused"));
+commentInput?.addEventListener("blur", () => {
+  window.setTimeout(() => {
+    if (commentForm && !commentInput.value.trim() && !commentForm.contains(document.activeElement)) {
+      commentForm.classList.remove("is-focused");
+    }
+  }, 130);
 });
-commentTools?.addEventListener("click", (event) => {
-  const target = event.target instanceof Element ? event.target.closest("button") : null;
-  if (!target) return;
-  if (target.dataset.commentEmoji) addCommentText(target.dataset.commentEmoji);
-  if (target.dataset.commentSticker) addCommentText(target.dataset.commentSticker, { sticker: true });
+commentInput?.addEventListener("input", () => {
+  autoGrowComment();
+  updateCommentSendState();
+});
+commentToolToggles.forEach((button) => button.addEventListener("click", () => commentInput?.focus()));
+commentForm?.addEventListener("click", (event) => {
+  const emoji = event.target instanceof Element ? event.target.closest("[data-comment-emoji]") : null;
+  if (emoji) addCommentText(emoji.dataset.commentEmoji);
 });
 commentList?.addEventListener("click", (event) => {
   const target = event.target instanceof Element ? event.target : null;
   const replyButton = target?.closest("[data-reply-comment]");
   const deleteButton = target?.closest("[data-delete-comment]");
+  const repliesToggle = target?.closest("[data-toggle-replies]");
+  const likeButton = target?.closest(".comment-like");
   if (replyButton) setReplyTarget(replyButton.dataset.replyComment);
   if (deleteButton) deleteComment(deleteButton.dataset.deleteComment);
+  if (repliesToggle) {
+    const id = repliesToggle.dataset.toggleReplies;
+    const block = commentList.querySelector(`.comment-replies[data-replies-for="${id}"]`);
+    if (block) {
+      const willOpen = block.hidden;
+      block.hidden = !willOpen;
+      repliesToggle.classList.toggle("is-open", willOpen);
+    }
+  }
+  if (likeButton) {
+    const span = likeButton.querySelector("span");
+    const liked = likeButton.classList.toggle("is-liked");
+    if (span) span.textContent = String(Math.max(0, Number(span.textContent || 0) + (liked ? 1 : -1)));
+  }
 });
 appreciationOpen?.addEventListener("click", openAppreciationView);
 appreciationClose?.addEventListener("click", closeAppreciationView);
@@ -155,6 +176,11 @@ attachDrawerHandleGestures();
 attachCommentSheetGesture();
 playSkeleton(phoneApp);
 syncRoute();
+
+// Fallback: pastikan mode native full-screen aktif (cadangan bila skrip di <head> terlewat).
+if ("Capacitor" in window) {
+  document.documentElement.classList.add("native");
+}
 
 if ("Capacitor" in window && "serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((registrations) => {

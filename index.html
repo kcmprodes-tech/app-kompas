@@ -18,6 +18,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      // Saat berjalan sebagai aplikasi native (Capacitor): tampil full-screen,
+      // sembunyikan bingkai mockup HP & status bar palsu.
+      if (window.Capacitor && (typeof window.Capacitor.isNativePlatform !== "function" || window.Capacitor.isNativePlatform())) {
+        document.documentElement.classList.add("native");
+      }
+    </script>
   </head>
   <body>
     <main class="app-shell" aria-label="Beranda KOMPAS.com">
@@ -1290,34 +1297,41 @@
               <span class="comment-handle" aria-hidden="true" data-comment-handle></span>
               <header class="comment-header">
                 <div>
-                  <h2 id="comment-title">Komentar</h2>
-                  <p><span data-comment-count>8</span> komentar</p>
+                  <h2 id="comment-title"><span data-comment-count>0</span> Komentar</h2>
+                  <p>Isi komentar sepenuhnya adalah tanggung jawab pengguna dan diatur dalam UU ITE</p>
                 </div>
-                <button type="button" aria-label="Tutup komentar" data-close-comments><i class="ph ph-x" aria-hidden="true"></i></button>
+                <button type="button" aria-label="Urutkan komentar" data-sort-comments><i class="ph ph-arrows-down-up" aria-hidden="true"></i></button>
               </header>
               <div class="comment-list" data-comment-list></div>
-              <div class="comment-tools" hidden data-comment-tools>
-                <button type="button" data-comment-emoji="😊">😊</button>
-                <button type="button" data-comment-emoji="🔥">🔥</button>
-                <button type="button" data-comment-emoji="👏">👏</button>
-                <button type="button" data-comment-emoji="❤️">❤️</button>
-                <button type="button" data-comment-emoji="🙏">🙏</button>
-                <button type="button" data-comment-sticker="Setuju">Setuju</button>
-                <button type="button" data-comment-sticker="Mantap">Mantap</button>
-                <button type="button" data-comment-sticker="Fakta">Fakta</button>
-              </div>
               <form class="comment-composer" data-comment-form>
                 <div class="comment-replying" hidden data-comment-replying>
                   <span></span>
                   <button type="button" aria-label="Batalkan balasan" data-cancel-reply><i class="ph ph-x" aria-hidden="true"></i></button>
                 </div>
                 <div class="comment-input-row">
-                  <button type="button" aria-label="Emoji" data-toggle-comment-tools><i class="ph ph-smiley" aria-hidden="true"></i></button>
-                  <button type="button" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
-                  <input type="text" placeholder="Tambahkan komentar..." data-comment-input />
-                  <button type="submit" aria-label="Kirim komentar"><i class="ph-fill ph-paper-plane-tilt" aria-hidden="true"></i></button>
+                  <span class="comment-avatar comment-avatar--me">DW</span>
+                  <div class="comment-input-wrap">
+                    <textarea rows="1" placeholder="Tambahkan komentar..." data-comment-input></textarea>
+                  </div>
+                  <div class="comment-row-icons" data-comment-row-icons>
+                    <button type="button" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
+                    <button type="button" aria-label="Emoji" data-toggle-comment-tools><i class="ph ph-smiley" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                <div class="comment-emoji-row" data-comment-emoji-row>
+                  <button type="button" class="comment-emoji-sticker" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
+                  <div class="comment-quick-emojis">
+                    <button type="button" data-comment-emoji="😂">😂</button>
+                    <button type="button" data-comment-emoji="😢">😢</button>
+                    <button type="button" data-comment-emoji="😍">😍</button>
+                    <button type="button" data-comment-emoji="😏">😏</button>
+                    <button type="button" data-comment-emoji="😭">😭</button>
+                    <button type="button" data-comment-emoji="🥺">🥺</button>
+                  </div>
+                  <button type="submit" class="comment-send" aria-label="Kirim komentar" disabled><i class="ph-fill ph-paper-plane-tilt" aria-hidden="true"></i></button>
                 </div>
               </form>
+              <div class="comment-toast" hidden data-comment-toast><i class="ph-fill ph-check-circle" aria-hidden="true"></i> Komentar berhasil terkirim</div>
             </section>
           </div>
         </article>

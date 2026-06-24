@@ -8,6 +8,14 @@ function flattenCommentCount() {
   return articleComments.reduce((count, comment) => count + 1 + comment.replies.length, 0);
 }
 
+const COMMENT_AVATAR_COLORS = ["#e0512f", "#8a52d6", "#0d87d4", "#2aa775", "#d23f7d", "#e0a020"];
+
+function commentAvatarColor(name) {
+  let sum = 0;
+  for (let i = 0; i < name.length; i += 1) sum += name.charCodeAt(i);
+  return COMMENT_AVATAR_COLORS[sum % COMMENT_AVATAR_COLORS.length];
+}
+
 function renderComment(comment, isReply = false) {
   const initials = comment.name
     .split(" ")
@@ -15,26 +23,36 @@ function renderComment(comment, isReply = false) {
     .join("")
     .slice(0, 2)
     .toUpperCase();
+  const color = commentAvatarColor(comment.name);
   const sticker = comment.sticker ? `<div class="comment-sticker">${comment.sticker}</div>` : "";
-  const replies = !isReply && comment.replies.length
-    ? `<div class="comment-replies">${comment.replies.map((reply) => renderComment(reply, true)).join("")}</div>`
+  const likes = comment.likes || 0;
+  const replyCount = comment.replies ? comment.replies.length : 0;
+  const repliesToggle = !isReply && replyCount
+    ? `<button type="button" class="comment-replies-toggle" data-toggle-replies="${comment.id}">${replyCount} balasan <i class="ph ph-caret-down" aria-hidden="true"></i></button>`
+    : "";
+  const repliesBlock = !isReply && replyCount
+    ? `<div class="comment-replies" data-replies-for="${comment.id}" hidden>${comment.replies.map((reply) => renderComment(reply, true)).join("")}</div>`
     : "";
 
   return `
     <article class="comment-item" data-comment-id="${comment.id}" data-comment-reply="${isReply ? "true" : "false"}">
-      <span class="comment-avatar">${initials}</span>
-      <div class="comment-bubble">
-        <h3>${comment.name}</h3>
+      <span class="comment-avatar" style="background:${color}">${initials}</span>
+      <div class="comment-body">
+        <div class="comment-top">
+          <h3>${comment.name}</h3>
+          <span class="comment-time">${comment.time}</span>
+          <button type="button" class="comment-kebab" aria-label="Opsi komentar"><i class="ph ph-dots-three-vertical" aria-hidden="true"></i></button>
+        </div>
         <p>${comment.text}</p>
         ${sticker}
-        <div class="comment-meta">
-          <span>${comment.time}</span>
+        <div class="comment-actions">
+          <button type="button" class="comment-like" aria-label="Suka komentar"><i class="ph ph-thumbs-up" aria-hidden="true"></i><span>${likes}</span></button>
           ${isReply ? "" : `<button type="button" data-reply-comment="${comment.id}">Balas</button>`}
           ${comment.mine ? `<button type="button" data-delete-comment="${comment.id}">Hapus</button>` : ""}
-          <button type="button" aria-label="Suka komentar"><i class="ph ph-heart" aria-hidden="true"></i></button>
         </div>
+        ${repliesToggle}
+        ${repliesBlock}
       </div>
-      ${replies}
     </article>
   `;
 }
@@ -42,8 +60,20 @@ function renderComment(comment, isReply = false) {
 function renderComments() {
   if (!commentList) return;
 
+  const count = flattenCommentCount();
+  const title = document.getElementById("comment-title");
+  if (title) title.textContent = count > 0 ? `${count} Komentar` : "Komentar";
+
+  if (!articleComments.length) {
+    commentList.innerHTML = `
+      <div class="comment-empty">
+        <div class="comment-empty-art"><i class="ph ph-chats-circle" aria-hidden="true"></i></div>
+        <p>Belum ada komentar di artikel ini</p>
+      </div>`;
+    return;
+  }
+
   commentList.innerHTML = articleComments.map((comment) => renderComment(comment)).join("");
-  if (commentCount) commentCount.textContent = flattenCommentCount();
 }
 
 function openCommentSheet(event) {
@@ -54,7 +84,6 @@ function openCommentSheet(event) {
   commentSheet.setAttribute("aria-hidden", "false");
   commentSheet.classList.add("is-open");
   commentSheet.classList.remove("is-full");
-  window.setTimeout(() => commentInput?.focus(), 260);
 }
 
 function closeCommentSheet(event) {
@@ -63,6 +92,7 @@ function closeCommentSheet(event) {
 
   commentSheet.classList.remove("is-open", "is-full");
   commentSheet.setAttribute("aria-hidden", "true");
+  commentForm?.classList.remove("is-focused");
   clearReplyTarget();
 }
 
@@ -82,6 +112,33 @@ function clearReplyTarget() {
   if (commentReplying) commentReplying.hidden = true;
 }
 
+function autoGrowComment() {
+  if (!commentInput) return;
+  commentInput.style.height = "auto";
+  commentInput.style.height = `${Math.min(commentInput.scrollHeight, 116)}px`;
+}
+
+function updateCommentSendState() {
+  const send = commentForm?.querySelector(".comment-send");
+  if (send) send.disabled = !(commentInput && commentInput.value.trim());
+}
+
+let commentToastTimer = null;
+
+function showCommentToast(message = "Komentar berhasil terkirim") {
+  const toast = document.querySelector("[data-comment-toast]");
+  if (!toast) return;
+  const label = toast.lastChild;
+  if (label && label.nodeType === Node.TEXT_NODE) label.textContent = ` ${message}`;
+  toast.hidden = false;
+  window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+  window.clearTimeout(commentToastTimer);
+  commentToastTimer = window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+    window.setTimeout(() => { toast.hidden = true; }, 220);
+  }, 2200);
+}
+
 function submitComment(event) {
   event.preventDefault();
   if (!commentInput) return;
@@ -91,10 +148,11 @@ function submitComment(event) {
 
   const comment = {
     id: commentIdCounter += 1,
-    name: "Dian",
+    name: "Dani Wahyudi",
     text,
     time: "baru saja",
     mine: true,
+    likes: 0,
     replies: [],
   };
 
@@ -106,9 +164,13 @@ function submitComment(event) {
   }
 
   commentInput.value = "";
+  autoGrowComment();
+  updateCommentSendState();
   clearReplyTarget();
   renderComments();
   commentList?.scrollTo({ top: 0, behavior: "smooth" });
+  commentForm?.classList.remove("is-focused");
+  showCommentToast();
 }
 
 function deleteComment(commentId) {
@@ -140,11 +202,15 @@ function addCommentText(text, options = {}) {
       articleComments.unshift(stickerComment);
     }
     renderComments();
+    showCommentToast();
     return;
   }
 
-  commentInput.value = `${commentInput.value}${commentInput.value ? " " : ""}${text}`;
+  commentForm?.classList.add("is-focused");
+  commentInput.value = `${commentInput.value}${text}`;
   commentInput.focus();
+  autoGrowComment();
+  updateCommentSendState();
 }
 
 function attachCommentSheetGesture() {
