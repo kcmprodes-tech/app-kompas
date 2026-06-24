@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kompas-web",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-I", "-c", "import os,http.server,socketserver,functools; d=os.environ.get('PWD') or '.'; H=functools.partial(http.server.SimpleHTTPRequestHandler,directory=d); socketserver.TCPServer.allow_reuse_address=True; socketserver.TCPServer(('',int(os.environ.get('PORT','5173'))),H).serve_forever()"],
+      "cwd": "/Users/ardisuhanda/Documents/GitHub/app-kompas",
+      "autoPort": true
+    }
+  ]
+}
