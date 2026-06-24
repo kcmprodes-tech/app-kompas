@@ -29,3 +29,8 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# ---- Secrets / kredensial (mis. Figma token) ----
+.figma-token
+.env
+.env.*
