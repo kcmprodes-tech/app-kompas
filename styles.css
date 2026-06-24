@@ -4378,6 +4378,9 @@ svg {
   max-height: 116px;
   padding: 8px 0;
   border: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  caret-color: var(--color-kompas-blue);
   background: transparent;
   color: #282b2f;
   font: inherit;

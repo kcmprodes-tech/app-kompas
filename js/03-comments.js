@@ -214,24 +214,68 @@ function addCommentText(text, options = {}) {
 }
 
 function attachCommentSheetGesture() {
-  if (!commentHandle || !commentSheet) return;
+  const panel = commentSheet?.querySelector(".comment-panel");
+  const header = commentSheet?.querySelector(".comment-header");
+  if (!commentHandle || !commentSheet || !panel) return;
 
   let startY = 0;
+  let startH = 0;
+  let minH = 0;
+  let maxH = 0;
+  let dragging = false;
+  let activeEl = null;
 
-  commentHandle.addEventListener("pointerdown", (event) => {
+  function onDown(event) {
+    // jangan mulai drag bila menekan tombol (mis. ikon urutkan)
+    if (event.target.closest("button")) return;
     startY = event.clientY;
-    commentHandle.setPointerCapture?.(event.pointerId);
-  });
+    startH = panel.getBoundingClientRect().height;
+    const sheetH = commentSheet.getBoundingClientRect().height;
+    maxH = sheetH - 20;
+    minH = Math.min(maxH, Math.max(430, sheetH * 0.54));
+    dragging = true;
+    activeEl = event.currentTarget;
+    panel.style.transition = "none";
+    activeEl.setPointerCapture?.(event.pointerId);
+  }
 
-  commentHandle.addEventListener("pointerup", (event) => {
+  function onMove(event) {
+    if (!dragging) return;
     const delta = event.clientY - startY;
-    if (delta < -24) {
-      commentSheet.classList.add("is-full");
-    } else if (delta > 42 && commentSheet.classList.contains("is-full")) {
-      commentSheet.classList.remove("is-full");
-    } else if (delta > 42) {
+    let h = startH - delta;
+    if (h > maxH) h = maxH;
+    if (h < minH - 140) h = minH - 140;
+    panel.style.height = `${h}px`;
+  }
+
+  function onUp(event) {
+    if (!dragging) return;
+    dragging = false;
+    const h = panel.getBoundingClientRect().height;
+    const delta = event.clientY - startY;
+    const wasFull = commentSheet.classList.contains("is-full");
+    panel.style.transition = "";
+    if (delta > 100 && !wasFull && h <= minH + 60) {
+      panel.style.height = "";
       closeCommentSheet();
+    } else if (h >= (minH + maxH) / 2) {
+      commentSheet.classList.add("is-full");
+      panel.style.height = "";
+    } else {
+      commentSheet.classList.remove("is-full");
+      panel.style.height = "";
     }
+    activeEl?.releasePointerCapture?.(event.pointerId);
+    activeEl = null;
+  }
+
+  [commentHandle, header].forEach((el) => {
+    if (!el) return;
+    el.style.touchAction = "none";
+    el.addEventListener("pointerdown", onDown);
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("pointerup", onUp);
+    el.addEventListener("pointercancel", onUp);
   });
 }
 
