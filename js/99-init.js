@@ -94,6 +94,9 @@ document.querySelectorAll("[data-toggle-picker]").forEach((button) => {
     else openCommentPicker();
   });
 });
+document.querySelectorAll("[data-open-emoji]").forEach((button) => {
+  button.addEventListener("click", () => openCommentPicker("emoji"));
+});
 document.querySelector("[data-picker-tabs]")?.addEventListener("click", (event) => {
   const tab = event.target instanceof Element ? event.target.closest("[data-picker-tab]") : null;
   if (tab) switchPickerTab(tab.dataset.pickerTab);

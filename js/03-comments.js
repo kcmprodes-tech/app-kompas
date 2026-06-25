@@ -291,20 +291,37 @@ function pickerStickerGrid(list) {
   return `<div class="picker-sticker-grid">${list.map((s) => `<button type="button" class="picker-sticker" data-pick-sticker="${s}"><img src="${s}" alt="Stiker" loading="lazy" /></button>`).join("")}</div>`;
 }
 
+function renderAllStickers() {
+  return Object.entries(STICKER_SETS)
+    .map(([key, set]) => `<div class="picker-sticker-section" data-sticker-section="${key}"><span class="picker-label">${set.name} (${set.items.length})</span>${pickerStickerGrid(set.items)}</div>`)
+    .join("");
+}
+
 function renderPickerBody(tab) {
   const body = document.querySelector("[data-picker-body]");
   if (!body) return;
   if (tab === "recent") {
+    body.dataset.mode = "recent";
     body.innerHTML =
       `<span class="picker-label">Emoticon</span>${pickerEmojiGrid(recentEmojis.length ? recentEmojis : DEFAULT_RECENT_EMOJIS)}` +
       `<span class="picker-label">Stiker</span>${recentStickers.length ? pickerStickerGrid(recentStickers) : '<p class="picker-empty">Belum ada stiker dipakai</p>'}`;
+    body.scrollTop = 0;
   } else if (tab === "emoji") {
+    body.dataset.mode = "emoji";
     body.innerHTML = EMOJI_CATEGORIES.map((cat) => `<span class="picker-label">${cat.name}</span>${pickerEmojiGrid(cat.emojis)}`).join("");
-  } else if (STICKER_SETS[tab]) {
-    const set = STICKER_SETS[tab];
-    body.innerHTML = `<span class="picker-label">${set.name} (${set.items.length})</span>${pickerStickerGrid(set.items)}`;
+    body.scrollTop = 0;
+  } else if (tab === "stickersall" || STICKER_SETS[tab]) {
+    if (body.dataset.mode !== "stickers") {
+      body.dataset.mode = "stickers";
+      body.innerHTML = renderAllStickers();
+    }
+    if (STICKER_SETS[tab]) {
+      const section = body.querySelector(`[data-sticker-section="${tab}"]`);
+      if (section) section.scrollIntoView({ block: "start" });
+    } else {
+      body.scrollTop = 0;
+    }
   }
-  body.scrollTop = 0;
 }
 
 function switchPickerTab(tab) {
@@ -313,13 +330,13 @@ function switchPickerTab(tab) {
   renderPickerBody(tab);
 }
 
-function openCommentPicker() {
+function openCommentPicker(tab) {
   const picker = document.querySelector("[data-comment-picker]");
   if (!picker || !commentForm) return;
   commentForm.classList.add("is-focused", "is-picker");
   commentInput?.blur();
   picker.hidden = false;
-  switchPickerTab(currentPickerTab);
+  switchPickerTab(tab || currentPickerTab);
 }
 
 function closeCommentPicker(refocus = false) {

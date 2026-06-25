@@ -4447,6 +4447,19 @@ svg {
   font-size: 23px;
 }
 
+.comment-emoji-general {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: #5b6068;
+}
+
+.comment-emoji-general i {
+  font-size: 23px;
+}
+
 .comment-quick-emojis {
   flex: 1;
   display: flex;
@@ -4590,7 +4603,7 @@ svg {
   flex-direction: column;
   height: 300px;
   border-top: 1px solid var(--color-line-soft);
-  background: var(--color-surface);
+  background: #f7f7f7;
 }
 
 .comment-picker[hidden] {
