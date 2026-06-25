@@ -25,7 +25,7 @@
 @font-face {
   font-family: "Inter";
   src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -33,7 +33,7 @@
 @font-face {
   font-family: "Inter";
   src: url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");
-  font-weight: 800;
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -490,7 +490,7 @@ svg {
   margin-top: var(--space-6);
   color: var(--color-ink-strong);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 19px;
   white-space: nowrap;
 }
@@ -519,7 +519,7 @@ svg {
   margin: 0 var(--space-20) var(--space-12);
   color: #36383a;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0;
 }
@@ -596,7 +596,7 @@ svg {
   color: #52c89d;
   font-size: 13px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -696,7 +696,7 @@ svg {
   background: #c27803;
   color: var(--color-surface);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -879,7 +879,7 @@ svg {
   font-family: var(--font-ui);
   color: #36383a;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0;
 }
@@ -984,7 +984,7 @@ svg {
   margin: 0 0 var(--space-16);
   color: var(--color-ink-strong);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.2px;
 }
@@ -1026,7 +1026,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #262a30;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -1061,7 +1061,7 @@ svg {
   top: var(--space-6);
   left: var(--space-6);
   font-size: 8px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .ad-art strong {
@@ -1693,7 +1693,7 @@ svg {
   margin-top: var(--space-32);
   color: #ffd872;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -1705,7 +1705,7 @@ svg {
 .business-ad small {
   margin-top: var(--space-8);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .business-ad-cta {
@@ -1714,7 +1714,7 @@ svg {
   background: #f6f7f9;
   color: #343941;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -1843,7 +1843,7 @@ svg {
   border-radius: 50%;
   color: var(--color-surface);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -1933,7 +1933,7 @@ svg {
 .ai-chat-header strong {
   color: var(--color-ink-strong);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -1986,7 +1986,7 @@ svg {
   margin: 0;
   color: var(--color-ink-strong);
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.14;
   letter-spacing: -0.2px;
 }
@@ -2185,7 +2185,7 @@ svg {
 .karin-chat-brand strong {
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
   letter-spacing: -0.2px;
 }
@@ -2219,7 +2219,7 @@ svg {
   padding: 0 var(--space-12);
   color: #282b2f;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -2287,7 +2287,7 @@ svg {
   display: block;
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -2559,7 +2559,7 @@ svg {
   margin: 0 0 14px;
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 21px;
   letter-spacing: -0.2px;
 }
@@ -2593,7 +2593,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #282b2f;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -2627,7 +2627,7 @@ svg {
   overflow: hidden;
   color: #282b2f;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
   -webkit-box-orient: vertical;
@@ -2744,7 +2744,7 @@ svg {
   color: #1fa4d8;
   font-size: 10px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .karin-answer-ad span,
@@ -2760,7 +2760,7 @@ svg {
 .karin-answer-ad strong {
   color: var(--color-surface);
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 31px;
   letter-spacing: -0.2px;
 }
@@ -2769,7 +2769,7 @@ svg {
   margin-top: 14px;
   color: #000;
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 34px;
   letter-spacing: -0.2px;
 }
@@ -2782,7 +2782,7 @@ svg {
   color: var(--color-surface);
   font-size: 14px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -2794,7 +2794,7 @@ svg {
   margin: var(--space-6) auto 0;
   color: #000;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 14px;
   letter-spacing: -0.2px;
   text-align: left;
@@ -2975,7 +2975,7 @@ svg {
   justify-self: center;
   color: var(--color-ink-strong);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -3060,7 +3060,7 @@ svg {
   background: #f7f7f8;
   color: #303338;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
   cursor: pointer;
 }
@@ -3091,7 +3091,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: var(--color-ink-strong);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -3113,13 +3113,13 @@ svg {
 .program-opini {
   color: #ff8a00;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .program-morning {
   color: #2b3036;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
 }
@@ -3127,7 +3127,7 @@ svg {
 .program-headline {
   color: #2b4b95;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
 }
@@ -3175,7 +3175,7 @@ svg {
   background: rgba(0, 0, 0, 0.68);
   color: var(--color-surface);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 14px;
   text-align: right;
 }
@@ -3232,7 +3232,7 @@ svg {
   background: #f4f4f5;
   color: #343840;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
   cursor: pointer;
 }
@@ -3264,7 +3264,7 @@ svg {
   margin-top: var(--space-32);
   color: #ffd872;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -3275,7 +3275,7 @@ svg {
 
 .podcast-ad small {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .podcast-ad-cta {
@@ -3284,7 +3284,7 @@ svg {
   background: #f6f7f9;
   color: #343941;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -3397,7 +3397,7 @@ svg {
   font-family: var(--font-logo);
   font-size: 16px;
   font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -3427,7 +3427,7 @@ svg {
   transform: translateX(-50%);
   color: var(--color-surface);
   font-size: 42px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.2px;
   text-align: center;
@@ -3469,7 +3469,7 @@ svg {
   background: #f7f7f7;
   color: #202327;
   font-size: 6px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.95;
   text-align: center;
 }
@@ -3479,7 +3479,7 @@ svg {
   margin: var(--space-16) 0 0;
   color: var(--color-surface);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
   letter-spacing: -0.2px;
 }
@@ -3488,7 +3488,7 @@ svg {
   margin: 0;
   color: rgba(255, 255, 255, 0.86);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 32px;
 }
 
@@ -3580,7 +3580,7 @@ svg {
   left: 50%;
   transform: translateX(-50%);
   font-size: 8px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .player-buttons .player-play {
@@ -3654,7 +3654,7 @@ svg {
   display: -webkit-box;
   overflow: hidden;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 15px;
   letter-spacing: -0.2px;
   -webkit-box-orient: vertical;
@@ -3683,7 +3683,7 @@ svg {
   margin: 0 0 var(--space-16);
   color: var(--color-surface);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -3711,7 +3711,7 @@ svg {
   margin: var(--space-2) 0 var(--space-6);
   color: var(--color-surface);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -3872,7 +3872,7 @@ svg {
   background: #d45ea4;
   color: var(--color-surface);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   box-shadow: 0 2px 6px rgba(31, 36, 45, 0.18);
 }
 
@@ -3945,11 +3945,11 @@ svg {
 }
 
 .article-body strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .article-body .read-also strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .article-body .read-also a {
@@ -4114,7 +4114,7 @@ svg {
   margin: 0;
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.2px;
 }
@@ -4164,7 +4164,7 @@ svg {
   background: #8a52d6;
   color: #ffffff;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .comment-body {
@@ -4181,7 +4181,7 @@ svg {
   margin: 0;
   color: #282b2f;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 17px;
 }
 
@@ -4220,7 +4220,7 @@ svg {
   background: linear-gradient(135deg, #e7f4ff, #fff1dd);
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .comment-actions {
@@ -4766,7 +4766,7 @@ svg {
   background: #f13538;
   color: var(--color-surface);
   font-size: 8px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 14px;
   letter-spacing: 0;
 }
@@ -4862,7 +4862,7 @@ svg {
 .appreciation-tabs strong {
   margin-top: 1px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -4912,7 +4912,7 @@ svg {
 
 .appreciation-panel span {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 25px;
   letter-spacing: -0.2px;
 }
@@ -4969,7 +4969,7 @@ svg {
 }
 
 .appreciation-benefits strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @keyframes appreciation-panel-in {
@@ -4998,7 +4998,7 @@ svg {
   background: #eeeeef;
   color: #b8bbc0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -5064,7 +5064,7 @@ svg {
   margin: 0;
   color: #282b2f;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 25px;
   letter-spacing: -0.2px;
 }
@@ -5079,7 +5079,7 @@ svg {
 .appreciation-payment-card strong {
   color: #282b2f;
   font-size: 26px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.2px;
 }
@@ -5098,7 +5098,7 @@ svg {
 
 .google-pay-logo {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -5196,7 +5196,7 @@ svg {
   top: 8px;
   color: #303235;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .success-line {
@@ -5211,7 +5211,7 @@ svg {
   margin: 0 0 var(--space-8);
   color: #282b2f;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 25px;
   letter-spacing: -0.2px;
 }
@@ -5233,7 +5233,7 @@ svg {
   place-items: center;
   border-radius: 9px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -5303,7 +5303,7 @@ svg {
   margin: 0;
   color: var(--color-ink-strong);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.2px;
 }
@@ -5362,7 +5362,7 @@ svg {
   background: #303439;
   color: var(--color-surface);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .popular-copy {
@@ -5469,7 +5469,7 @@ svg {
   margin: 0 0 var(--space-6);
   color: #ffce31;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   font-style: italic;
   line-height: 0.86;
   letter-spacing: -0.2px;
@@ -5489,7 +5489,7 @@ svg {
   display: block;
   color: var(--color-surface);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.96;
   letter-spacing: -0.2px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
@@ -5500,7 +5500,7 @@ svg {
   margin-top: var(--space-6);
   color: #ffd037;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.2px;
 }
@@ -5544,12 +5544,12 @@ svg {
   background: rgba(255, 255, 255, 0.86);
   color: #111318;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .promo-banner:not(.promo-banner-podcast) strong {
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.2px;
 }
@@ -5576,7 +5576,7 @@ svg {
   background: #e4f4ff;
   color: #0983cf;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.2px;
 }
@@ -5586,7 +5586,7 @@ svg {
   margin: 0 0 var(--space-16);
   color: #343840;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
   letter-spacing: -0.2px;
 }
@@ -5612,7 +5612,7 @@ svg {
   margin-bottom: var(--space-10, 10px);
   color: #343840;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -5644,7 +5644,7 @@ svg {
   background: #eeeeef;
   color: #343840;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -5664,7 +5664,7 @@ svg {
   margin: 0 0 var(--space-16);
   color: #343840;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 27px;
   letter-spacing: -0.2px;
 }
@@ -5733,7 +5733,7 @@ svg {
   background: #eeeeef;
   color: #343840;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -5801,7 +5801,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #050607;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 16px;
   letter-spacing: -0.2px;
 }
@@ -5837,7 +5837,7 @@ svg {
   background: rgba(255, 255, 255, 0.45);
   color: rgba(120, 120, 120, 0.78);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .shopee-stage::before {
@@ -5883,7 +5883,7 @@ svg {
   background: #ff5a2b;
   color: var(--color-surface);
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .shopee-badge::before {
@@ -5892,7 +5892,7 @@ svg {
   top: var(--space-4);
   color: var(--color-surface);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .shopee-bag {
@@ -5907,7 +5907,7 @@ svg {
   background: rgba(150, 150, 150, 0.45);
   color: rgba(80, 80, 80, 0.45);
   font-size: 52px;
-  font-weight: 800;
+  font-weight: 600;
   transform: translateX(-50%);
 }
 
@@ -5973,7 +5973,7 @@ svg {
   background: linear-gradient(180deg, #0b5bb7 0%, #073880 100%);
   color: #ffeb2d;
   font-size: 23px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 29px;
   letter-spacing: -0.2px;
 }
@@ -6006,7 +6006,7 @@ svg {
   background: var(--color-surface);
   color: #050607;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 16px;
   letter-spacing: -0.2px;
 }
@@ -6046,7 +6046,7 @@ svg {
   margin: 0;
   color: #343840;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 31px;
   letter-spacing: -0.2px;
 }
@@ -6140,7 +6140,7 @@ svg {
   max-width: 160px;
   color: var(--color-surface);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.08;
   text-align: center;
 }
@@ -6194,7 +6194,7 @@ svg {
   align-items: center;
   margin: 0;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 27px;
   letter-spacing: -0.2px;
 }
@@ -6259,7 +6259,7 @@ svg {
   color: rgba(255, 255, 255, 0.9);
   font-family: var(--font-logo);
   font-size: 8px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   transform: translateX(-50%);
 }
@@ -6294,7 +6294,7 @@ svg {
   margin: 0;
   color: var(--color-surface);
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 17px;
   letter-spacing: -0.2px;
   text-align: center;
@@ -6340,7 +6340,7 @@ svg {
   background: #08b5c5;
   color: var(--color-surface);
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 22px;
 }
 
@@ -6356,7 +6356,7 @@ svg {
 
 .account-login strong {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 28px;
   letter-spacing: -0.2px;
 }
@@ -6364,7 +6364,7 @@ svg {
 .account-view.is-logged-in .account-login strong {
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
 }
 
@@ -6394,7 +6394,7 @@ svg {
   background: var(--color-surface);
   color: #282b2f;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 17px;
   letter-spacing: -0.2px;
 }
@@ -6427,14 +6427,14 @@ svg {
   display: block;
   margin-bottom: 4px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 17px;
   letter-spacing: -0.2px;
 }
 
 .membership-card em {
   font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .membership-card small {
@@ -6508,7 +6508,7 @@ svg {
   margin: 0 0 15px;
   color: var(--color-ink-strong);
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 26px;
   letter-spacing: -0.2px;
 }
@@ -6548,7 +6548,7 @@ svg {
 .account-row-value strong {
   color: #343840;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -6697,7 +6697,7 @@ svg {
   background: rgba(0, 0, 0, 0.68);
   color: var(--color-surface);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .content-history-thumb i {
@@ -6782,7 +6782,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px;
   letter-spacing: -0.2px;
 }
@@ -6814,7 +6814,7 @@ svg {
   place-items: center;
   border-radius: 50%;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .transaction-icon.appreciation {
@@ -6860,7 +6860,7 @@ svg {
 .transaction-card strong {
   color: #282b2f;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .status {
@@ -6892,7 +6892,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px;
 }
 
@@ -7078,7 +7078,7 @@ svg {
   justify-self: center;
   color: #293544;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -7138,7 +7138,7 @@ svg {
   margin: 0;
   color: #343840;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 28px;
   letter-spacing: -0.2px;
 }
@@ -7219,7 +7219,7 @@ svg {
   color: #f0c84e;
   font-family: var(--font-logo);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   font-style: italic;
   line-height: 16px;
 }
@@ -7229,7 +7229,7 @@ svg {
   margin: 0 auto var(--space-2);
   color: var(--color-surface);
   font-size: 38px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 33px;
   letter-spacing: -1px;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.22);
@@ -7240,7 +7240,7 @@ svg {
   margin-bottom: var(--space-12);
   color: #9afa2d;
   font-size: 23px;
-  font-weight: 800;
+  font-weight: 600;
   font-style: italic;
   line-height: 24px;
   letter-spacing: -0.4px;
@@ -7251,7 +7251,7 @@ svg {
   margin: 0 0 var(--space-8);
   color: var(--color-surface);
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 19px;
   letter-spacing: -0.2px;
 }
@@ -7261,7 +7261,7 @@ svg {
   margin-bottom: var(--space-8);
   color: rgba(255, 255, 255, 0.9);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 13px;
   letter-spacing: -0.2px;
 }
@@ -7277,7 +7277,7 @@ svg {
   background: #f05724;
   color: var(--color-surface);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.2px;
 }
@@ -7299,7 +7299,7 @@ svg {
   background: #ccf739;
   color: #1a7d42;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.2px;
   transform: rotate(-4deg);
 }
@@ -7309,7 +7309,7 @@ svg {
   margin-top: var(--space-8);
   color: #a9edff;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 13px;
 }
 
@@ -7415,7 +7415,7 @@ svg {
   margin: 0 0 var(--space-10, 10px);
   color: #343840;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -7522,7 +7522,7 @@ svg {
   display: block;
   color: #343840;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.2px;
 }
@@ -7598,7 +7598,7 @@ svg {
   margin-left: 18px;
   color: var(--color-surface);
   font-size: 34px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 30px;
   letter-spacing: -1px;
 }
@@ -7608,7 +7608,7 @@ svg {
   margin: 2px 0 10px 49px;
   color: #9afa2d;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   font-style: italic;
   line-height: 20px;
   transform: rotate(-5deg);
@@ -7620,7 +7620,7 @@ svg {
   margin-left: 18px;
   color: var(--color-surface);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 15px;
 }
 
@@ -7693,7 +7693,7 @@ svg {
   margin: 0 0 var(--space-16);
   color: #282b2f;
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 26px;
   letter-spacing: -0.2px;
 }
@@ -7726,7 +7726,7 @@ svg {
   background: #1487d4;
   color: var(--color-surface);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
@@ -7744,7 +7744,7 @@ svg {
   margin: 0 0 var(--space-14, 14px);
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
 }
 
@@ -7766,7 +7766,7 @@ svg {
   margin-top: var(--space-10, 10px);
   color: #282b2f;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .event-detail-copy hr {
@@ -7833,7 +7833,7 @@ svg {
   background: linear-gradient(90deg, #fff1f6 0%, #d8ebff 100%);
   color: #282b2f;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .event-bottom-bar > div,
@@ -7889,7 +7889,7 @@ svg {
   display: block;
   color: #282b2f;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 27px;
 }
 
@@ -7948,7 +7948,7 @@ svg {
   margin: 0 0 var(--space-6);
   color: #282b2f;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
 }
 
@@ -7972,7 +7972,7 @@ svg {
 .ticket-type-card strong {
   color: #282b2f;
   font-size: 17px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 22px;
 }
 
@@ -8049,7 +8049,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
 }
 
@@ -8073,7 +8073,7 @@ svg {
   margin: 0;
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
 }
 
@@ -8081,7 +8081,7 @@ svg {
   margin: 0 0 var(--space-12);
   color: #282b2f;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 28px;
 }
 
@@ -8111,7 +8111,7 @@ svg {
   display: block;
   color: #282b2f;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .buyer-detail > p {
@@ -8122,7 +8122,7 @@ svg {
 
 .buyer-detail > p a {
   color: #282b2f;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .buyer-detail input {
@@ -8408,7 +8408,7 @@ html.native .status-bar {
 .share-header h2 {
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
   color: #282b2f;
 }
@@ -8446,7 +8446,7 @@ html.native .status-bar {
 .share-article h3 {
   margin: 0 0 2px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 18px;
   color: #282b2f;
   display: -webkit-box;
@@ -8544,4 +8544,10 @@ html.native .status-bar {
 .share-icon.more {
   background: #e9eaec;
   color: #5b6068;
+}
+
+.share-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
