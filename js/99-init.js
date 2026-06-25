@@ -63,11 +63,19 @@ articleLike?.addEventListener("click", toggleArticleLike);
 commentOpen?.addEventListener("click", openCommentSheet);
 commentCloseButtons.forEach((button) => button.addEventListener("click", closeCommentSheet));
 commentForm?.addEventListener("submit", submitComment);
-cancelReply?.addEventListener("click", clearReplyTarget);
+cancelReply?.addEventListener("click", () => {
+  const wasEditing = editingCommentId !== null;
+  clearReplyTarget();
+  if (wasEditing && commentInput) {
+    commentInput.value = "";
+    autoGrowComment();
+    updateCommentSendState();
+  }
+});
 commentInput?.addEventListener("focus", () => commentForm?.classList.add("is-focused"));
 commentInput?.addEventListener("blur", () => {
   window.setTimeout(() => {
-    if (commentForm && !commentInput.value.trim() && !commentForm.contains(document.activeElement)) {
+    if (commentForm && !commentInput.value.trim() && !commentForm.contains(document.activeElement) && !commentForm.classList.contains("is-picker")) {
       commentForm.classList.remove("is-focused");
     }
   }, 130);
@@ -76,7 +84,33 @@ commentInput?.addEventListener("input", () => {
   autoGrowComment();
   updateCommentSendState();
 });
+commentList?.addEventListener("scroll", closeCommentMenu, { passive: true });
 commentToolToggles.forEach((button) => button.addEventListener("click", () => commentInput?.focus()));
+loadCommentRecents();
+document.querySelectorAll("[data-toggle-picker]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const picker = document.querySelector("[data-comment-picker]");
+    if (picker && !picker.hidden) closeCommentPicker(true);
+    else openCommentPicker();
+  });
+});
+document.querySelector("[data-picker-tabs]")?.addEventListener("click", (event) => {
+  const tab = event.target instanceof Element ? event.target.closest("[data-picker-tab]") : null;
+  if (tab) switchPickerTab(tab.dataset.pickerTab);
+});
+document.querySelector("[data-picker-body]")?.addEventListener("click", (event) => {
+  const el = event.target instanceof Element ? event.target : null;
+  const emojiBtn = el?.closest("[data-pick-emoji]");
+  const stickerBtn = el?.closest("[data-pick-sticker]");
+  if (emojiBtn) {
+    addCommentText(emojiBtn.dataset.pickEmoji);
+    pushRecentEmoji(emojiBtn.dataset.pickEmoji);
+  } else if (stickerBtn) {
+    sendSticker(stickerBtn.dataset.pickSticker);
+    pushRecentSticker(stickerBtn.dataset.pickSticker);
+    closeCommentPicker();
+  }
+});
 commentForm?.addEventListener("click", (event) => {
   const emoji = event.target instanceof Element ? event.target.closest("[data-comment-emoji]") : null;
   if (emoji) addCommentText(emoji.dataset.commentEmoji);
@@ -87,6 +121,7 @@ commentList?.addEventListener("click", (event) => {
   const deleteButton = target?.closest("[data-delete-comment]");
   const repliesToggle = target?.closest("[data-toggle-replies]");
   const likeButton = target?.closest(".comment-like");
+  const kebab = target?.closest(".comment-kebab");
   if (replyButton) setReplyTarget(replyButton.dataset.replyComment);
   if (deleteButton) deleteComment(deleteButton.dataset.deleteComment);
   if (repliesToggle) {
@@ -100,9 +135,54 @@ commentList?.addEventListener("click", (event) => {
   }
   if (likeButton) {
     const span = likeButton.querySelector("span");
+    const icon = likeButton.querySelector("i");
     const liked = likeButton.classList.toggle("is-liked");
+    if (icon) {
+      icon.classList.toggle("ph", !liked);
+      icon.classList.toggle("ph-fill", liked);
+    }
     if (span) span.textContent = String(Math.max(0, Number(span.textContent || 0) + (liked ? 1 : -1)));
   }
+  if (kebab) {
+    const item = kebab.closest(".comment-item");
+    const id = item?.dataset.commentId;
+    const comment = findComment(id);
+    const items = comment && comment.mine
+      ? [
+          { label: "Edit", action: "edit", arg: id, icon: "ph-pencil-simple" },
+          { label: "Hapus komentar", action: "delete", arg: id, icon: "ph-trash", danger: true },
+        ]
+      : [{ label: "Laporkan komentar", action: "report", arg: id, icon: "ph-flag" }];
+    openCommentMenu(items, kebab);
+  }
+});
+
+const commentSortBtn = document.querySelector("[data-sort-comments]");
+const commentMenuEl = document.querySelector("[data-comment-menu]");
+const COMMENT_SORT_ITEMS = [
+  { label: "Terbaru", action: "sort", arg: "new", icon: "ph-clock" },
+  { label: "Terlama", action: "sort", arg: "old", icon: "ph-clock-counter-clockwise" },
+  { label: "Terpopuler", action: "sort", arg: "pop", icon: "ph-fire" },
+];
+commentSortBtn?.addEventListener("click", (event) => {
+  const items = COMMENT_SORT_ITEMS.map((it) => ({ ...it, active: it.arg === commentSort }));
+  openCommentMenu(items, event.currentTarget);
+});
+commentMenuEl?.addEventListener("click", (event) => {
+  const button = event.target instanceof Element ? event.target.closest("[data-menu-action]") : null;
+  if (!button) return;
+  const { menuAction, menuArg } = button.dataset;
+  closeCommentMenu();
+  if (menuAction === "sort") sortComments(menuArg);
+  else if (menuAction === "edit") startEditComment(menuArg);
+  else if (menuAction === "delete") deleteComment(menuArg);
+  else if (menuAction === "report") showCommentToast("Komentar dilaporkan");
+});
+document.addEventListener("click", (event) => {
+  const t = event.target instanceof Element ? event.target : null;
+  if (!t || !commentMenuEl || commentMenuEl.hidden) return;
+  if (t.closest("[data-comment-menu]") || t.closest("[data-sort-comments]") || t.closest(".comment-kebab")) return;
+  closeCommentMenu();
 });
 appreciationOpen?.addEventListener("click", openAppreciationView);
 appreciationClose?.addEventListener("click", closeAppreciationView);

@@ -10,6 +10,9 @@ function flattenCommentCount() {
 
 const COMMENT_AVATAR_COLORS = ["#e0512f", "#8a52d6", "#0d87d4", "#2aa775", "#d23f7d", "#e0a020"];
 
+let editingCommentId = null;
+let commentSort = "new";
+
 function commentAvatarColor(name) {
   let sum = 0;
   for (let i = 0; i < name.length; i += 1) sum += name.charCodeAt(i);
@@ -24,7 +27,8 @@ function renderComment(comment, isReply = false) {
     .slice(0, 2)
     .toUpperCase();
   const color = commentAvatarColor(comment.name);
-  const sticker = comment.sticker ? `<div class="comment-sticker">${comment.sticker}</div>` : "";
+  const stickerHtml = comment.sticker ? `<img class="comment-sticker-img" src="${comment.sticker}" alt="Stiker" />` : "";
+  const textHtml = comment.text ? `<p>${comment.text}</p>` : "";
   const likes = comment.likes || 0;
   const replyCount = comment.replies ? comment.replies.length : 0;
   const repliesToggle = !isReply && replyCount
@@ -43,12 +47,11 @@ function renderComment(comment, isReply = false) {
           <span class="comment-time">${comment.time}</span>
           <button type="button" class="comment-kebab" aria-label="Opsi komentar"><i class="ph ph-dots-three-vertical" aria-hidden="true"></i></button>
         </div>
-        <p>${comment.text}</p>
-        ${sticker}
+        ${textHtml}
+        ${stickerHtml}
         <div class="comment-actions">
           <button type="button" class="comment-like" aria-label="Suka komentar"><i class="ph ph-thumbs-up" aria-hidden="true"></i><span>${likes}</span></button>
           ${isReply ? "" : `<button type="button" data-reply-comment="${comment.id}">Balas</button>`}
-          ${comment.mine ? `<button type="button" data-delete-comment="${comment.id}">Hapus</button>` : ""}
         </div>
         ${repliesToggle}
         ${repliesBlock}
@@ -93,6 +96,8 @@ function closeCommentSheet(event) {
   commentSheet.classList.remove("is-open", "is-full");
   commentSheet.setAttribute("aria-hidden", "true");
   commentForm?.classList.remove("is-focused");
+  closeCommentMenu();
+  closeCommentPicker();
   clearReplyTarget();
 }
 
@@ -109,6 +114,7 @@ function setReplyTarget(commentId) {
 
 function clearReplyTarget() {
   replyTargetId = null;
+  editingCommentId = null;
   if (commentReplying) commentReplying.hidden = true;
 }
 
@@ -146,6 +152,20 @@ function submitComment(event) {
   const text = commentInput.value.trim();
   if (!text) return;
 
+  if (editingCommentId) {
+    const target = findComment(editingCommentId);
+    if (target) target.text = text;
+    editingCommentId = null;
+    commentInput.value = "";
+    autoGrowComment();
+    updateCommentSendState();
+    if (commentReplying) commentReplying.hidden = true;
+    renderComments();
+    commentForm?.classList.remove("is-focused");
+    showCommentToast("Komentar diperbarui");
+    return;
+  }
+
   const comment = {
     id: commentIdCounter += 1,
     name: "Dani Wahyudi",
@@ -181,36 +201,210 @@ function deleteComment(commentId) {
   renderComments();
 }
 
-function addCommentText(text, options = {}) {
+function addCommentText(text) {
   if (!commentInput) return;
-
-  if (options.sticker) {
-    const stickerComment = {
-      id: commentIdCounter += 1,
-      name: "Dian",
-      text: "Mengirim stiker",
-      sticker: text,
-      time: "baru saja",
-      mine: true,
-      replies: [],
-    };
-    if (replyTargetId) {
-      const parent = articleComments.find((item) => item.id === replyTargetId);
-      parent?.replies.push(stickerComment);
-      clearReplyTarget();
-    } else {
-      articleComments.unshift(stickerComment);
-    }
-    renderComments();
-    showCommentToast();
-    return;
-  }
-
   commentForm?.classList.add("is-focused");
   commentInput.value = `${commentInput.value}${text}`;
   commentInput.focus();
   autoGrowComment();
   updateCommentSendState();
+}
+
+function sendSticker(src) {
+  const sticker = {
+    id: commentIdCounter += 1,
+    name: "Dani Wahyudi",
+    text: "",
+    sticker: src,
+    time: "baru saja",
+    mine: true,
+    likes: 0,
+    replies: [],
+  };
+  if (replyTargetId) {
+    const parent = articleComments.find((item) => item.id === replyTargetId);
+    parent?.replies.push(sticker);
+    clearReplyTarget();
+  } else {
+    articleComments.unshift(sticker);
+  }
+  renderComments();
+  commentList?.scrollTo({ top: 0, behavior: "smooth" });
+  showCommentToast("Stiker terkirim");
+}
+
+const STICKER_SETS = {
+  komi: { name: "Komi", items: Array.from({ length: 10 }, (_, i) => `assets/stickers/komi-${i + 1}.gif`) },
+  kompas: { name: "Kompas", items: Array.from({ length: 10 }, (_, i) => `assets/stickers/setb-${i + 1}.gif`) },
+  komistatis: { name: "Komi Statis", items: Array.from({ length: 16 }, (_, i) => `assets/stickers/komistatis-${i + 1}.png`) },
+};
+
+const EMOJI_CATEGORIES = [
+  { name: "Wajah", emojis: "😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😋 😜 🤪 😎 🤩 🥳 😏 😴 😪 😭 😤 😠 😡 🥺 😳 🤔 🤗 🙄 😬".split(" ") },
+  { name: "Gestur", emojis: "👍 👎 👌 ✌️ 🤞 🤟 🤘 🤙 👏 🙌 🙏 ✊ 👊 🤛 💪 👋 🤚 ✋ 👆 👉 ☝️ 🤝".split(" ") },
+  { name: "Hewan & Alam", emojis: "🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐸 🐵 🐔 🦄 🐝 🦋 🐢 🌸 🌹 🌻 🌈 ⭐ 🔥 ✨ ⚡ ☀️ 🌙".split(" ") },
+  { name: "Makanan", emojis: "🍎 🍌 🍉 🍇 🍓 🍒 🥭 🍍 🥑 🍔 🍟 🍕 🌭 🍿 🍩 🍪 🎂 🍰 🍫 ☕ 🍵 🧋 🍺".split(" ") },
+  { name: "Aktivitas", emojis: "⚽ 🏀 🏈 ⚾ 🎾 🎱 🎮 🎯 🎲 🎸 🎤 🎧 🎬 📷 🎉 🎊 🎈 🎁 🏆 🥇 💯 ❤️ 🧡 💛 💚 💙 💜 🖤".split(" ") },
+];
+
+const DEFAULT_RECENT_EMOJIS = ["🔥", "✨", "💖", "💯", "🙌", "🦋", "😂", "😍", "😌", "👍", "🙏", "🎉", "🌈"];
+
+let recentEmojis = DEFAULT_RECENT_EMOJIS.slice();
+let recentStickers = STICKER_SETS.komi.items.slice(0, 6);
+let currentPickerTab = "recent";
+
+function loadCommentRecents() {
+  try {
+    const e = JSON.parse(window.localStorage.getItem("kompasRecentEmojis") || "null");
+    const s = JSON.parse(window.localStorage.getItem("kompasRecentStickers") || "null");
+    if (Array.isArray(e) && e.length) recentEmojis = e;
+    if (Array.isArray(s) && s.length) recentStickers = s;
+  } catch (err) {
+    /* abaikan */
+  }
+}
+
+function persistCommentRecents() {
+  try {
+    window.localStorage.setItem("kompasRecentEmojis", JSON.stringify(recentEmojis));
+    window.localStorage.setItem("kompasRecentStickers", JSON.stringify(recentStickers));
+  } catch (err) {
+    /* abaikan */
+  }
+}
+
+function pushRecentEmoji(emoji) {
+  recentEmojis = [emoji, ...recentEmojis.filter((item) => item !== emoji)].slice(0, 21);
+  persistCommentRecents();
+}
+
+function pushRecentSticker(src) {
+  recentStickers = [src, ...recentStickers.filter((item) => item !== src)].slice(0, 30);
+  persistCommentRecents();
+}
+
+function pickerEmojiGrid(list) {
+  return `<div class="picker-emoji-grid">${list.map((e) => `<button type="button" class="picker-emoji" data-pick-emoji="${e}">${e}</button>`).join("")}</div>`;
+}
+
+function pickerStickerGrid(list) {
+  return `<div class="picker-sticker-grid">${list.map((s) => `<button type="button" class="picker-sticker" data-pick-sticker="${s}"><img src="${s}" alt="Stiker" loading="lazy" /></button>`).join("")}</div>`;
+}
+
+function renderPickerBody(tab) {
+  const body = document.querySelector("[data-picker-body]");
+  if (!body) return;
+  if (tab === "recent") {
+    body.innerHTML =
+      `<span class="picker-label">Emoticon</span>${pickerEmojiGrid(recentEmojis.length ? recentEmojis : DEFAULT_RECENT_EMOJIS)}` +
+      `<span class="picker-label">Stiker</span>${recentStickers.length ? pickerStickerGrid(recentStickers) : '<p class="picker-empty">Belum ada stiker dipakai</p>'}`;
+  } else if (tab === "emoji") {
+    body.innerHTML = EMOJI_CATEGORIES.map((cat) => `<span class="picker-label">${cat.name}</span>${pickerEmojiGrid(cat.emojis)}`).join("");
+  } else if (STICKER_SETS[tab]) {
+    const set = STICKER_SETS[tab];
+    body.innerHTML = `<span class="picker-label">${set.name} (${set.items.length})</span>${pickerStickerGrid(set.items)}`;
+  }
+  body.scrollTop = 0;
+}
+
+function switchPickerTab(tab) {
+  currentPickerTab = tab;
+  document.querySelectorAll("[data-picker-tab]").forEach((b) => b.classList.toggle("is-active", b.dataset.pickerTab === tab));
+  renderPickerBody(tab);
+}
+
+function openCommentPicker() {
+  const picker = document.querySelector("[data-comment-picker]");
+  if (!picker || !commentForm) return;
+  commentForm.classList.add("is-focused", "is-picker");
+  commentInput?.blur();
+  picker.hidden = false;
+  switchPickerTab(currentPickerTab);
+}
+
+function closeCommentPicker(refocus = false) {
+  const picker = document.querySelector("[data-comment-picker]");
+  if (picker) picker.hidden = true;
+  commentForm?.classList.remove("is-picker");
+  if (refocus) commentInput?.focus();
+}
+
+function findComment(id) {
+  const target = Number(id);
+  for (const comment of articleComments) {
+    if (comment.id === target) return comment;
+    const reply = (comment.replies || []).find((item) => item.id === target);
+    if (reply) return reply;
+  }
+  return null;
+}
+
+function commentAgeMinutes(time) {
+  if (!time) return Number.MAX_SAFE_INTEGER;
+  if (/baru saja/i.test(time)) return 0;
+  const menit = time.match(/(\d+)\s*menit/);
+  if (menit) return Number(menit[1]);
+  const jam = time.match(/(\d+)\s*jam/);
+  if (jam) return Number(jam[1]) * 60;
+  const hari = time.match(/(\d+)\s*hari/);
+  if (hari) return Number(hari[1]) * 1440;
+  return Number.MAX_SAFE_INTEGER;
+}
+
+function sortComments(mode) {
+  commentSort = mode;
+  articleComments.sort((a, b) => {
+    if (mode === "pop") return (b.likes || 0) - (a.likes || 0);
+    const am = commentAgeMinutes(a.time);
+    const bm = commentAgeMinutes(b.time);
+    return mode === "old" ? bm - am : am - bm;
+  });
+  renderComments();
+}
+
+function startEditComment(id) {
+  const comment = findComment(id);
+  if (!comment || !commentInput) return;
+  editingCommentId = comment.id;
+  replyTargetId = null;
+  if (commentReplying) {
+    const label = commentReplying.querySelector("span");
+    if (label) label.textContent = "Mengedit komentar";
+    commentReplying.hidden = false;
+  }
+  commentForm?.classList.add("is-focused");
+  commentInput.value = comment.text;
+  commentInput.focus();
+  autoGrowComment();
+  updateCommentSendState();
+}
+
+function closeCommentMenu() {
+  const menu = document.querySelector("[data-comment-menu]");
+  if (menu) menu.hidden = true;
+}
+
+function openCommentMenu(items, anchor) {
+  const menu = document.querySelector("[data-comment-menu]");
+  const panel = commentSheet?.querySelector(".comment-panel");
+  if (!menu || !panel || !anchor) return;
+  menu.innerHTML = items
+    .map((item) => {
+      const cls = item.danger ? " class=\"is-danger\"" : item.active ? " class=\"is-active\"" : "";
+      const icon = item.icon ? `<i class="ph ${item.icon}" aria-hidden="true"></i>` : "";
+      return `<button type="button" role="menuitem" data-menu-action="${item.action}" data-menu-arg="${item.arg ?? ""}"${cls}>${icon}${item.label}</button>`;
+    })
+    .join("");
+  menu.hidden = false;
+  const pr = panel.getBoundingClientRect();
+  const ar = anchor.getBoundingClientRect();
+  let left = ar.right - pr.left - menu.offsetWidth;
+  if (left < 8) left = 8;
+  let top = ar.bottom - pr.top + 6;
+  if (top + menu.offsetHeight > pr.height - 8) top = ar.top - pr.top - menu.offsetHeight - 6;
+  if (top < 8) top = 8;
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
 }
 
 function attachCommentSheetGesture() {

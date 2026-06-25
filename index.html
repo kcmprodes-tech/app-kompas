@@ -1314,12 +1314,12 @@
                     <textarea rows="1" placeholder="Tambahkan komentar..." data-comment-input></textarea>
                   </div>
                   <div class="comment-row-icons" data-comment-row-icons>
-                    <button type="button" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
+                    <button type="button" aria-label="Stiker" data-toggle-picker><i class="ph ph-sticker" aria-hidden="true"></i></button>
                     <button type="button" aria-label="Emoji" data-toggle-comment-tools><i class="ph ph-smiley" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="comment-emoji-row" data-comment-emoji-row>
-                  <button type="button" class="comment-emoji-sticker" aria-label="Stiker" data-toggle-comment-tools><i class="ph ph-sticker" aria-hidden="true"></i></button>
+                  <button type="button" class="comment-emoji-sticker" aria-label="Stiker" data-toggle-picker><i class="ph ph-sticker" aria-hidden="true"></i><i class="ph ph-keyboard" aria-hidden="true"></i></button>
                   <div class="comment-quick-emojis">
                     <button type="button" data-comment-emoji="😂">😂</button>
                     <button type="button" data-comment-emoji="😢">😢</button>
@@ -1331,7 +1331,18 @@
                   <button type="submit" class="comment-send" aria-label="Kirim komentar" disabled><i class="ph-fill ph-paper-plane-tilt" aria-hidden="true"></i></button>
                 </div>
               </form>
+              <div class="comment-picker" hidden data-comment-picker>
+                <div class="comment-picker-tabs" data-picker-tabs>
+                  <button type="button" class="is-active" data-picker-tab="recent" aria-label="Terakhir dipakai"><i class="ph ph-clock" aria-hidden="true"></i></button>
+                  <button type="button" data-picker-tab="emoji" aria-label="Emoji"><i class="ph ph-smiley" aria-hidden="true"></i></button>
+                  <button type="button" data-picker-tab="komi" aria-label="Stiker Komi"><img src="assets/stickers/komi-1.gif" alt="" /></button>
+                  <button type="button" data-picker-tab="kompas" aria-label="Stiker Kompas"><img src="assets/stickers/setb-1.gif" alt="" /></button>
+                  <button type="button" data-picker-tab="komistatis" aria-label="Stiker Komi Statis"><img src="assets/stickers/komistatis-1.png" alt="" /></button>
+                </div>
+                <div class="comment-picker-body" data-picker-body></div>
+              </div>
               <div class="comment-toast" hidden data-comment-toast><i class="ph-fill ph-check-circle" aria-hidden="true"></i> Komentar berhasil terkirim</div>
+              <div class="comment-menu" role="menu" hidden data-comment-menu></div>
             </section>
           </div>
         </article>
