@@ -276,6 +276,9 @@ syncRoute();
 // Fallback: pastikan mode native full-screen aktif (cadangan bila skrip di <head> terlewat).
 if ("Capacitor" in window) {
   document.documentElement.classList.add("native");
+  if (typeof window.Capacitor.getPlatform === "function") {
+    document.documentElement.classList.add(`platform-${window.Capacitor.getPlatform()}`);
+  }
 }
 
 if ("Capacitor" in window && "serviceWorker" in navigator) {

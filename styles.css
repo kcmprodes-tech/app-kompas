@@ -8551,3 +8551,8 @@ html.native .status-bar {
   height: 26px;
   object-fit: contain;
 }
+
+/* iOS: jaga header dari Dynamic Island/notch (floor safe-area, env sering 0 di WKWebView) */
+html.platform-ios .phone-app {
+  padding-top: max(env(safe-area-inset-top), 54px);
+}

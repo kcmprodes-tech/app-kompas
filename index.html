@@ -23,6 +23,9 @@
       // sembunyikan bingkai mockup HP & status bar palsu.
       if (window.Capacitor && (typeof window.Capacitor.isNativePlatform !== "function" || window.Capacitor.isNativePlatform())) {
         document.documentElement.classList.add("native");
+        if (typeof window.Capacitor.getPlatform === "function") {
+          document.documentElement.classList.add("platform-" + window.Capacitor.getPlatform());
+        }
       }
     </script>
   </head>
