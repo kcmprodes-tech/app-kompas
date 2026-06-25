@@ -316,12 +316,32 @@ function renderPickerBody(tab) {
       body.innerHTML = renderAllStickers();
     }
     if (STICKER_SETS[tab]) {
-      const section = body.querySelector(`[data-sticker-section="${tab}"]`);
-      if (section) section.scrollIntoView({ block: "start" });
+      window.requestAnimationFrame(() => scrollToStickerSet(tab));
     } else {
-      body.scrollTop = 0;
+      body.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
+}
+
+function scrollToStickerSet(key) {
+  const body = document.querySelector("[data-picker-body]");
+  const section = body && body.querySelector(`[data-sticker-section="${key}"]`);
+  if (!body || !section) return;
+  const target = section.getBoundingClientRect().top - body.getBoundingClientRect().top + body.scrollTop - 4;
+  body.scrollTo({ top: Math.max(0, target), behavior: "smooth" });
+}
+
+function updateStickerActiveTab() {
+  const body = document.querySelector("[data-picker-body]");
+  if (!body || body.dataset.mode !== "stickers") return;
+  const bodyTop = body.getBoundingClientRect().top;
+  let active = null;
+  body.querySelectorAll("[data-sticker-section]").forEach((section) => {
+    if (section.getBoundingClientRect().top - bodyTop <= 12) active = section.dataset.stickerSection;
+  });
+  if (!active) return;
+  currentPickerTab = active;
+  document.querySelectorAll("[data-picker-tab]").forEach((b) => b.classList.toggle("is-active", b.dataset.pickerTab === active));
 }
 
 function switchPickerTab(tab) {

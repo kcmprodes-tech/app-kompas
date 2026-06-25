@@ -4483,6 +4483,7 @@ svg {
 
 .comment-send {
   flex: 0 0 auto;
+  margin-left: auto;
   width: 34px;
   height: 34px;
   display: grid;
@@ -8342,4 +8343,205 @@ html.native .phone-app {
 }
 html.native .status-bar {
   display: none;
+}
+
+/* ============================================================
+   Share bottom sheet (global) — slide-in dari bawah
+   ============================================================ */
+.share-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.share-sheet.is-open {
+  pointer-events: auto;
+}
+
+.share-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: opacity 220ms ease, background 220ms ease;
+}
+
+.share-sheet.is-open .share-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.share-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-surface);
+  border-radius: 20px 20px 0 0;
+  padding: 0 var(--space-20) calc(var(--space-20) + env(safe-area-inset-bottom));
+  box-shadow: 0 -16px 40px rgba(23, 27, 34, 0.16);
+  transform: translateY(100%);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.share-sheet.is-open .share-panel {
+  transform: translateY(0);
+}
+
+.share-handle {
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin: 10px auto 2px;
+  border-radius: var(--radius-pill);
+  background: #d2d7de;
+}
+
+.share-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) 0 var(--space-16);
+}
+
+.share-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: #282b2f;
+}
+
+.share-header button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: #343840;
+}
+
+.share-header i {
+  font-size: 22px;
+}
+
+.share-article {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+  padding: var(--space-12);
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-12);
+}
+
+.share-article img {
+  width: 72px;
+  height: 56px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #d7dee8;
+}
+
+.share-article h3 {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #282b2f;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.share-article span {
+  font-size: 12px;
+  color: #80858d;
+}
+
+.share-label {
+  margin: var(--space-20) 0 var(--space-8);
+  font-size: 13px;
+  font-weight: 600;
+  color: #3a3d42;
+}
+
+.share-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10, 10px);
+  padding: var(--space-10, 10px) var(--space-12);
+  background: #f3f4f6;
+  border-radius: var(--radius-12);
+}
+
+.share-link > i {
+  flex: 0 0 auto;
+  font-size: 18px;
+  color: #60666f;
+}
+
+.share-link span {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: #3a3d42;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.share-link button {
+  flex: 0 0 auto;
+  padding: var(--space-8) var(--space-16);
+  background: var(--color-surface);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: #282b2f;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* carousel edge-to-edge: tanpa padding kiri/kanan */
+.share-targets {
+  display: flex;
+  gap: var(--space-12);
+  overflow-x: auto;
+  margin: 0 calc(var(--space-20) * -1);
+  padding: var(--space-4) 0;
+  scrollbar-width: none;
+}
+
+.share-targets::-webkit-scrollbar {
+  display: none;
+}
+
+.share-target {
+  flex: 0 0 auto;
+  width: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: 11px;
+  color: #3a3d42;
+}
+
+.share-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.share-icon i {
+  font-size: 26px;
+}
+
+.share-icon.more {
+  background: #e9eaec;
+  color: #5b6068;
 }

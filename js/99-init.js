@@ -97,6 +97,7 @@ document.querySelectorAll("[data-toggle-picker]").forEach((button) => {
 document.querySelectorAll("[data-open-emoji]").forEach((button) => {
   button.addEventListener("click", () => openCommentPicker("emoji"));
 });
+document.querySelector("[data-picker-body]")?.addEventListener("scroll", () => window.requestAnimationFrame(updateStickerActiveTab), { passive: true });
 document.querySelector("[data-picker-tabs]")?.addEventListener("click", (event) => {
   const tab = event.target instanceof Element ? event.target.closest("[data-picker-tab]") : null;
   if (tab) switchPickerTab(tab.dataset.pickerTab);
@@ -186,6 +187,18 @@ document.addEventListener("click", (event) => {
   if (!t || !commentMenuEl || commentMenuEl.hidden) return;
   if (t.closest("[data-comment-menu]") || t.closest("[data-sort-comments]") || t.closest(".comment-kebab")) return;
   closeCommentMenu();
+});
+document.querySelectorAll('button[aria-label^="Bagikan"]').forEach((button) => {
+  button.addEventListener("click", (event) => { event.preventDefault(); openShareSheet(); });
+});
+const shareSheetEl = document.querySelector("[data-share-sheet]");
+shareSheetEl?.addEventListener("click", (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  if (!target) return;
+  if (target.closest("[data-close-share]")) closeShareSheet();
+  else if (target.closest("[data-copy-link]")) copyShareLink(target.closest("[data-copy-link]"));
+  else if (target.closest("[data-native-share]")) nativeShare();
+  else if (target.closest("[data-share-net]")) shareTo(target.closest("[data-share-net]").dataset.shareNet);
 });
 appreciationOpen?.addEventListener("click", openAppreciationView);
 appreciationClose?.addEventListener("click", closeAppreciationView);

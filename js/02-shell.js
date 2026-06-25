@@ -145,3 +145,53 @@ function closeAccountDetail(options = {}) {
   }, 260);
 }
 
+
+// ---- Share bottom sheet (global) ----
+const SHARE_URL = "https://nasional.kompas.com/read/2026/06/24/121241";
+const SHARE_TITLE = "23.470 Pekerja Kena PHK Sepanjang Januari-Mei 2026, Jabar Terbanyak";
+
+function openShareSheet() {
+  const sheet = document.querySelector("[data-share-sheet]");
+  if (!sheet) return;
+  sheet.setAttribute("aria-hidden", "false");
+  sheet.classList.add("is-open");
+}
+
+function closeShareSheet() {
+  const sheet = document.querySelector("[data-share-sheet]");
+  if (!sheet) return;
+  sheet.classList.remove("is-open");
+  sheet.setAttribute("aria-hidden", "true");
+}
+
+function nativeShare() {
+  if (navigator.share) {
+    navigator.share({ title: SHARE_TITLE, url: SHARE_URL }).catch(() => {});
+  }
+}
+
+function shareTo(net) {
+  const u = encodeURIComponent(SHARE_URL);
+  const t = encodeURIComponent(SHARE_TITLE);
+  const map = {
+    wa: `https://wa.me/?text=${t}%20${u}`,
+    fb: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
+    tg: `https://t.me/share/url?url=${u}&text=${t}`,
+    x: `https://twitter.com/intent/tweet?url=${u}&text=${t}`,
+    th: `https://www.threads.net/intent/post?text=${t}%20${u}`,
+  };
+  if (map[net]) {
+    window.open(map[net], "_system");
+  } else {
+    nativeShare();
+  }
+}
+
+function copyShareLink(button) {
+  if (navigator.clipboard) navigator.clipboard.writeText(SHARE_URL).catch(() => {});
+  if (button) {
+    const original = button.textContent;
+    button.textContent = "Tersalin";
+    window.setTimeout(() => { button.textContent = original; }, 1500);
+  }
+}
